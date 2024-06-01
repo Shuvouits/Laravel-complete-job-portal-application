@@ -16,9 +16,9 @@ class UserRoleMiddleware
     public function handle(Request $request, Closure $next,  $role): Response
     {
         if($request->user()->role !== $role){
-            if($request->user()->role =='company'){
+            if($request->user()->role === 'company'){
                 return redirect('/company/dashboard');
-            }else{
+            }else if($request->user()->role === 'candidate'){
                 return redirect('/candidate/dashboard');
 
             }

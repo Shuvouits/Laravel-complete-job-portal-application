@@ -18,17 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/company/dashboard', function () {
-    return view('frontend.company-dashboard.dashboard');
-})->middleware(['auth', 'verified' , 'user.role:company']);
-
-Route::get('/candidate/dashboard', function () {
-    return view('frontend.candidate-dashboard.dashboard');
-})->middleware(['auth', 'verified', 'user.role:candidate']);
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 
 Route::middleware('auth')->group(function () {
@@ -38,3 +30,27 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::group(
+    ['middleware' => ['auth', 'verified', 'user.role:candidate'], 
+    'prefix' => 'candidate' ],
+    function(){
+
+        Route::get('/dashboard', function () {
+            return view('frontend.candidate-dashboard.dashboard');
+        });
+
+    }
+);
+
+Route::group(
+    ['middleware' => ['auth', 'verified', 'user.role:company'], 
+    'prefix' => 'company' ],
+    function(){
+
+        Route::get('/dashboard', function () {
+            return view('frontend.company-dashboard.dashboard');
+        });
+
+    }
+);
