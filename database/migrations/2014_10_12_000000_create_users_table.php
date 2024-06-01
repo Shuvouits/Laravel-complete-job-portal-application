@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->default('/default-uploads/avatar.webp');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['company', 'candidate'])->default('candidate');
             $table->rememberToken();
             $table->timestamps();
         });
