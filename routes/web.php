@@ -22,13 +22,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/company-dashboard', function () {
+Route::get('/company/dashboard', function () {
     return view('frontend.company-dashboard.dashboard');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified' , 'user.role:company']);
 
-Route::get('/candidate-dashboard', function () {
+Route::get('/candidate/dashboard', function () {
     return view('frontend.candidate-dashboard.dashboard');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified', 'user.role:candidate']);
 
 
 Route::middleware('auth')->group(function () {

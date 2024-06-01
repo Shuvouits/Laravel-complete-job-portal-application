@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         if($request->user()->role=='company'){
             return redirect()->intended(RouteServiceProvider::COMPANY);
 
-        }else if($request->user()->role=='candidate'){
+        }else{
             return redirect()->intended(RouteServiceProvider::CANDIDATE);
         }
 
