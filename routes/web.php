@@ -29,13 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
 
 Route::group(
-    ['middleware' => ['auth', 'verified', 'user.role:candidate'], 
-    'prefix' => 'candidate' ],
-    function(){
+    ['middleware' => ['auth', 'verified', 'user.role:candidate'], 'prefix' => 'candidate'],
+    function () {
 
         Route::get('/dashboard', function () {
             return view('frontend.candidate-dashboard.dashboard');
@@ -45,9 +44,8 @@ Route::group(
 );
 
 Route::group(
-    ['middleware' => ['auth', 'verified', 'user.role:company'], 
-    'prefix' => 'company' ],
-    function(){
+    ['middleware' => ['auth', 'verified', 'user.role:company'], 'prefix' => 'company'],
+    function () {
 
         Route::get('/dashboard', function () {
             return view('frontend.company-dashboard.dashboard');
