@@ -29,7 +29,7 @@
             <div class="login-register-cover">
               <div class="text-center">
                 <h2 class="mb-5 text-brand-1">Register</h2>
-                <p class="font-sm text-muted mb-30">Lorem ipsum dolor sit amet consectetur.</p>
+                <p class="font-sm text-muted mb-30">Don't have a account yet? Create one </p>
               </div>
             
               <form class="login-register text-start mt-20" method="POST" action="{{ route('register') }}">

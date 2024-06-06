@@ -47,7 +47,11 @@
                   </div>
                   <div class="col-xl-12">
                     <div class="form-group">
-                      <label class="form-label" for="password" :value="__('Password')">Password *</label>
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password" :value="__('Password')">Password *</label>
+                      <a href="/forgot-password">Forgot password?</a>
+                        </div>
+                      
                       <input class="form-control" id="password" 
                         placeholder="************"  type="password"
                         name="password"
