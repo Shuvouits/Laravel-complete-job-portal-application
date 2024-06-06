@@ -33,19 +33,39 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'account_type' => ['required', 'in:candidate,company' ],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+      
+       $role = $request->input('account_type');
+       
+       
+
         $user = User::create([
+           
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $role,
             'password' => Hash::make($request->password),
         ]);
+
+        
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if(auth()->user()->role === 'company'){
+            return redirect(RouteServiceProvider::COMPANY);
+
+        }else if(auth()->user()->role === 'candidate'){
+            return redirect(RouteServiceProvider::CANDIDATE);
+
+        }else{
+            return redirect()->back();
+        }
+
+       
     }
 }
