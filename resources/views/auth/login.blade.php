@@ -39,7 +39,7 @@
                 <div class="row">
                   <div class="col-xl-12">
                     <div class="form-group">
-                      <label class="form-label" for="email" :value="__('Email')">Username *</label>
+                      <label class="form-label" for="email" :value="__('Email')">Email *</label>
                       <input class="form-control" id="email" type="email"  name="email"
                         placeholder="test@example.com" :value="old('email')" required autofocus autocomplete="username">
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
