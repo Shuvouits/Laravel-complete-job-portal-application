@@ -20,12 +20,10 @@
     }
 
     .content-single p {
-    
-    color: #1ca774 !important;
-   
-}
 
+        color: #1ca774 !important;
 
+    }
 </style>
 
 @section('main')
@@ -46,8 +44,8 @@
                     <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
                         <div class="content-single">
                             <h3 class="mt-0 mb-15 color-brand-1 text-center">Profile Info</h3>
-                           
-                          
+
+
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
@@ -65,19 +63,19 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                               
-                                    <div id="company" class="container tab-pane active"><br>
+
+                                <div id="company" class="container tab-pane active"><br>
 
 
-                                        <form method="post" action="{{route('company-info')}}" enctype="multipart/form-data">
-                                            @csrf
+                                    <form method="post" action="{{ route('company-info') }}" enctype="multipart/form-data">
+                                        @csrf
 
                                         <div class="row form-contact">
 
                                             <div class="row">
 
                                                 <div class="col-md-6">
-                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->logo"  />
+                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->logo" />
                                                     <div class="form-group">
                                                         <label class="font-sm color-text-mutted mb-10">Logo*</label>
                                                         <input class="form-control" type="file" name="logo">
@@ -86,12 +84,12 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->banner"  />
+                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->banner" />
                                                     <div class="form-group">
                                                         <label class="font-sm color-text-mutted mb-10">Banner*</label>
                                                         <input class="form-control" type="file" name="banner"
                                                             value="">
-                                                            <x-input-error :messages="$errors->get('banner')" class="mt-2" />
+                                                        <x-input-error :messages="$errors->get('banner')" class="mt-2" />
                                                     </div>
                                                 </div>
 
@@ -100,19 +98,16 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Company Name*</label>
-                                                    <input class="form-control" type="text"
-                                                        name="name" value="{{$companyInfo->name}}">
-                                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                                    <input class="form-control" type="text" name="name"
+                                                        value="{{ $companyInfo->name }}">
+                                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Company Bio*</label>
-                                                    <textarea class="form-control" rows="4" name="bio">
-                                                        {{$companyInfo->bio}}
-                                                      
-                                                    </textarea>
+                                                    <textarea class="form-control" rows="4" name="bio">{{ $companyInfo->bio }}</textarea>
                                                     <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                                 </div>
                                             </div>
@@ -120,9 +115,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Company Vision*</label>
-                                                    <textarea class="form-control" rows="4" name="vision">
-                                                        {{$companyInfo->vision}}
-                                                    </textarea>
+                                                    <textarea class="form-control" rows="4" name="vision">{{ $companyInfo->vision }}</textarea>
                                                     <x-input-error :messages="$errors->get('vision')" class="mt-2" />
                                                 </div>
                                             </div>
@@ -146,8 +139,8 @@
 
 
 
-                                    </div>
-                                
+                                </div>
+
 
                                 <div id="founding" class="container tab-pane"><br>
 

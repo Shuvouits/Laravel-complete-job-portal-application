@@ -13,14 +13,24 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="">
+    @notifyCss
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
+
+    
   
 
     <title>Ultimate Job Portal Website</title>
 </head>
 
+<style>
+    .notify{
+        z-index: 9999 !important;
+    }
+</style>
+
 <body>
+   
 
     @include('frontend.section.preloader')
 
@@ -52,6 +62,9 @@
     <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
+
+    <x-notify::notify />
+    @notifyJs
 
    
 
