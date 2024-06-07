@@ -1,16 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+
+
 class ProfileController extends Controller
 {
+
+    use FileUploadTrait;
+    
     /**
      * Display the user's profile form.
      */
@@ -58,7 +63,11 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function CompanyProfile(){
-        return view('frontend.company-dashboard.profile.index');
-    }
+    
+
+   
+
+  
+
+   
 }

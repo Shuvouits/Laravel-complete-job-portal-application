@@ -32,17 +32,35 @@
             <div class="header-right">
                 <div class="block-signin">
                     <!-- <a class="text-link-bd-btom hover-up" href="page-register.html">Register</a> -->
+
+
                     @php
-                    $dashboardUrl = auth()->user()->role === 'company' ? '/company/dashboard' : '/candidate/dashboard';
-                
+                        $user = auth()->user();
+                        if ($user) {
+                            $dashboardUrl =
+                                $user->role === 'company'
+                                    ? '/company/dashboard'
+                                    : ($user->role === 'candidate'
+                                        ? '/candidate/dashboard'
+                                        : '');
+                        } else {
+                            $dashboardUrl = '/login';
+                        }
                     @endphp
 
-@if($dashboardUrl)
-<a class="btn btn-default btn-shadow ml-40 hover-up" href="{{$dashboardUrl}}">Dashboard</a>
-@else 
-<a class="btn btn-default btn-shadow ml-40 hover-up" href="/login">Sign in</a>
-@endif
-                    
+
+
+                    @if ($user)
+                        <a class="btn btn-default btn-shadow ml-40 hover-up" href="{{ $dashboardUrl }}">Dashboard</a>
+                    @elseif(!$user)
+                        <a class="btn btn-default btn-shadow ml-40 hover-up" href="/login">Sign in</a>
+                    @endif
+
+
+
+
+
+
                 </div>
             </div>
         </div>

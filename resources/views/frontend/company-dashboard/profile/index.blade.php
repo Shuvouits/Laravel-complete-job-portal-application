@@ -1,21 +1,31 @@
 @extends('frontend.master')
 
 <style>
-    a.nav-link{
+    a.nav-link {
         color: black !important;
 
     }
-    .nav-tabs li a:hover, .nav-tabs li a.active {
-    color: white !important;
-    border-color: #1ca774;
-    background: #1ca774 !important;
-    width: 120px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    .nav-tabs li a:hover,
+    .nav-tabs li a.active {
+        color: white !important;
+        border-color: #1ca774;
+        background: #1ca774 !important;
+        width: 120px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .content-single p {
     
+    color: #1ca774 !important;
+   
 }
+
+
 </style>
 
 @section('main')
@@ -35,14 +45,9 @@
 
                     <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
                         <div class="content-single">
-                            <h3 class="mt-0 mb-15 color-brand-1">My Account</h3><a class="font-md color-text-paragraph-2"
-                                href="#">Update your profile</a>
-                            <div class="mt-35 mb-40 box-info-profie">
-                                <div class="image-profile"><img
-                                        src="{{ asset('frontend/assets/imgs/page/candidates/candidate-profile.png') }}"
-                                        alt="joblist">
-                                </div><a class="btn btn-apply">Upload Avatar</a><a class="btn btn-link">Delete</a>
-                            </div>
+                            <h3 class="mt-0 mb-15 color-brand-1 text-center">Profile Info</h3>
+                           
+                          
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
@@ -59,94 +64,126 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div id="company" class="container tab-pane active"><br>
-                                    
-                                    <div class="row form-contact">
 
-                                        <div class="row">
+                               
+                                    <div id="company" class="container tab-pane active"><br>
 
-                                            <div class="col-md-6">
+
+                                        <form method="post" action="{{route('company-info')}}" enctype="multipart/form-data">
+                                            @csrf
+
+                                        <div class="row form-contact">
+
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->logo"  />
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Logo*</label>
+                                                        <input class="form-control" type="file" name="logo">
+                                                        <x-input-error :messages="$errors->get('logo')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->banner"  />
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Banner*</label>
+                                                        <input class="form-control" type="file" name="banner"
+                                                            value="">
+                                                            <x-input-error :messages="$errors->get('banner')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Logo*</label>
-                                                    <input class="form-control" type="file">
+                                                    <label class="font-sm color-text-mutted mb-10">Company Name*</label>
+                                                    <input class="form-control" type="text"
+                                                        name="name" value="{{$companyInfo->name}}">
+                                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Banner*</label>
-                                                    <input class="form-control" type="file" value="">
+                                                    <label class="font-sm color-text-mutted mb-10">Company Bio*</label>
+                                                    <textarea class="form-control" rows="4" name="bio">
+                                                        {{$companyInfo->bio}}
+                                                      
+                                                    </textarea>
+                                                    <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                                 </div>
                                             </div>
 
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Company Name*</label>
-                                                <input class="form-control" type="text" value="">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Company Vision*</label>
+                                                    <textarea class="form-control" rows="4" name="vision">
+                                                        {{$companyInfo->vision}}
+                                                    </textarea>
+                                                    <x-input-error :messages="$errors->get('vision')" class="mt-2" />
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Company Bio*</label>
-                                                <textarea class="form-control" rows="4">We are AliThemes , a creative and dedicated group of individuals who love web development almost as much as we love our customers. We are passionate team with the mission for achieving the perfection in web design.</textarea>
+                                            <div class="box-button mt-15">
+                                                <button type="submit" class="btn btn-apply-big font-md font-bold">Save All
+                                                    Changes</button>
                                             </div>
+
+
+
+
+
+
+
+
                                         </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Company Vision*</label>
-                                                <textarea class="form-control" rows="4">We are AliThemes , a creative and dedicated group of individuals who love web development almost as much as we love our customers. We are passionate team with the mission for achieving the perfection in web design.</textarea>
-                                            </div>
-                                        </div>
+                                    </form>
 
 
 
-                                        
-        
-        
-        
-                                      
+
+
                                     </div>
-
-                                </div>
+                                
 
                                 <div id="founding" class="container tab-pane"><br>
-                                    
+
                                     <div class="row form-contact">
 
                                         <div class="row">
 
-                                            
+
 
                                             <div class="col-md-4">
 
                                                 <div class="form-group select-style">
                                                     <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
                                                     <select class="form-control form-icons select-active">
-                                                      <option>New York, US</option>
-                                                      <option>London</option>
-                                                      <option>Paris</option>
-                                                      <option>Berlin</option>
+                                                        <option>New York, US</option>
+                                                        <option>London</option>
+                                                        <option>Paris</option>
+                                                        <option>Berlin</option>
                                                     </select>
-                                                  </div>
+                                                </div>
 
                                             </div>
 
 
-                                            
+
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Organization Type*</label>
+                                                    <label class="font-sm color-text-mutted mb-10">Organization
+                                                        Type*</label>
                                                     <select class="form-control form-select" id="sel1" name="sellist1">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
-                                                      </select>
+                                                    </select>
 
                                                 </div>
                                             </div>
@@ -159,7 +196,7 @@
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
-                                                      </select>
+                                                    </select>
 
                                                 </div>
                                             </div>
@@ -171,7 +208,8 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Establishment Date*</label>
+                                                    <label class="font-sm color-text-mutted mb-10">Establishment
+                                                        Date*</label>
                                                     <input class="form-control" type="date" value="">
                                                 </div>
                                             </div>
@@ -208,12 +246,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Country*</label>
-                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                    <select class="form-control form-select" id="sel1"
+                                                        name="sellist1">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
-                                                      </select>
+                                                    </select>
 
                                                 </div>
                                             </div>
@@ -221,12 +260,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">State*</label>
-                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                    <select class="form-control form-select" id="sel1"
+                                                        name="sellist1">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
-                                                      </select>
+                                                    </select>
 
                                                 </div>
                                             </div>
@@ -234,12 +274,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">City*</label>
-                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                    <select class="form-control form-select" id="sel1"
+                                                        name="sellist1">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
-                                                      </select>
+                                                    </select>
 
                                                 </div>
                                             </div>
@@ -247,7 +288,7 @@
 
                                         </div>
 
-                                       
+
 
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -263,17 +304,17 @@
                                             </div>
                                         </div>
 
-                                    
-                                      
+
+
                                     </div>
 
                                 </div>
 
                                 <div id="account" class="container tab-pane "><br>
-                                    
+
                                     <div class="row form-contact">
 
-                                      
+
 
                                         <div class="row">
 
@@ -304,32 +345,33 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Confirm Password*</label>
+                                                    <label class="font-sm color-text-mutted mb-10">Confirm
+                                                        Password*</label>
                                                     <input class="form-control" type="phone" value="">
                                                 </div>
                                             </div>
 
                                         </div>
 
-                                      
 
-                                       
 
-                                        
-                                        
 
-                                    
-                                      
+
+
+
+
+
+
                                     </div>
 
                                 </div>
 
 
-                             
+
                             </div>
 
 
-                           
+
 
 
                         </div>
