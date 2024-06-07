@@ -15,6 +15,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="">
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
+  
+
     <title>Ultimate Job Portal Website</title>
 </head>
 
@@ -50,6 +52,19 @@
     <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
+
+   
+
+    <script>
+
+$(document).ready(function() {
+        $('.select-2').select2();
+    });
+
+
+    </script>
+
+  
 </body>
 
 </html>

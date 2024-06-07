@@ -32,7 +32,17 @@
             <div class="header-right">
                 <div class="block-signin">
                     <!-- <a class="text-link-bd-btom hover-up" href="page-register.html">Register</a> -->
-                    <a class="btn btn-default btn-shadow ml-40 hover-up" href="/login">Sign in</a>
+                    @php
+                    $dashboardUrl = auth()->user()->role === 'company' ? '/company/dashboard' : '/candidate/dashboard';
+                
+                    @endphp
+
+@if($dashboardUrl)
+<a class="btn btn-default btn-shadow ml-40 hover-up" href="{{$dashboardUrl}}">Dashboard</a>
+@else 
+<a class="btn btn-default btn-shadow ml-40 hover-up" href="/login">Sign in</a>
+@endif
+                    
                 </div>
             </div>
         </div>

@@ -113,24 +113,30 @@
 
                                 </div>
 
-                                <div id="founding" class="container tab-pane active"><br>
+                                <div id="founding" class="container tab-pane"><br>
                                     
                                     <div class="row form-contact">
 
                                         <div class="row">
 
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
-                                                    <select class="form-control form-select" id="sel1" name="sellist1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                      </select>
+                                            
 
-                                                </div>
+                                            <div class="col-md-4">
+
+                                                <div class="form-group select-style">
+                                                    <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
+                                                    <select class="form-control form-icons select-active">
+                                                      <option>New York, US</option>
+                                                      <option>London</option>
+                                                      <option>Paris</option>
+                                                      <option>Berlin</option>
+                                                    </select>
+                                                  </div>
+
                                             </div>
+
+
+                                            
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
@@ -263,13 +269,63 @@
 
                                 </div>
 
+                                <div id="account" class="container tab-pane "><br>
+                                    
+                                    <div class="row form-contact">
+
+                                      
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">User Name*</label>
+                                                    <input class="form-control" type="date" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Email*</label>
+                                                    <input class="form-control" type="link" value="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Password*</label>
+                                                    <input class="form-control" type="email" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Confirm Password*</label>
+                                                    <input class="form-control" type="phone" value="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                      
+
+                                       
+
+                                        
+                                        
+
+                                    
+                                      
+                                    </div>
+
+                                </div>
+
 
                              
-                                <div id="account" class="container tab-pane fade"><br>
-                                    <h3>Menu 2</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam.</p>
-                                </div>
                             </div>
 
 

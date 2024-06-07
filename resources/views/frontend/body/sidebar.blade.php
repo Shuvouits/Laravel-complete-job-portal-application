@@ -7,7 +7,7 @@
         <li>
             @php
             $dashboardUrl = auth()->user()->role === 'company' ? '/company/dashboard' : '/candidate/dashboard';
-        @endphp
+           @endphp
 
             <a class="btn btn-border mb-20 active" href="{{$dashboardUrl}}">Dashboard</a>
         </li>
