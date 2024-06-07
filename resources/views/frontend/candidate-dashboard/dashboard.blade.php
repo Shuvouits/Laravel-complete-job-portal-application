@@ -3,49 +3,15 @@
 @section('main')
 <main class="main">
 
-    <section class="section-box mt-75">
-      <div class="breacrumb-cover">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <h2 class="mb-20">Blog</h2>
-              <ul class="breadcrumbs">
-                <li><a class="home-icon" href="index.html">Home</a></li>
-                <li>Blog</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    @include('frontend.body.breadcrumb')
 
     <section class="section-box mt-120">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="box-nav-tabs nav-tavs-profile mb-5">
-              <ul class="nav" role="tablist">
-                <li><a class="btn btn-border mb-20" href="candidate-profile.html">My Profile</a></li>
-                <li><a class="btn btn-border mb-20" href="candidate-profile-jobs.html">My Jobs</a></li>
-                <li><a class="btn btn-border mb-20" href="candidate-profile-save-jobs.html">Saved Jobs</a></li>
-                <li><a class="btn btn-border mb-20 active" href="candidate-profile-dashboard.html">Dashboard</a></li>
-                <li>
-                    
 
-                     <!-- Authentication -->
-                     <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+         @include('frontend.body.sidebar')
 
-                       
-                        <a class="btn btn-border mb-20" :href="route('logout')" onclick="event.preventDefault();
-                                            this.closest('form').submit();">Logout</a>
-                    </form>
-                    
-                </li>
-              </ul>
-              <div class="mt-20"><a class="link-red" href="#">Delete Account</a></div>
-            </div>
-          </div>
+
           <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
             <div class="content-single">
               <h3 class="mt-0 mb-0 color-brand-1">Dashboard</h3>

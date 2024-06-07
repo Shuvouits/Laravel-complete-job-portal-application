@@ -57,4 +57,8 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function CompanyProfile(){
+        return view('frontend.company-dashboard.profile.index');
+    }
 }

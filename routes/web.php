@@ -50,6 +50,7 @@ Route::group(
         Route::get('/dashboard', function () {
             return view('frontend.company-dashboard.dashboard');
         });
+        Route::get('/profile', [ProfileController::class, 'CompanyProfile']);
 
     }
 );
