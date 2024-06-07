@@ -112,11 +112,159 @@
                                     </div>
 
                                 </div>
-                                <div id="founding" class="container tab-pane fade"><br>
-                                    <h3>Menu 1</h3>
-                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                        ea commodo consequat.</p>
+
+                                <div id="founding" class="container tab-pane active"><br>
+                                    
+                                    <div class="row form-contact">
+
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
+                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Organization Type*</label>
+                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Team Size*</label>
+                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Establishment Date*</label>
+                                                    <input class="form-control" type="date" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Website*</label>
+                                                    <input class="form-control" type="link" value="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Email*</label>
+                                                    <input class="form-control" type="email" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Phone*</label>
+                                                    <input class="form-control" type="phone" value="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">Country*</label>
+                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">State*</label>
+                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-sm color-text-mutted mb-10">City*</label>
+                                                    <select class="form-control form-select" id="sel1" name="sellist1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                       
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="font-sm color-text-mutted mb-10">Address</label>
+                                                <input type="text" class="form-control"></input>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="font-sm color-text-mutted mb-10">Map Link</label>
+                                                <input type="text" class="form-control"></input>
+                                            </div>
+                                        </div>
+
+                                    
+                                      
+                                    </div>
+
                                 </div>
+
+
+                             
                                 <div id="account" class="container tab-pane fade"><br>
                                     <h3>Menu 2</h3>
                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
