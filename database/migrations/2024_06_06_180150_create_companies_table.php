@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->foreignId('industry_type_id')->nullable();
+            $table->foreignId('organization_type_id')->nullable();
             $table->foreignId('team_size_id')->nullable();
             $table->string('logo')->nullable();
             $table->string('banner')->nullable();

@@ -13,9 +13,12 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="">
+    
     @notifyCss
+   
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
+
 
     
   
@@ -75,6 +78,12 @@ $(document).ready(function() {
     });
 
 
+    </script>
+
+    <script>
+        $('.datepicker').datepicker({
+            format : 'yyyy-d-m'
+        })
     </script>
 
   

@@ -24,6 +24,11 @@
         color: #1ca774 !important;
 
     }
+
+
+    .select-style .select2 {
+        border: 1px solid #1ca77459 !important;
+    }
 </style>
 
 @section('main')
@@ -144,218 +149,272 @@
 
                                 <div id="founding" class="container tab-pane"><br>
 
-                                    <div class="row form-contact">
+                                    <form method="post" action="{{ route('founding-info') }}">
+                                        @csrf
 
-                                        <div class="row">
+                                        <div class="row form-contact">
+
+                                            <div class="row">
 
 
 
-                                            <div class="col-md-4">
+                                                <div class="col-md-4">
 
-                                                <div class="form-group select-style">
-                                                    <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
-                                                    <select class="form-control form-icons select-active">
-                                                        <option>New York, US</option>
-                                                        <option>London</option>
-                                                        <option>Paris</option>
-                                                        <option>Berlin</option>
-                                                    </select>
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10">Industry
+                                                            Type*</label>
+                                                        <select class="form-control form-icons select-active"
+                                                            name="industry_type">
+                                                            <option value="0">New York, US</option>
+                                                            <option>London</option>
+
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
+                                                    </div>
+
                                                 </div>
+
+
+
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group  select-style">
+                                                        <label class="font-sm color-text-mutted mb-10">Organization
+                                                            Type*</label>
+                                                        <select class="form-control  select-active"
+                                                            name="organization_type">
+                                                            <option value="0">New York, US</option>
+                                                            <option>London</option>
+
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('organization_type')" class="mt-2" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10" for="team_size">Team
+                                                            Size*</label>
+                                                        <select class="form-control form-icons select-active"
+                                                            name="team_size">
+                                                            <option value="0">New York, US</option>
+                                                            <option>London</option>
+
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('team_size')" class="mt-2" />
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Establishment
+                                                            Date*</label>
+                                                        <input class="form-control" name="establishment_date"
+                                                            type="date"
+                                                            value="{{ $companyInfo?->establishment_date }}">
+                                                        <x-input-error :messages="$errors->get('establishment_date')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Website*</label>
+                                                        <input class="form-control" name="website" type="link"
+                                                            value="{{ $companyInfo?->website }}">
+                                                        <x-input-error :messages="$errors->get('website')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Email*</label>
+                                                        <input class="form-control" name="email" type="email"
+                                                            value="{{ $companyInfo?->email }}">
+                                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Phone*</label>
+                                                        <input class="form-control" name="phone" type="phone"
+                                                            value="{{ $companyInfo?->phone }}">
+                                                        <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10"
+                                                            for="country">Country*</label>
+                                                        <select class="form-control form-select select-active"
+                                                            name="country" id="country">
+                                                            <option>Bangladesh</option>
+                                                            <option>India</option>
+
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('country')" class="mt-2" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10"
+                                                            for='state'>State*</label>
+                                                        <select class="form-control form-select select-active"
+                                                            id="state" name="state">
+                                                            <option>Dhaka</option>
+                                                            <option>Khulna</option>
+
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('state')" class="mt-2" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10"
+                                                            for="city">City*</label>
+                                                        <select class="form-control form-select select-active"
+                                                            id="city" name="city">
+                                                            <option>Kaliganj</option>
+                                                            <option>Jheneidah</option>
+
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('city')" class="mt-2" />
+
+                                                    </div>
+                                                </div>
+
+
 
                                             </div>
 
 
 
-
-                                            <div class="col-md-4">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Organization
-                                                        Type*</label>
-                                                    <select class="form-control form-select" id="sel1" name="sellist1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-
+                                                    <label class="font-sm color-text-mutted mb-10"
+                                                        for="address">Address</label>
+                                                    <input type="text" class="form-control" name="address"
+                                                        id="address" value="{{ $companyInfo?->address }}"></input>
+                                                    <x-input-error :messages="$errors->get('address')" class="mt-2" />
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Team Size*</label>
-                                                    <select class="form-control form-select" id="sel1" name="sellist1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-
+                                                    <label class="font-sm color-text-mutted mb-10" for="map_link">Map
+                                                        Link</label>
+                                                    <input type="text" class="form-control" id="map_link"
+                                                        name="map_link" value="{{ $companyInfo?->map_link }}"></input>
+                                                    <x-input-error :messages="$errors->get('map_link')" class="mt-2" />
                                                 </div>
                                             </div>
+
+                                            <div class="box-button mt-15">
+                                                <button type="submit" class="btn btn-apply-big font-md font-bold">Save
+                                                    All
+                                                    Changes</button>
+                                            </div>
+
+
 
 
                                         </div>
 
-                                        <div class="row">
+                                    </form>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Establishment
-                                                        Date*</label>
-                                                    <input class="form-control" type="date" value="">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Website*</label>
-                                                    <input class="form-control" type="link" value="">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Email*</label>
-                                                    <input class="form-control" type="email" value="">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Phone*</label>
-                                                    <input class="form-control" type="phone" value="">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Country*</label>
-                                                    <select class="form-control form-select" id="sel1"
-                                                        name="sellist1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">State*</label>
-                                                    <select class="form-control form-select" id="sel1"
-                                                        name="sellist1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">City*</label>
-                                                    <select class="form-control form-select" id="sel1"
-                                                        name="sellist1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Address</label>
-                                                <input type="text" class="form-control"></input>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Map Link</label>
-                                                <input type="text" class="form-control"></input>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
 
                                 </div>
 
                                 <div id="account" class="container tab-pane "><br>
 
+
+
                                     <div class="row form-contact">
+                                        <form method="post" action="{{ route('account-info') }}">
+                                            @csrf
+                                            <div class="row">
 
-
-
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">User Name*</label>
-                                                    <input class="form-control" type="date" value="">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">User Name*</label>
+                                                        <input class="form-control" type="text" name="name"
+                                                            value="{{ auth()->user()->name }}">
+                                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                                    </div>
                                                 </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Email*</label>
+                                                        <input class="form-control" name="email" type="link"
+                                                            value="{{ auth()->user()->email }}">
+                                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="box-button mt-15 mb-15">
+                                                <button type="submit" class="btn btn-apply-big font-md font-bold">Save
+                                                    Changes</button>
+                                            </div>
+                                        </form>
+
+
+                                        <form method="post" action="{{route('password-info')}}">
+                                            @csrf
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Password*</label>
+                                                        <input class="form-control" type="password" name="password">
+                                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="font-sm color-text-mutted mb-10">Confirm
+                                                            Password*</label>
+                                                        <input class="form-control" type="password"
+                                                            name="password_confirmation">
+                                                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                                    </div>
+                                                </div>
+    
+                                            </div>
+                                            <div class="box-button mt-15 mb-15">
+                                                <button type="submit" class="btn btn-apply-big font-md font-bold">Password Changes</button>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Email*</label>
-                                                    <input class="form-control" type="link" value="">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Password*</label>
-                                                    <input class="form-control" type="email" value="">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="font-sm color-text-mutted mb-10">Confirm
-                                                        Password*</label>
-                                                    <input class="form-control" type="phone" value="">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-
-
-
-
-
-
-
+                                        </form>
+                                        
 
                                     </div>
+
+
+
+
 
                                 </div>
 

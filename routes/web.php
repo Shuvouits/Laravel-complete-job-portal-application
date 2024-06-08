@@ -54,6 +54,9 @@ Route::group(
         });
         Route::get('/profile', [CompanyProfileController::class, 'CompanyProfile']);
         Route::post('/company-info', [CompanyProfileController::class, 'CompanyInfo'])->name('company-info');
+        Route::post('/founding-info', [CompanyProfileController::class, 'FoundingInfo'])->name('founding-info');
+        Route::post('/account-info', [CompanyProfileController::class, 'AccountInfo'])->name('account-info');
+        Route::post('/password-info', [CompanyProfileController::class, 'PasswordInfo'])->name('password-info');
 
     }
 );
