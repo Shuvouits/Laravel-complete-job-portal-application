@@ -1,0 +1,15 @@
+.card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+
+}
+
+.card .card-header h4 + .card-header-action,
+.card .card-header h4 + .card-header-form {
+    margin-left: 0 !important;
+}
+
+.card div.card-header-form{
+    width: 30vw;
+}
