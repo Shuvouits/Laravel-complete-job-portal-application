@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\IndustryType;
 use App\Services\Notify;
+use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,13 @@ class IndustryTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    Use Searchable;
     public function index()
     {
-        return view('admin.industry-type.index');
+        $query = IndustryType::query();
+        $this->search($query, ['name']);
+        $industryTypes = $query->paginate(10);
+        return view('admin.industry-type.index', compact('industryTypes'));
     }
 
     /**
@@ -57,7 +62,9 @@ class IndustryTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $industryTypes = IndustryType::findOrFail($id);
+
+        return view('admin.industry-type.edit', compact('industryTypes'));
     }
 
     /**
@@ -65,7 +72,16 @@ class IndustryTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:255', 'unique:industry_types,name']
+        ]);
+
+        $industry_type = IndustryType::findOrFail($id);
+        $industry_type->name = $request->name;
+        $industry_type->save();
+
+        Notify::updateNotification();
+        return to_route('admin.industry-types.index');
     }
 
     /**
@@ -73,6 +89,16 @@ class IndustryTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            IndustryType::findOrFail($id)->delete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+
+        }catch(\Exception $e){
+            logger($e);
+            return response(['message' => 'Something Went Wrong, Please try again']);
+
+        }
+
     }
 }

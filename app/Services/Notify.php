@@ -10,4 +10,8 @@ class Notify{
         return notify()->success('Data Updated Successfully', 'Success!');
     }
 
+    static function deletedNotification(){
+        return notify()->success('Data Deleted Successfully', 'Success!');
+    }
+
 }
