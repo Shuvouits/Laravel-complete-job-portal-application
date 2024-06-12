@@ -24,7 +24,7 @@
                             <div class="card-header">
                                 <h4>All Industry type</h4>
                                 <div class="card-header-form">
-                                    <form method="get" action="{{route('admin.industry-types.index')}}">
+                                    <form method="get" action="{{route('admin.countries.index')}}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="search" value="{{request('search')}}" placeholder="Search">
                                             <div class="input-group-btn">
@@ -33,7 +33,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <a href="{{route('admin.industry-types.create')}}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Create New</a>
+                                <a href="{{route('admin.countries.create')}}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Create New</a>
                             </div>
 
                             <div class="card-body p-0">
@@ -43,23 +43,22 @@
                                         <tr>
 
                                             <th>Name</th>
-                                            <th>Slug</th>
                                             <th>Actions</th>
 
                                         </tr>
 
-                                        @forelse($industryTypes as $item)
+                                        @forelse($countries as $item)
 
                                         <tr>
 
                                             <td>{{$item->name}}</td>
-                                            <td>{{$item->slug}}</td>
+
                                             <td>
-                                                <a href="{{route('admin.industry-types.edit', $item->id)}}" class="btn btn-primary">
+                                                <a href="{{route('admin.countries.edit', $item->id)}}" class="btn btn-primary">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <a href="{{route('admin.industry-types.destroy', $item->id)}}" class="btn btn-danger delete" style="margin-left: 10px">
+                                                <a href="{{route('admin.countries.destroy', $item->id)}}" class="btn btn-danger delete" style="margin-left: 10px">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
 
@@ -81,8 +80,8 @@
                             <div class="card-footer text-right">
 
                                 <nav class="d-inline-block">
-                                    @if($industryTypes->hasPages())
-                                    {{ $industryTypes->withQueryString()->links() }}
+                                    @if($countries->hasPages())
+                                    {{ $countries->withQueryString()->links() }}
                                     @endif
                                 </nav>
                               </div>

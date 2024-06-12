@@ -9,7 +9,10 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+
+use App\Http\Controllers\admin\OrganizationTypesController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -64,6 +67,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
                 ->name('logout');
 
     Route::resource('industry-types', IndustryTypeController::class);
+    Route::resource('organization-types', OrganizationTypesController::class);
+
+    Route::resource('countries', CountryController::class);
+
+
 
 
 });

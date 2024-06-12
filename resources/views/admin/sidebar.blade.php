@@ -16,14 +16,24 @@
             </li>
 
             <li class="menu-header">Starter</li>
+
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attribute</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{route('admin.industry-types.index')}}">Industry Type</a></li>
-                <li><a class="nav-link" href="{{route('admin.industry-types.create')}}">Transparent Sidebar</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
+                <li><a class="nav-link" href="{{route('admin.organization-types.index')}}">Organization Type</a></li>
+
               </ul>
             </li>
+
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Locations</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="{{route('admin.countries.index')}}">Countries</a></li>
+
+
+                </ul>
+              </li>
 
         </ul>
 

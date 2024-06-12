@@ -6,11 +6,11 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Industry Type</h1>
+                <h1>Organization Type</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Attribute</a></div>
-                    <div class="breadcrumb-item">Industry Type</div>
+                    <div class="breadcrumb-item">Organization Type</div>
                 </div>
             </div>
 
@@ -22,9 +22,9 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h4>All Industry type</h4>
+                                <h4>All Organization type</h4>
                                 <div class="card-header-form">
-                                    <form method="get" action="{{route('admin.industry-types.index')}}">
+                                    <form method="get" action="{{route('admin.organization-types.index')}}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="search" value="{{request('search')}}" placeholder="Search">
                                             <div class="input-group-btn">
@@ -33,7 +33,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <a href="{{route('admin.industry-types.create')}}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Create New</a>
+                                <a href="{{route('admin.organization-types.create')}}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Create New</a>
                             </div>
 
                             <div class="card-body p-0">
@@ -48,18 +48,18 @@
 
                                         </tr>
 
-                                        @forelse($industryTypes as $item)
+                                        @forelse($organizationTypes as $item)
 
                                         <tr>
 
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->slug}}</td>
                                             <td>
-                                                <a href="{{route('admin.industry-types.edit', $item->id)}}" class="btn btn-primary">
+                                                <a href="{{route('admin.organization-types.edit', $item->id)}}" class="btn btn-primary">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <a href="{{route('admin.industry-types.destroy', $item->id)}}" class="btn btn-danger delete" style="margin-left: 10px">
+                                                <a href="{{route('admin.organization-types.destroy', $item->id)}}" class="btn btn-danger delete" style="margin-left: 10px">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
 
@@ -68,9 +68,10 @@
 
 
                                         </tr>
+
                                         @empty
                                         <tr>
-                                            <td>No Data Found</td>
+                                            <td colspan="3" class="text-center" style="color: blue">No Data Found</td>
                                         </tr>
                                         @endforelse
 
@@ -81,8 +82,8 @@
                             <div class="card-footer text-right">
 
                                 <nav class="d-inline-block">
-                                    @if($industryTypes->hasPages())
-                                    {{ $industryTypes->withQueryString()->links() }}
+                                    @if($organizationTypes->hasPages())
+                                    {{ $organizationTypes->withQueryString()->links() }}
                                     @endif
                                 </nav>
                               </div>
