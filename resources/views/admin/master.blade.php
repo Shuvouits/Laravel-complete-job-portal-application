@@ -21,9 +21,9 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}">
-    <link rel="stylesheet" href="{{asset('admin/assets/css/admin.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/admin.css') }}">
 
-    <link rel="stylesheet" href="{{asset('admin/assets/modules/select2/dist/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/select2/dist/css/select2.min.css') }}">
 
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
@@ -42,7 +42,7 @@
 </head>
 
 <style>
-    .notify{
+    .notify {
         z-index: 9999 !important;
     }
 </style>
@@ -83,61 +83,67 @@
     <!-- JS Libraies -->
     <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
 
-     <!-- JS Libraies -->
-  <script src="{{asset('admin/assets/modules/sweetalert/sweetalert.min.js')}}"></script>
+    <!-- JS Libraies -->
+    <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 
-  <!-- Page Specific JS File -->
-  <script src="{{asset('admin/assets/js/page/modules-sweetalert.js')}}"></script>
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('admin/assets/js/page/modules-sweetalert.js') }}"></script>
 
-  <script>
+    
 
-$(".delete").click(function(e) {
-    e.preventDefault();
-  swal({
-      title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this data!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
+    @stack('scripts');
 
-      if (willDelete) {
-        let url = $(this).attr('href')
+    <script>
+        $(".delete").click(function(e) {
+            e.preventDefault();
+            swal({
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this data!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
 
-        $.ajax({
-            method: 'DELETE',
-            url: url,
-            data: {_token: "{{ csrf_token() }}"},
-            success: function(response){
-                window.location.reload();
-            },
-            error: function(xhr, status, error){
-                console.log(xhr);
-                swal(xhr.responseJSON.message, {
-                    icon: 'error'
+                    if (willDelete) {
+                        let url = $(this).attr('href')
+
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr);
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error'
+                                });
+                            }
+
+                        })
+
+
+                        swal('Poof! Your imaginary file has been deleted!', {
+                            icon: 'success',
+                        });
+                    }
                 });
-            }
-
-        })
-
-
-      swal('Poof! Your imaginary file has been deleted!', {
-        icon: 'success',
-      });
-      }
-    });
-});
-
-  </script>
+        });
+    </script>
 
     <!-- Template JS File -->
     <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
-    <script src="{{asset('admin/assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
+    <script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
 
     <x-notify::notify />
     @notifyJs
+
+
 
 
 </body>

@@ -37,6 +37,10 @@
                     <li><a class="nav-link" href="{{route('admin.states.index')}}">State</a></li>
                 </ul>
 
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{route('admin.cities.index')}}">City</a></li>
+                </ul>
+
               </li>
 
         </ul>

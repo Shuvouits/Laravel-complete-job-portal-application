@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
@@ -72,6 +73,10 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     Route::resource('countries', CountryController::class);
     Route::resource('states', StateController::class);
+    Route::resource('cities', CityController::class);
+
+    Route::get('/get-states/{id}', [CityController::class, 'GetState']);
+
 
 
 
