@@ -17,28 +17,28 @@
 
             <li class="menu-header">Starter</li>
 
-            <li class="dropdown">
+            <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*'])}} ">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attribute</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{route('admin.industry-types.index')}}">Industry Type</a></li>
-                <li><a class="nav-link" href="{{route('admin.organization-types.index')}}">Organization Type</a></li>
+                <li class=" {{setSidebarActive(['admin.industry-types*'])}} "><a class="nav-link" href="{{route('admin.industry-types.index')}}">Industry Type</a></li>
+                <li class=" {{setSidebarActive(['admin.organization-types*'])}} "><a class="nav-link" href="{{route('admin.organization-types.index')}}">Organization Type</a></li>
 
               </ul>
             </li>
 
-            <li class="dropdown">
+            <li class="dropdown {{setSidebarActive(['admin.countries*', 'admin.states*', 'admin.cities*'])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Locations</span></a>
 
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{route('admin.countries.index')}}">Country</a></li>
+                  <li class="{{setSidebarActive(['admin.countries*'])}}"><a class="nav-link" href="{{route('admin.countries.index')}}">Country</a></li>
                 </ul>
 
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{route('admin.states.index')}}">State</a></li>
+                    <li class="{{setSidebarActive(['admin.states*'])}}"><a class="nav-link" href="{{route('admin.states.index')}}">State</a></li>
                 </ul>
 
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{route('admin.cities.index')}}">City</a></li>
+                    <li class="{{setSidebarActive(['admin.cities*'])}}"><a class="nav-link" href="{{route('admin.cities.index')}}">City</a></li>
                 </ul>
 
               </li>
