@@ -80,7 +80,9 @@
                                             <div class="row">
 
                                                 <div class="col-md-6">
-                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->logo" />
+                                                    @if ($companyInfo && $companyInfo->logo != null)
+                                                        <x-image-preview style="height: 200px;" :source="$companyInfo->logo" />
+                                                    @endif
                                                     <div class="form-group">
                                                         <label class="font-sm color-text-mutted mb-10">Logo*</label>
                                                         <input class="form-control" type="file" name="logo">
@@ -89,7 +91,11 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <x-image-preview style="height: 200px;" :source="$companyInfo->banner" />
+                                                    @if ($companyInfo && $companyInfo->banner != null)
+                                                        <x-image-preview style="height: 200px;" :source="$companyInfo->banner" />
+                                                    @endif
+
+
                                                     <div class="form-group">
                                                         <label class="font-sm color-text-mutted mb-10">Banner*</label>
                                                         <input class="form-control" type="file" name="banner"
@@ -104,7 +110,7 @@
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Company Name*</label>
                                                     <input class="form-control" type="text" name="name"
-                                                        value="{{ $companyInfo->name }}">
+                                                        value="{{ $companyInfo?->name }}">
                                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                                 </div>
                                             </div>
@@ -112,7 +118,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Company Bio*</label>
-                                                    <textarea class="form-control" rows="4" name="bio">{{ $companyInfo->bio }}</textarea>
+                                                    <textarea class="form-control" rows="4" name="bio">{{ $companyInfo?->bio }}</textarea>
                                                     <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                                 </div>
                                             </div>
@@ -120,7 +126,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Company Vision*</label>
-                                                    <textarea class="form-control" rows="4" name="vision">{{ $companyInfo->vision }}</textarea>
+                                                    <textarea class="form-control" rows="4" name="vision">{{ $companyInfo?->vision }}</textarea>
                                                     <x-input-error :messages="$errors->get('vision')" class="mt-2" />
                                                 </div>
                                             </div>
@@ -165,8 +171,11 @@
                                                             Type*</label>
                                                         <select class="form-control form-icons select-active"
                                                             name="industry_type">
-                                                            <option value="0">New York, US</option>
-                                                            <option>London</option>
+                                                            @foreach ($industryType as $industry)
+                                                                <option value="{{ $industry->id }}"
+                                                                    {{ $industry->id == $companyInfo->industry_type_id ? 'selected' : '' }}>
+                                                                    {{ $industry->name }}</option>
+                                                            @endforeach
 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
@@ -183,8 +192,11 @@
                                                             Type*</label>
                                                         <select class="form-control  select-active"
                                                             name="organization_type">
-                                                            <option value="0">New York, US</option>
-                                                            <option>London</option>
+                                                            @foreach ($organizationType as $organization)
+                                                                <option value="{{ $organization->id }}"
+                                                                    {{ $organization->id == $companyInfo->organization_type_id ? 'selected' : '' }}>
+                                                                    {{ $organization->name }}</option>
+                                                            @endforeach
 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('organization_type')" class="mt-2" />
@@ -198,8 +210,11 @@
                                                             Size*</label>
                                                         <select class="form-control form-icons select-active"
                                                             name="team_size">
-                                                            <option value="0">New York, US</option>
-                                                            <option>London</option>
+                                                            @foreach ($teamSize as $team)
+                                                                <option value="{{ $team->id }}"
+                                                                    {{ $team->id == $companyInfo->team_size_id ? 'selected' : '' }}>
+                                                                    {{ $team->name }}</option>
+                                                            @endforeach
 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('team_size')" class="mt-2" />
@@ -262,10 +277,13 @@
                                                     <div class="form-group select-style">
                                                         <label class="font-sm color-text-mutted mb-10"
                                                             for="country">Country*</label>
-                                                        <select class="form-control form-select select-active"
-                                                            name="country" id="country">
-                                                            <option>Bangladesh</option>
-                                                            <option>India</option>
+                                                        <select class="form-control form-select select-active country"
+                                                            name="country">
+                                                            @foreach ($country as $country)
+                                                                <option value="{{ $country->id }}"
+                                                                    {{ $country->id == $companyInfo->country ? 'selected' : '' }}>
+                                                                    {{ $country->name }}</option>
+                                                            @endforeach
 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('country')" class="mt-2" />
@@ -279,8 +297,13 @@
                                                             for='state'>State*</label>
                                                         <select class="form-control form-select select-active"
                                                             id="state" name="state">
-                                                            <option>Dhaka</option>
-                                                            <option>Khulna</option>
+
+                                                            @foreach ($states as $state)
+                                                                <option value="{{ $state->id }}"
+                                                                    {{ $state->id == $companyInfo->state ? 'selected' : '' }}>
+                                                                    {{ $state->name }}</option>
+                                                            @endforeach
+
 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('state')" class="mt-2" />
@@ -294,8 +317,10 @@
                                                             for="city">City*</label>
                                                         <select class="form-control form-select select-active"
                                                             id="city" name="city">
-                                                            <option>Kaliganj</option>
-                                                            <option>Jheneidah</option>
+                                                            @foreach ($cities as $city)
+                                                                <option value="{{$city->id}}" {{$city->id == $companyInfo->city ? 'selected' : ''}}>{{ $city->name }}
+                                                                </option>
+                                                            @endforeach
 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('city')" class="mt-2" />
@@ -359,7 +384,7 @@
                                                         <label class="font-sm color-text-mutted mb-10">User Name*</label>
                                                         <input class="form-control" type="text" name="name"
                                                             value="{{ auth()->user()->name }}">
-                                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                                     </div>
                                                 </div>
 
@@ -368,7 +393,7 @@
                                                         <label class="font-sm color-text-mutted mb-10">Email*</label>
                                                         <input class="form-control" name="email" type="link"
                                                             value="{{ auth()->user()->email }}">
-                                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                                     </div>
                                                 </div>
 
@@ -380,7 +405,7 @@
                                         </form>
 
 
-                                        <form method="post" action="{{route('password-info')}}">
+                                        <form method="post" action="{{ route('password-info') }}">
                                             @csrf
                                             <div class="row">
 
@@ -391,24 +416,25 @@
                                                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                                     </div>
                                                 </div>
-    
+
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="font-sm color-text-mutted mb-10">Confirm
                                                             Password*</label>
                                                         <input class="form-control" type="password"
                                                             name="password_confirmation">
-                                                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                                     </div>
                                                 </div>
-    
+
                                             </div>
                                             <div class="box-button mt-15 mb-15">
-                                                <button type="submit" class="btn btn-apply-big font-md font-bold">Password Changes</button>
+                                                <button type="submit"
+                                                    class="btn btn-apply-big font-md font-bold">Password Changes</button>
                                             </div>
 
                                         </form>
-                                        
+
 
                                     </div>
 
@@ -436,3 +462,64 @@
 
     </main>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.country').on('change', function() {
+                var countryID = $(this).val();
+                if (countryID) {
+                    $.ajax({
+                        url: '/company/get-states/' + countryID,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('#state').empty();
+
+                            $.each(data, function(key, value) {
+                                $('#state').append('<option value="' + value.id + '">' +
+                                    value.name + '</option>');
+                            });
+
+                        }
+                    })
+                } else {
+                    $('#state').empty();
+                    $('#state').append('<option value="">Select State</option>');
+                }
+
+                $('#city').empty();
+                $('#city').append('<option value="">Select City</option>');
+
+
+            });
+
+            $('#state').on('change', function() {
+                var stateID = $(this).val();
+                if (stateID) {
+                    $.ajax({
+                        url: '/company/get-cities/' + stateID,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('#city').empty();
+
+                            $.each(data, function(key, value) {
+                                $('#city').append('<option value="' + value.id + '">' +
+                                    value.name + '</option>');
+                            });
+
+                        }
+                    })
+                } else {
+                    $('#city').empty();
+                    $('#city').append('<option value="">Select City</option>');
+                }
+            });
+
+
+
+
+        });
+    </script>
+@endpush

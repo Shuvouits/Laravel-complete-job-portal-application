@@ -13,15 +13,15 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="">
-    
+
     @notifyCss
-   
+
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
 
 
-    
-  
+
+
 
     <title>Ultimate Job Portal Website</title>
 </head>
@@ -33,7 +33,7 @@
 </style>
 
 <body>
-   
+
 
     @include('frontend.section.preloader')
 
@@ -46,7 +46,7 @@
 
     @include('frontend.section.subscription_box')
 
-    
+
 
     @include('frontend.section.footer')
 
@@ -69,7 +69,7 @@
     <x-notify::notify />
     @notifyJs
 
-   
+
 
     <script>
 
@@ -86,7 +86,9 @@ $(document).ready(function() {
         })
     </script>
 
-  
+@stack('scripts');
+
+
 </body>
 
 </html>

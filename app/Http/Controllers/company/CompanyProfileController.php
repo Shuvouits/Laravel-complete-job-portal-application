@@ -5,6 +5,12 @@ namespace App\Http\Controllers\company;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\frontend\CompanyFoundingInfoUpdateRequest;
+use App\Models\Country;
+use App\Models\IndustryType;
+use App\Models\City;
+use App\Models\OrganizationType;
+use App\Models\State;
+use App\Models\TeamSize;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Requests\frontend\CompanyInfoUpdateRequest;
@@ -18,7 +24,13 @@ class CompanyProfileController extends Controller
     public function CompanyProfile()
     {
         $companyInfo = Company::where('user_id', auth()->user()->id)->first();
-        return view('frontend.company-dashboard.profile.index', compact('companyInfo'));
+        $industryType = IndustryType::all();
+        $organizationType = OrganizationType::all();
+        $teamSize = TeamSize::all();
+        $country = Country::all();
+        $states = State::all();
+        $cities = City::where('state_id', $companyInfo->state)->get();
+        return view('frontend.company-dashboard.profile.index', compact('companyInfo','industryType', 'organizationType', 'teamSize', 'country', 'states','cities'));
     }
 
     public function CompanyInfo(CompanyInfoUpdateRequest $request)
@@ -70,8 +82,16 @@ class CompanyProfileController extends Controller
                 'address' => $request->address,
                 'map_link' => $request->map_link
             ]
-            
+
         );
+
+        if(isCompanyProfileComplete()){
+            $companyProfile = Company::where('user_id', auth()->user()->id)->first();
+            $companyProfile->profile_completion = 1;
+            $companyProfile->visiblity = 1;
+            $companyProfile->save();
+
+        }
 
         notify()->success('updated Successfully', 'Success!');
         return redirect()->back();
@@ -99,6 +119,8 @@ class CompanyProfileController extends Controller
         notify()->success('Password Updated Successfully', 'Success!');
         return redirect()->back();
     }
+
+
 
 
 }
