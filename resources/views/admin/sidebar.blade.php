@@ -22,6 +22,7 @@
               <ul class="dropdown-menu">
                 <li class=" {{setSidebarActive(['admin.industry-types*'])}} "><a class="nav-link" href="{{route('admin.industry-types.index')}}">Industry Type</a></li>
                 <li class=" {{setSidebarActive(['admin.organization-types*'])}} "><a class="nav-link" href="{{route('admin.organization-types.index')}}">Organization Type</a></li>
+                <li class=" {{setSidebarActive(['admin.language*'])}} "><a class="nav-link" href="{{route('admin.language.index')}}">Language</a></li>
 
               </ul>
             </li>

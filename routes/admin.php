@@ -13,7 +13,10 @@ use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
+use App\Http\Controllers\admin\LanguageController;
 use App\Http\Controllers\admin\OrganizationTypesController;
+use App\Http\Controllers\admin\ProfessionController;
+use App\Http\Controllers\admin\SkillController;
 use App\Http\Controllers\admin\StateController;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +79,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('cities', CityController::class);
 
     Route::get('/get-states/{id}', [CityController::class, 'GetState']);
+    Route::resource('language', LanguageController::class);
+    Route::resource('profession', ProfessionController::class);
+    Route::resource('skill', SkillController::class);
 
 
 

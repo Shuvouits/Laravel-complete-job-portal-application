@@ -61,6 +61,7 @@ Route::group(
         Route::get('/get-states/{id}', [LocationController::class, 'GetState']);
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
+        
 
     }
 );
