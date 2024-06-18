@@ -23,11 +23,13 @@
 
 
 
+
+
     <title>Ultimate Job Portal Website</title>
 </head>
 
 <style>
-    .notify{
+    .notify {
         z-index: 9999 !important;
     }
 </style>
@@ -66,27 +68,29 @@
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 
+     <!-- CKEditor CDN -->
+     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+     <script>
+        // Initialize CKEditor
+        CKEDITOR.replace('content');
+    </script>
+
     <x-notify::notify />
     @notifyJs
 
 
 
     <script>
-
-$(document).ready(function() {
-        $('.select-2').select2();
-    });
-
+        $(document).ready(function() {
+            $('.select-2').select2();
+        });
 
     </script>
 
-    <script>
-        $('.datepicker').datepicker({
-            format : 'yyyy-d-m'
-        })
-    </script>
 
-@stack('scripts');
+
+    @stack('scripts');
 
 
 </body>

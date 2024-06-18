@@ -1,36 +1,5 @@
 @extends('frontend.master')
 
-<style>
-    a.nav-link {
-        color: black !important;
-
-    }
-
-    .nav-tabs li a:hover,
-    .nav-tabs li a.active {
-        color: white !important;
-        border-color: #1ca774;
-        background: #1ca774 !important;
-        width: 120px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .content-single p {
-
-        color: #1ca774 !important;
-
-    }
-
-
-    .select-style .select2 {
-        border: 1px solid #1ca77459 !important;
-    }
-</style>
-
 @section('main')
     <main class="main">
 

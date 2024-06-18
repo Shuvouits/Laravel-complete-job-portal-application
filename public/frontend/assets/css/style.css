@@ -10,6 +10,64 @@
 @import url(plugins/perfect-scrollbar.css);
 @import url(plugins/animate.min.css);
 
+/* custom Css */
+
+a.nav-link {
+    color: black !important;
+
+}
+
+.nav-tabs li a:hover,
+.nav-tabs li a.active {
+    color: white !important;
+    border-color: #1ca774;
+    background: #1ca774 !important;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.content-single p {
+
+    color: red !important;
+
+}
+
+
+.select-style .select2 {
+    border: 1px solid #1ca77459 !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+     border: none ;
+     outline: 0;
+}
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border-radius: 4px;
+    cursor: text;
+    border: none !important;
+    height: 0px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #1ca774;
+    border: none !important;
+
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: white;
+}
+.select2-selection__choice{
+    color: white !important;
+}
+
+/* End */
+
 /*RESET*/
 html,
 body,
@@ -5197,7 +5255,7 @@ ul li:last-child .card-list-4 {
 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0;
