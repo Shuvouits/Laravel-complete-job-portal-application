@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\candidate\CandidateProfileController;
 use App\Http\Controllers\company\CompanyProfileController;
+use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
@@ -47,6 +48,7 @@ Route::group(
         Route::get('/profile', [CandidateProfileController::class, 'CandidateProfile']);
         Route::post('/basic-info', [CandidateProfileController::class, 'BasicInfo'])->name('basic-info');
         Route::post('/profile-info', [CandidateProfileController::class, 'ProfileInfo'])->name('profile-info');
+        Route::resource('experience', CandidateExperienceController::class);
 
     }
 );
@@ -66,6 +68,7 @@ Route::group(
         Route::get('/get-states/{id}', [LocationController::class, 'GetState']);
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
+
 
 
     }

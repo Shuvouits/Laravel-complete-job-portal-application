@@ -83,9 +83,4 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('profession', ProfessionController::class);
     Route::resource('skill', SkillController::class);
 
-
-
-
-
-
 });
