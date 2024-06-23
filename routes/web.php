@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\candidate\CandidateProfileController;
+use App\Http\Controllers\CandidateEducationController;
 use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\HomeController;
@@ -49,6 +50,7 @@ Route::group(
         Route::post('/basic-info', [CandidateProfileController::class, 'BasicInfo'])->name('basic-info');
         Route::post('/profile-info', [CandidateProfileController::class, 'ProfileInfo'])->name('profile-info');
         Route::resource('experience', CandidateExperienceController::class);
+        Route::resource('education', CandidateEducationController::class);
 
     }
 );
