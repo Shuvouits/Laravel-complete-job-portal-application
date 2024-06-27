@@ -1,8 +1,10 @@
 <?php
 
 
+use App\Http\Controllers\candidate\CandidateAccountSettingController;
 use App\Http\Controllers\candidate\CandidateProfileController;
 use App\Http\Controllers\CandidateEducationController;
+use App\Http\Controllers\company\CompanyPageController;
 use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\HomeController;
@@ -51,6 +53,11 @@ Route::group(
         Route::post('/profile-info', [CandidateProfileController::class, 'ProfileInfo'])->name('profile-info');
         Route::resource('experience', CandidateExperienceController::class);
         Route::resource('education', CandidateEducationController::class);
+        Route::get('/get-state/{id}', [CandidateAccountSettingController::class, 'GetState']);
+        Route::get('/get-cities/{id}', [CandidateAccountSettingController::class, 'GetCities']);
+        Route::post('/account-info-update',[CandidateAccountSettingController::class, 'AccountInfoUpdate']);
+        Route::post('/email-changed', [CandidateAccountSettingController::class, 'EmailChanged']);
+        Route::post('/password-changed', [CandidateAccountSettingController::class, 'PasswordChanged']);
 
     }
 );
@@ -75,4 +82,6 @@ Route::group(
 
     }
 );
+
+Route::get('/companies', [CompanyPageController::class, 'AllCompany']);
 

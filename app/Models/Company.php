@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use App\Models\Country;
 
 class Company extends Model
 {
@@ -40,5 +41,10 @@ class Company extends Model
             ]
         ];
     }
+
+    public function countryData(){
+        return $this->belongsTo(Country::class, 'country', 'id');
+    }
+
 
 }

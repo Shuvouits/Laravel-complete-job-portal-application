@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\frontend\CandidateEducationRequest;
 use App\Models\CandidateEducation;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CandidateEducationController extends Controller
@@ -14,6 +15,7 @@ class CandidateEducationController extends Controller
     public function index()
     {
         $candidateData = CandidateEducation::where('candidates_id', auth()->user()->candidateProfile->id)->get();
+    
         return response()->json($candidateData);
     }
 

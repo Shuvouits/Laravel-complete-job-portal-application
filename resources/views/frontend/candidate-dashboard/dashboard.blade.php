@@ -36,21 +36,30 @@
                     </div>
                   </div>
                 </div>
+
+                @if(!isCandidateProfileComplete())
+
                 <div class="row">
                   <div class="col-12 mt-30">
                     <div class="dash_alert_box p-30 bg-danger rounded-4 d-flex flex-wrap">
                       <span class="img">
-                        <img src="assets/imgs/avatar/ava_17.png" alt="alert">
+                        <img src="{{asset('frontend/assets/imgs/avatar/ava_17.png')}}" alt="alert">
                       </span>
                       <div class="text">
-                        <h4>This is demo heading</h4>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem aliquam quasi deleniti nesciunt
-                          obcaecati labore, magnam suscipit repudiandae corrupti laborum.</p>
+                        <h4>Please Setup Your Profile First</h4>
+                        <p style="color: white !important">You can not access all the feature of the website if you don't setup your account first
+                            make sure you setup your Basic Profiles and Account Setting Data.
+                        </p>
                       </div>
-                      <a href="#" class="btn btn-default rounded-1">Edit Profile</a>
+                      <a href="/candidate/profile" class="btn btn-default rounded-1">Edit Profile</a>
                     </div>
                   </div>
                 </div>
+
+                @endif
+
+
+
               </div>
             </div>
           </div>
@@ -64,7 +73,7 @@
   </main>
 
   @endsection
-  
+
 
 
 {{--<x-app-layout>

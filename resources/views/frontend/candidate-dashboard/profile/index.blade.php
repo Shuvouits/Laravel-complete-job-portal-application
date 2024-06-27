@@ -77,6 +77,7 @@
                                 @include('frontend.candidate-dashboard.profile.section.basic')
                                 @include('frontend.candidate-dashboard.profile.section.profile')
                                 @include('frontend.candidate-dashboard.profile.section.experience')
+                                @include('frontend.candidate-dashboard.profile.section.account')
 
 
 

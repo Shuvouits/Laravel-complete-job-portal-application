@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('full_name')->nullable();
             $table->string('slug')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
+            $table->string('email')->nullable();
             $table->text('website')->nullable();
             $table->string('phone_one')->nullable();
             $table->string('phone_two')->nullable();
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->foreignId('state')->nullable();
             $table->foreignId('country')->nullable();
+            $table->foreignId('city')->nullable();
             $table->enum('status', ['available', 'not_available'])->nullable();
             $table->boolean('profile_complete')->default(0);
             $table->boolean('visiblity')->default(0);

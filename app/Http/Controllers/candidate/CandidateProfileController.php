@@ -8,10 +8,13 @@ use App\Http\Requests\frontend\CandidateInfoUpdateRequest;
 use App\Models\Candidate;
 use App\Models\CandidateLanguage;
 use App\Models\CandidateSkill;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Experience;
 use App\Models\Language;
 use App\Models\Profession;
 use App\Models\Skill;
+use App\Models\State;
 use App\Services\Notify;
 use Illuminate\Http\Request;
 use App\Traits\FileUploadTrait;
@@ -29,8 +32,11 @@ class CandidateProfileController extends Controller
         $language = Language::all();
         $candidate_skill = CandidateSkill::where('candidate_id', $candidate->id)->pluck('skill_id')->toArray();
         $candidate_language = CandidateLanguage::where('candidate_id', $candidate->id)->pluck('language_id')->toArray();
+        $country = Country::all();
+        $state = State::where('country_id', $candidate->country)->get();
+        $city = City::where('state_id', $candidate->state)->get();
 
-        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experience', 'profession', 'skill', 'language','candidate_skill', 'candidate_language'));
+        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experience', 'profession', 'skill', 'language','candidate_skill', 'candidate_language', 'country', 'state', 'city'));
     }
 
 
@@ -63,6 +69,8 @@ class CandidateProfileController extends Controller
             $data
 
         );
+
+        $this->updateProfileStatus();
 
         Notify::updateNotification();
 
@@ -114,11 +122,22 @@ class CandidateProfileController extends Controller
             }
         }
 
+        $this->updateProfileStatus();
+
         // Notify user
         Notify::updateNotification();
 
         // Redirect back
         return redirect()->back();
+    }
+
+    public function updateProfileStatus(){
+        if(isCandidateProfileComplete()){
+            $candidate = Candidate::where('user_id', auth()->user()->id)->first();
+            $candidate->profile_complete = 1;
+            $candidate->visiblity = 1;
+            $candidate->save();
+        }
     }
 
 
