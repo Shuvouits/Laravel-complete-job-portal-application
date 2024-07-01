@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Models\Country;
+use App\Models\IndustryType;
+use App\Models\OrganizationType;
+use App\Models\TeamSize;
 
 class Company extends Model
 {
@@ -44,6 +47,18 @@ class Company extends Model
 
     public function countryData(){
         return $this->belongsTo(Country::class, 'country', 'id');
+    }
+
+    public function industry(){
+        return $this->belongsTo(IndustryType::class, 'industry_type_id', 'id');
+    }
+
+    public function organization(){
+        return $this->belongsTo(OrganizationType::class, 'organization_type_id', 'id');
+    }
+
+    public function team(){
+        return $this->belongsTo(TeamSize::class, 'team_size_id', 'id');
     }
 
 

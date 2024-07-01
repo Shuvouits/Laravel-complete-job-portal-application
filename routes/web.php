@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\candidate\CandidateAccountSettingController;
+use App\Http\Controllers\candidate\CandidatePageController;
 use App\Http\Controllers\candidate\CandidateProfileController;
 use App\Http\Controllers\CandidateEducationController;
 use App\Http\Controllers\company\CompanyPageController;
@@ -84,4 +85,7 @@ Route::group(
 );
 
 Route::get('/companies', [CompanyPageController::class, 'AllCompany']);
+Route::get('/company-details/{slug}', [CompanyPageController::class, 'CompanyDetails']);
+Route::get('/candidate', [CandidatePageController::class, 'Candidate']);
+Route::get('/candidate/details/{slug}', [CandidatePageController::class, 'CandidateDetails']);
 

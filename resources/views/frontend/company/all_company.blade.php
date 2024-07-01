@@ -75,10 +75,10 @@
                                 @foreach($all_company as $item)
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                     <div class="card-grid-1 hover-up wow animate__animated animate__fadeIn">
-                                        <div class="image-box"><a href="company-details.html"><img
+                                        <div class="image-box"><a href="/company-details/{{$item->slug}}"><img
                                                     src="{{$item->logo}}" alt="joblist"></a></div>
                                         <div class="info-text mt-10">
-                                            <h5 class="font-bold"><a href="company-details.html">{{$item->name}}</a></h5>
+                                            <h5 class="font-bold"><a href="/company-details/{{$item->slug}}">{{$item->name}}</a></h5>
                                             <div class="mt-5 d-flex align-items-center justify-content-center "><img alt="joblist"
                                                     src="{{asset('frontend/assets/imgs/template/icons/star.svg')}}"><img alt="joblist"
                                                     src="{{asset('frontend/assets/imgs/template/icons/star.svg')}}"><img alt="joblist"
