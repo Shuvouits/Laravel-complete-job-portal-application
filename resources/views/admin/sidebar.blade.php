@@ -47,7 +47,14 @@
 
               </li>
 
+              <li class="dropdown {{setSidebarActive(['admin.plans*'])}} ">
+                <a href="{{route('admin.plans.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Price Plan</span></a>
+
+            </li>
+
         </ul>
+
+
 
 
     </aside>

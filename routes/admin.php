@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 
 use App\Http\Controllers\admin\LanguageController;
 use App\Http\Controllers\admin\OrganizationTypesController;
+use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
 use App\Http\Controllers\admin\SkillController;
 use App\Http\Controllers\admin\StateController;
@@ -82,5 +83,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('language', LanguageController::class);
     Route::resource('profession', ProfessionController::class);
     Route::resource('skill', SkillController::class);
+
+    Route::resource('plans', PlanController::class);
 
 });
