@@ -78,7 +78,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Paypal Country Name</label>
-                                                                <select name="paypal_country_name" class="form-control select2 {{ hasError($errors, 'paypal_country_name') }}">
+                                                                <select name="paypal_country_name" class="form-control select2 ">
                                                                     <option value="">Select</option>
 
                                                                     @foreach (config('countries') as $key => $country)
@@ -95,7 +95,7 @@
                                                             <div class="form-group">
                                                                 <label for="">Paypal Currency Name</label>
                                                                 <select name="paypal_currency_name" class="form-control select2 {{ hasError($errors, 'paypal_currency_name') }}">
-                                                                    <option value="sandbox">Select</option>
+                                                                    <option value="">Select</option>
 
                                                                     @foreach (config('currencies.currency_list') as $key => $currency)
                                                                     <option  value="{{ $currency }}">{{ $currency }}</option>
@@ -136,7 +136,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                        <button type="submit" class="btn btn-primary" style="background: #6777ef">Update</button>
                                                     </div>
                                                 </form>
                                             </div>
