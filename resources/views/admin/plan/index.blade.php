@@ -36,6 +36,17 @@
 
                         <div class="pricing-padding">
                             <div class="pricing-price">
+
+                                <div>
+                                    @if ($plan->frontend_show)
+                                    <span class="badge bg-primary text-light">Showing at frontned</span>
+                                    @endif
+                                    @if ($plan->show_at_home)
+                                    <span class="badge bg-success text-dark">Showing at home</span>
+                                    @endif
+                                </div>
+
+                                
                                 <div>{{$plan->label}}</div>
 
                                 <div style="font-size: 30px">${{$plan->price}}</div>

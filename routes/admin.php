@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 
 use App\Http\Controllers\admin\LanguageController;
 use App\Http\Controllers\admin\OrganizationTypesController;
+use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
 use App\Http\Controllers\admin\SkillController;
@@ -85,5 +86,6 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('skill', SkillController::class);
 
     Route::resource('plans', PlanController::class);
+    Route::get('/payment', [PaymentSettingController::class, 'Payment']);
 
 });

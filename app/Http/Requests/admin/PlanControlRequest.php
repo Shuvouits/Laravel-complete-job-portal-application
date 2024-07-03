@@ -29,7 +29,8 @@ class PlanControlRequest extends FormRequest
             'highlight_job_limit' => ['required', 'integer'],
             'profile_verified' => ['required', 'boolean'],
             'recommended' => ['required', 'boolean'],
-            'frontend_show' => ['required', 'boolean']
+            'frontend_show' => ['required', 'boolean'],
+            'show_at_home' => ['required', 'boolean']
         ];
     }
 }

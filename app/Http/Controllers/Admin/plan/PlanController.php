@@ -41,7 +41,7 @@ class PlanController extends Controller
         $plan->profile_verified = $request->profile_verified;
         $plan->recommended = $request->recommended;
         $plan->frontend_show = $request->frontend_show;
-        //$plan->show_at_home = $request->show_at_home;
+        $plan->show_at_home = $request->show_at_home;
 
         $plan->save();
         Notify::createdNotification();
@@ -69,7 +69,7 @@ class PlanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PlanControlRequest $request, string $id)
     {
         $plan = Plan::findOrFail($id);
         $plan->label = $request->label;
@@ -80,7 +80,7 @@ class PlanController extends Controller
         $plan->profile_verified = $request->profile_verified;
         $plan->recommended = $request->recommended;
         $plan->frontend_show = $request->frontend_show;
-        //$plan->show_at_home = $request->show_at_home;
+        $plan->show_at_home = $request->show_at_home;
 
         $plan->save();
         Notify::updateNotification();

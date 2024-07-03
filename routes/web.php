@@ -8,6 +8,8 @@ use App\Http\Controllers\CandidateEducationController;
 use App\Http\Controllers\company\CompanyPageController;
 use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
+use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\PlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
@@ -79,8 +81,6 @@ Route::group(
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
 
-
-
     }
 );
 
@@ -88,4 +88,6 @@ Route::get('/companies', [CompanyPageController::class, 'AllCompany']);
 Route::get('/company-details/{slug}', [CompanyPageController::class, 'CompanyDetails']);
 Route::get('/candidate', [CandidatePageController::class, 'Candidate']);
 Route::get('/candidate/details/{slug}', [CandidatePageController::class, 'CandidateDetails']);
+Route::get('/pricing-plan', [PlanController::class, 'AllPlan']);
+Route::get('/checkout/{id}', [CheckoutController::class, 'Checkout']);
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('profile_verified')->default(0);
             $table->boolean('recommended')->default(0);
             $table->boolean('frontend_show')->default(0);
+            $table->boolean('show_at_home')->default(0);
             $table->timestamps();
         });
     }
