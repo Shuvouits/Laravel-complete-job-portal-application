@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PaypalUpdatingRequest;
 use App\Models\PaymentSetting;
 use App\Services\Notify;
+use App\Services\PaymentGatewaySettingService;
 use Illuminate\Http\Request;
 
 class PaymentSettingController extends Controller
@@ -23,6 +24,9 @@ class PaymentSettingController extends Controller
                 ['value' => $value]
             );
         }
+
+        $settingsService = app(PaymentGatewaySettingService::class);
+        $settingsService->clearCachedSettings();
 
         Notify::updateNotification();
 
