@@ -52,8 +52,8 @@
 
             </li>
 
-            <li class="dropdown {{setSidebarActive(['admin.plans*'])}} ">
-                <a href="/admin/payment" class="nav-link "><i class="fas fa-fire"></i><span>Payment Setting</span></a>
+            <li class="dropdown {{setSidebarActive(['admin.payment*'])}} ">
+                <a href="{{route('admin.payment')}}" class="nav-link "><i class="fas fa-fire"></i><span>Payment Setting</span></a>
 
             </li>
 

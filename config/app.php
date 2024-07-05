@@ -183,6 +183,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+        App\Providers\PaymentGatewaySettingServiceProvider::class,
 
         /*
          * Package Service Providers...
