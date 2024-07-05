@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
+use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
 use App\Http\Controllers\admin\StateController;
 use Illuminate\Support\Facades\Route;
@@ -88,5 +89,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('plans', PlanController::class);
     Route::get('/payment', [PaymentSettingController::class, 'Payment'])->name('payment');
     Route::post('paypal-settings', [PaymentSettingController::class, 'updatePaypalSetting'])->name('paypal-settings.update');
+
+    /*Site Setting Controller */
+    Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings');
+    Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
+    Route::post('logo-settings', [SiteSettingController::class, 'updateLogoSetting'])->name('logo-settings.update');
+
 
 });

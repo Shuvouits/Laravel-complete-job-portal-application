@@ -57,6 +57,11 @@
 
             </li>
 
+            <li class="dropdown {{setSidebarActive(['admin.site-settings'])}} ">
+                <a href="{{route('admin.site-settings')}}" class="nav-link "><i class="fas fa-fire"></i><span>Site Setting</span></a>
+
+            </li>
+
         </ul>
 
 
