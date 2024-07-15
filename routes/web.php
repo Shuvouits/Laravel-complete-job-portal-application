@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\candidate\CandidateAccountSettingController;
 use App\Http\Controllers\candidate\CandidatePageController;
 use App\Http\Controllers\candidate\CandidateProfileController;
@@ -90,4 +91,10 @@ Route::get('/candidate', [CandidatePageController::class, 'Candidate']);
 Route::get('/candidate/details/{slug}', [CandidatePageController::class, 'CandidateDetails']);
 Route::get('/pricing-plan', [PlanController::class, 'AllPlan']);
 Route::get('/checkout/{id}', [CheckoutController::class, 'Checkout']);
+
+//Payment
+
+Route::get('paypal/payment', [PaymentSettingController::class, 'payWithPaypal'])->name('paypal.payment');
+Route::get('paypal/success', [PaymentSettingController::class, 'paypalSuccess'])->name('paypal.success');
+Route::get('paypal/cancel', [PaymentSettingController::class, 'paypalCancel'])->name('paypal.cancel');
 
