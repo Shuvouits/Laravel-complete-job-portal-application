@@ -50,6 +50,8 @@
                     </div>
                 </div>
 
+
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Currency Icon</label>
@@ -57,6 +59,10 @@
                         <x-input-error :messages="$errors->get('site_currency_icon')" class="mt-2" />
                     </div>
                 </div>
+
+
+
+
 
 
             </div>
