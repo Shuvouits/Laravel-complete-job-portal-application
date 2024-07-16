@@ -59,7 +59,7 @@ Route::group(
         Route::resource('education', CandidateEducationController::class);
         Route::get('/get-state/{id}', [CandidateAccountSettingController::class, 'GetState']);
         Route::get('/get-cities/{id}', [CandidateAccountSettingController::class, 'GetCities']);
-        Route::post('/account-info-update',[CandidateAccountSettingController::class, 'AccountInfoUpdate']);
+        Route::post('/account-info-update', [CandidateAccountSettingController::class, 'AccountInfoUpdate']);
         Route::post('/email-changed', [CandidateAccountSettingController::class, 'EmailChanged']);
         Route::post('/password-changed', [CandidateAccountSettingController::class, 'PasswordChanged']);
 
@@ -82,6 +82,12 @@ Route::group(
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
 
+        //Payment
+
+        Route::get('paypal/payment', [PaymentSettingController::class, 'payWithPaypal'])->name('paypal.payment');
+        Route::get('paypal/success', [PaymentSettingController::class, 'paypalSuccess'])->name('paypal.success');
+        Route::get('paypal/cancel', [PaymentSettingController::class, 'paypalCancel'])->name('paypal.cancel');
+
     }
 );
 
@@ -92,9 +98,4 @@ Route::get('/candidate/details/{slug}', [CandidatePageController::class, 'Candid
 Route::get('/pricing-plan', [PlanController::class, 'AllPlan']);
 Route::get('/checkout/{id}', [CheckoutController::class, 'Checkout']);
 
-//Payment
-
-Route::get('paypal/payment', [PaymentSettingController::class, 'payWithPaypal'])->name('paypal.payment');
-Route::get('paypal/success', [PaymentSettingController::class, 'paypalSuccess'])->name('paypal.success');
-Route::get('paypal/cancel', [PaymentSettingController::class, 'paypalCancel'])->name('paypal.cancel');
 

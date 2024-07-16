@@ -30,7 +30,7 @@
                             <h5 class="">Choose Your Payment Method</h5>
                             <div class="row pt-40">
                                 <div class="col-md-3">
-                                    <a href=""><img class=""
+                                    <a href="{{route('paypal.payment')}}"><img class=""
                                             style="width: 600px; height: 100px; border-radius: 5px;border: 3px solid #1ca774;"
                                             src="{{asset('uploads/paypal.png')}}" alt=""></a>
                                 </div>
