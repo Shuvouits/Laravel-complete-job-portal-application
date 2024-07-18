@@ -65,7 +65,6 @@ class PaymentSettingController extends Controller
 
         $config = $this->setPaypalConfig();
 
-
         $provider = new PayPalClient($config);
 
         $provider->getAccessToken();
@@ -76,7 +75,7 @@ class PaymentSettingController extends Controller
         // calculate payable amount
         $payableAmount = round(Session::get('selected_plan')['price'] * config('gatewaySettings.paypal_currency_rate'));
 
-        dd($payableAmount);
+
 
         $response = $provider->createOrder([
             'intent' => 'CAPTURE',
@@ -94,6 +93,8 @@ class PaymentSettingController extends Controller
             ]
         ]);
 
+
+
         if(isset($response['id']) && $response['id'] !== NULL) {
             foreach($response['links'] as $link) {
                 if($link['rel'] === 'approve') {
@@ -102,6 +103,17 @@ class PaymentSettingController extends Controller
             }
         }
 
+    }
+
+    function paypalSuccess(Request $request){
+
+        $config = $this->setPaypalConfig();
+        $provider = new PayPalClient($config);
+        $provider->getAccessToken();
+
+        $response = $provider->capturePaymentOrder($request->token);
+
+        dd($response);
     }
 
 
