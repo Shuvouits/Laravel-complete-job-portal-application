@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PaypalUpdatingRequest;
 use App\Models\PaymentSetting;
 use App\Services\Notify;
+use App\Services\OrderService;
 use App\Services\PaymentGatewaySettingService;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
@@ -113,7 +114,23 @@ class PaymentSettingController extends Controller
 
         $response = $provider->capturePaymentOrder($request->token);
 
-        dd($response);
+        if(isset($response['status']) && $response['status'] === 'COMPLETED') {
+            $capture = $response['purchase_units'][0]['payments']['captures'][0];
+
+            try {
+
+                OrderService::storeOrder($capture['id'], 'payPal', $capture['amount']['value'], $capture['amount']['currency_code'], 'paid');
+
+                //OrderService::setUserPlan();
+
+                Session::forget('selected_plan');
+                return redirect('/');
+            }catch(\Exception $e) {
+                logger( 'Payment ERROR >> '. $e);
+            }
+
+
+        }
     }
 
 
