@@ -195,6 +195,30 @@ class PaymentSettingController extends Controller
 
     }
 
+    function stripeSuccess(Request $request) {
+       // abort_if(!$this->checkSession(), 404);
+
+        Stripe::setApiKey(config('gatewaySettings.stripe_secret_key'));
+        $sessionId = $request->session_id;
+
+        $response = StripeSession::retrieve($sessionId);
+        if($response->payment_status === 'paid') {
+            try {
+                OrderService::storeOrder($response->payment_intent, 'stripe', ($response->amount_total / 100), $response->currency, 'paid');
+
+                OrderService::setUserPlan();
+
+                Session::forget('selected_plan');
+                return redirect()->route('payment.success');
+            }catch(\Exception $e) {
+                logger( 'Payment ERROR >> '. $e);
+            }
+        }else {
+            redirect()->route('payment.error')->withErrors(['error' => 'Payment failed']);
+        }
+    }
+
+
 
 
 
