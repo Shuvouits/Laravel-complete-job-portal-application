@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\payment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PaypalUpdatingRequest;
+use App\Http\Requests\admin\RazorpaySettingUpdateRequest;
 use App\Http\Requests\admin\StripeSettingUpdateRequest;
 use App\Models\PaymentSetting;
 use App\Services\Notify;
@@ -216,6 +217,23 @@ class PaymentSettingController extends Controller
         }else {
             redirect()->route('payment.error')->withErrors(['error' => 'Payment failed']);
         }
+    }
+
+    function updateRazorpaySetting(RazorpaySettingUpdateRequest $request){
+        $validatedData = $request->validated();
+
+        foreach($validatedData as $key => $value) {
+            PaymentSetting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+        $settingsService = app(PaymentGatewaySettingService::class);
+        $settingsService->clearCachedSettings();
+
+        Notify::updateNotification();
+
+        return redirect()->back();
     }
 
 

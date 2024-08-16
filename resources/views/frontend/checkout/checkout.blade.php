@@ -40,6 +40,12 @@
                                             src="{{asset('default-uploads/stripe.webp')}}" alt=""></a>
                                 </div>
 
+                                <div class="col-md-3">
+                                    <a href="{{route('razorpay.payment')}}"><img class=""
+                                            style="width: 600px;height:100px; border-radius: 5px;border: 3px solid #1ca774;"
+                                            src="{{asset('default-uploads/razorpay.png')}}" alt=""></a>
+                                </div>
+
                             </div>
                         </div>
 

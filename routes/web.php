@@ -86,13 +86,21 @@ Route::group(
         Route::get('payment/success', [PaymentSettingController::class, 'paymentSuccess'])->name('payment.success');
         Route::get('payment/error', [PaymentSettingController::class, 'paymentError'])->name('payment.error');
 
+        //paypal
         Route::get('paypal/payment', [PaymentSettingController::class, 'payWithPaypal'])->name('paypal.payment');
         Route::get('paypal/success', [PaymentSettingController::class, 'paypalSuccess'])->name('paypal.success');
         Route::get('paypal/cancel', [PaymentSettingController::class, 'paypalCancel'])->name('paypal.cancel');
 
+        //stripe
         Route::get('stripe/payment', [PaymentSettingController::class, 'payWithStripe'])->name('stripe.payment');
         Route::get('stripe/success', [PaymentSettingController::class, 'stripeSuccess'])->name('stripe.success');
         Route::get('stripe/cancel', [PaymentSettingController::class, 'stripeCancel'])->name('stripe.cancel');
+
+
+        //razorpay
+        Route::get('razorpay/payment', [PaymentSettingController::class, 'payWithRazorpay'])->name('razorpay.payment');
+        Route::get('razorpay/success', [PaymentSettingController::class, 'razorpaySuccess'])->name('razorpay.success');
+        Route::get('razorpay/cancel', [PaymentSettingController::class, 'razorpayCancel'])->name('razorpay.cancel');
 
     }
 );
