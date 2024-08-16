@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\payment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PaypalUpdatingRequest;
+use App\Http\Requests\admin\StripeSettingUpdateRequest;
 use App\Models\PaymentSetting;
 use App\Services\Notify;
 use App\Services\OrderService;
@@ -12,10 +13,14 @@ use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Support\Facades\Session;
 
+use Stripe\Stripe;
+use Stripe\Checkout\Session as StripeSession;
+
+
 class PaymentSettingController extends Controller
 {
     public function Payment(){
-        return view('admin.payment.payment_setting');
+        return view('admin.payment.index');
     }
 
     public function UpdatePaypalSetting(PaypalUpdatingRequest $request){
@@ -137,6 +142,23 @@ class PaymentSettingController extends Controller
 
     function paymentError(){
         return view('frontend.pages.payment-error');
+    }
+
+    function updateStripeSetting(StripeSettingUpdateRequest $request) {
+        $validatedData = $request->validated();
+
+        foreach($validatedData as $key => $value) {
+            PaymentSetting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+        $settingsService = app(PaymentGatewaySettingService::class);
+        $settingsService->clearCachedSettings();
+
+        Notify::updateNotification();
+
+        return redirect()->back();
     }
 
 

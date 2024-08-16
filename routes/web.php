@@ -90,6 +90,9 @@ Route::group(
         Route::get('paypal/success', [PaymentSettingController::class, 'paypalSuccess'])->name('paypal.success');
         Route::get('paypal/cancel', [PaymentSettingController::class, 'paypalCancel'])->name('paypal.cancel');
 
+        Route::get('stripe/payment', [PaymentSettingController::class, 'payWithStripe'])->name('stripe.payment');
+        Route::get('stripe/success', [PaymentSettingController::class, 'stripeSuccess'])->name('stripe.success');
+
     }
 );
 

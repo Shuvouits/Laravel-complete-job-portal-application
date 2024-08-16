@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('plans', PlanController::class);
     Route::get('/payment', [PaymentSettingController::class, 'Payment'])->name('payment');
     Route::post('paypal-settings', [PaymentSettingController::class, 'updatePaypalSetting'])->name('paypal-settings.update');
+    Route::post('stripe-settings', [PaymentSettingController::class, 'updateStripeSetting'])->name('stripe-settings.update');
 
     /*Site Setting Controller */
     Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings');
