@@ -25,5 +25,30 @@ class OrderService {
 
     }
 
-   
+    static function setUserPlan() {
+        $userPlan = UserPlan::where('company_id', Auth::user()->company->id)->first();
+
+        UserPlan::updateOrCreate(
+            ['company_id' => Auth::user()->company->id],
+            [
+                'plan_id' => Session::get('selected_plan')['id'],
+
+                'job_limit' => $userPlan?->job_limit ?
+                    $userPlan->job_limit + Session::get('selected_plan')['job_limit'] :
+                    Session::get('selected_plan')['job_limit'],
+
+                'featured_job_limit' => $userPlan?->featured_job_limit ?
+                    $userPlan->featured_job_limit + Session::get('selected_plan')['featured_job_limit'] :
+                    Session::get('selected_plan')['featured_job_limit'],
+
+                'highlight_job_limit' => $userPlan?->highlight_job_limit ?
+                $userPlan?->highlight_job_limit + Session::get('selected_plan')['highlight_job_limit'] :
+                Session::get('selected_plan')['highlight_job_limit'],
+
+                'profile_verified' => Session::get('selected_plan')['profile_verified'],
+            ]
+        );
+    }
+
+
 }

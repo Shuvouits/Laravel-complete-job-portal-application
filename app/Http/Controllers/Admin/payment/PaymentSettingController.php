@@ -70,12 +70,8 @@ class PaymentSettingController extends Controller
 
         $provider->getAccessToken();
 
-
-
-
         // calculate payable amount
         $payableAmount = round(Session::get('selected_plan')['price'] * config('gatewaySettings.paypal_currency_rate'));
-
 
 
         $response = $provider->createOrder([
@@ -93,7 +89,6 @@ class PaymentSettingController extends Controller
                 ]
             ]
         ]);
-
 
 
         if(isset($response['id']) && $response['id'] !== NULL) {
@@ -121,16 +116,27 @@ class PaymentSettingController extends Controller
 
                 OrderService::storeOrder($capture['id'], 'payPal', $capture['amount']['value'], $capture['amount']['currency_code'], 'paid');
 
-                //OrderService::setUserPlan();
+                OrderService::setUserPlan();
 
                 Session::forget('selected_plan');
-                return redirect('/');
+                return redirect()->route('payment.success');
             }catch(\Exception $e) {
                 logger( 'Payment ERROR >> '. $e);
             }
-
-
         }
+
+        return redirect()->route('payment.error')->withErrors(['error' => $response['error']['message']]);
+
+
+
+    }
+
+    function paymentSuccess(){
+        return view('frontend.pages.payment-success');
+    }
+
+    function paymentError(){
+        return view('frontend.pages.payment-error');
     }
 
 

@@ -72,7 +72,7 @@ Route::group(
 
         Route::get('/dashboard', function () {
             return view('frontend.company-dashboard.dashboard');
-        });
+        })->name('company.dashboard');
         Route::get('/profile', [CompanyProfileController::class, 'CompanyProfile']);
         Route::post('/company-info', [CompanyProfileController::class, 'CompanyInfo'])->name('company-info');
         Route::post('/founding-info', [CompanyProfileController::class, 'FoundingInfo'])->name('founding-info');
@@ -83,6 +83,8 @@ Route::group(
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
 
         //Payment
+        Route::get('payment/success', [PaymentSettingController::class, 'paymentSuccess'])->name('payment.success');
+        Route::get('payment/error', [PaymentSettingController::class, 'paymentError'])->name('payment.error');
 
         Route::get('paypal/payment', [PaymentSettingController::class, 'payWithPaypal'])->name('paypal.payment');
         Route::get('paypal/success', [PaymentSettingController::class, 'paypalSuccess'])->name('paypal.success');
