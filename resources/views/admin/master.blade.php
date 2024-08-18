@@ -89,7 +89,7 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('admin/assets/js/page/modules-sweetalert.js') }}"></script>
 
-    
+
 
     @stack('scripts');
 

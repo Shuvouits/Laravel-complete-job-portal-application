@@ -98,9 +98,8 @@ Route::group(
 
 
         //razorpay
-        Route::get('razorpay/payment', [PaymentSettingController::class, 'payWithRazorpay'])->name('razorpay.payment');
-        Route::get('razorpay/success', [PaymentSettingController::class, 'razorpaySuccess'])->name('razorpay.success');
-        Route::get('razorpay/cancel', [PaymentSettingController::class, 'razorpayCancel'])->name('razorpay.cancel');
+        Route::get('razorpay-redirect', [PaymentSettingController::class, 'razorpayRedirect'])->name('razorpay-redirect');
+        Route::post('razorpay/payment', [PaymentSettingController::class, 'payWithRazorpay'])->name('razorpay.payment');
 
     }
 );

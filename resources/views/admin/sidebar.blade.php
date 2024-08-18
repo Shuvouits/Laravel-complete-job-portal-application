@@ -62,6 +62,10 @@
 
             </li>
 
+            <li class="{{ setSidebarActive(['admin.orders.*']) }}">
+                <a class="nav-link" href="{{ route('admin.orders.index') }}"><i class="fas fa-cart-plus"></i> <span>Orders</span></a>
+            </li>
+
         </ul>
 
 

@@ -236,6 +236,11 @@ class PaymentSettingController extends Controller
         return redirect()->back();
     }
 
+    function razorpayRedirect(){
+        //abort_if(!$this->checkSession(), 404);
+        return view('frontend.pages.razorpay-redirect');
+    }
+
 
 
 

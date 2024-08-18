@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
 use App\Http\Controllers\admin\LanguageController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
@@ -96,6 +97,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings');
     Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
     Route::post('logo-settings', [SiteSettingController::class, 'updateLogoSetting'])->name('logo-settings.update');
+
+    //orders controller
+    Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('orders/invoice/{id}', [OrderController::class, 'invoice'])->name('orders.invoice');
 
 
 });
