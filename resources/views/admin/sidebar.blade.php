@@ -17,6 +17,17 @@
 
             <li class="menu-header">Starter</li>
 
+            <li class="{{ setSidebarActive(['admin.orders.*']) }}">
+                <a class="nav-link" href="{{ route('admin.orders.index') }}"><i class="fas fa-cart-plus"></i> <span>Orders</span></a>
+            </li>
+
+
+            <li class="{{ setSidebarActive(['admin.job-categories.*']) }}">
+                <a class="nav-link" href="{{ route('admin.job-categories.index') }}">
+                    <i class="fas fa-list"></i> <span>Job Category</span></a>
+            </li>
+
+
             <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*', 'admin.language*', 'admin.profession*', 'admin.skill*'])}} ">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attribute</span></a>
               <ul class="dropdown-menu">
@@ -62,9 +73,7 @@
 
             </li>
 
-            <li class="{{ setSidebarActive(['admin.orders.*']) }}">
-                <a class="nav-link" href="{{ route('admin.orders.index') }}"><i class="fas fa-cart-plus"></i> <span>Orders</span></a>
-            </li>
+
 
         </ul>
 

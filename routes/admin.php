@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
+use App\Http\Controllers\admin\JobCategoryController;
 use App\Http\Controllers\admin\LanguageController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrganizationTypesController;
@@ -102,6 +103,8 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('orders/invoice/{id}', [OrderController::class, 'invoice'])->name('orders.invoice');
+
+    Route::resource('job-categories', JobCategoryController::class);
 
 
 });
