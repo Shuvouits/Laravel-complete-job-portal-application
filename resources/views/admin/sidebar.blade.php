@@ -28,7 +28,7 @@
             </li>
 
 
-            <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*', 'admin.language*', 'admin.profession*', 'admin.skill*', 'admin.educations*'])}} ">
+            <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*', 'admin.language*', 'admin.profession*', 'admin.skill*', 'admin.educations*', 'admin.job-types*'])}} ">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attribute</span></a>
               <ul class="dropdown-menu">
                 <li class=" {{setSidebarActive(['admin.industry-types*'])}} "><a class="nav-link" href="{{route('admin.industry-types.index')}}">Industry Type</a></li>
@@ -40,6 +40,10 @@
 
                 <li class="{{ setSidebarActive(['admin.educations.*']) }}">
                     <a class="nav-link" href="{{ route('admin.educations.index') }}">Educations</a>
+                </li>
+
+                <li class="{{ setSidebarActive(['admin.job-types.*']) }}">
+                    <a class="nav-link" href="{{ route('admin.job-types.index') }}">Job-Types</a>
                 </li>
 
               </ul>
