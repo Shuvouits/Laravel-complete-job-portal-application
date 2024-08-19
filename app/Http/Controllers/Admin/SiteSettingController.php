@@ -7,6 +7,7 @@ use App\Http\Requests\admin\GeneralSettingUpdateRequest;
 use App\Models\SiteSetting;
 use App\Services\Notify;
 use Illuminate\Http\Request;
+use Cache;
 
 class SiteSettingController extends Controller
 {
@@ -17,6 +18,7 @@ class SiteSettingController extends Controller
     function updateGeneralSetting(GeneralSettingUpdateRequest $request){
         $validatedData = $request->validated();
 
+
         foreach($validatedData as $key => $value) {
             SiteSetting::updateOrCreate(
                 ['key' => $key],
@@ -24,6 +26,8 @@ class SiteSettingController extends Controller
             );
 
         }
+
+        Cache::forget('settings');
 
         Notify::updateNotification();
 

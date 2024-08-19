@@ -9,11 +9,19 @@ use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use LaravelDaily\Invoices\Classes\Party;
+use App\Traits\Searchable;
 
 class OrderController extends Controller
 {
+
+    use Searchable;
     public function index(){
-        $orders = Order::orderBy('id', 'DESC')->with('company')->paginate(20);
+
+        $query = Order::query();
+        $query->with(['company', 'plan']);
+        $this->search($query, ['package_name', 'transaction_id', 'order_id', 'payment_provider', 'payment_status']);
+        $orders = $query->orderBy('id', 'DESC')->paginate(20);
+
         return view('admin.order.index', compact('orders'));
     }
 
@@ -22,30 +30,40 @@ class OrderController extends Controller
         return view('admin.order.show', compact('order'));
     }
 
-    function invoice(string $id) {
+
+    public function invoice(string $id) {
         $order = Order::findOrFail($id);
 
         $customer = new Buyer([
-            'name'          => 'Jhon Doe',
+            'name'          => $order->company->name,
             'custom_fields' => [
                 'email' => $order->company->email,
-
+                'transaction' => $order->transaction_id,
+                'payment method' => $order->payment_provider,
             ],
         ]);
 
-        $item = InvoiceItem::make('Service 1')->pricePerUnit(2);
+        $seller = new Party([
+            'name'          => config('settings.site_name'),
+            'phone'         => config('settings.site_phone'),
+            'custom_fields' => [
+                'email' => config('settings.site_email')
+            ],
+        ]);
+
+        $item = InvoiceItem::make($order->package_name.' Plan')->pricePerUnit($order->amount);
 
         $invoice = Invoice::make()
-
+            ->series($order->order_id)
+            ->currencyCode($order->paid_in_currency)
+            ->currencySymbol($order->paid_in_currency)
             ->buyer($customer)
-            ->discountByPercent(10)
-            ->taxRate(15)
-            ->shipping(1.99)
+            ->seller($seller)
+            ->status('paid')
+            ->payUntilDays(0)
             ->addItem($item);
 
-        return $invoice->stream();
-
-
+        return $invoice->download();
     }
 
 
