@@ -54,6 +54,41 @@ class JobCategoryController extends Controller
         return view('admin.job.job-category.edit', compact('category'));
     }
 
+    public function update(Request $request, string $id) : RedirectResponse
+    {
+        $request->validate([
+            'icon' => ['nullable', 'max:255'],
+            'name' => ['required', 'max:255']
+        ]);
+
+        $category = JobCategory::findOrFail($id);
+        if($request->filled('icon')) $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->show_at_popular = $request->show_at_popular;
+        $category->show_at_featured = $request->show_at_featured;
+
+        $category->save();
+
+        Notify::updateNotification();
+
+        return to_route('admin.job-categories.index');
+    }
+
+    public function destroy(string $id)
+    {
+       
+
+        try {
+            JobCategory::findOrFail($id)->delete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+
+        }catch(\Exception $e) {
+            logger($e);
+            return response(['message' => 'Something Went Wrong Please Try Again!'], 500);
+        }
+    }
+
 
 
 }

@@ -62,7 +62,7 @@
 
                                         <td>
                                             <a href="{{ route('admin.job-categories.edit', $category->id) }}" class="btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('admin.job-categories.destroy', $category->id) }}" class="btn-sm btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="{{ route('admin.job-categories.destroy', $category->id) }}" class="btn-sm btn btn-danger delete"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
