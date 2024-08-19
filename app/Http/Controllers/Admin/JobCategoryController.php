@@ -21,4 +21,32 @@ class JobCategoryController extends Controller
         $categories = $query->paginate(20);
         return view('admin.job.job-category.index', compact('categories'));
     }
+
+    public function create()
+    {
+        return view('admin.job.job-category.create');
+    }
+
+    public function store(Request $request) : RedirectResponse
+    {
+        $request->validate([
+            'icon' => ['required', 'max:255'],
+            'name' => ['required', 'max:255']
+        ]);
+
+        $category = new JobCategory();
+        $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->show_at_popular = $request->show_at_popular;
+        $category->show_at_featured = $request->show_at_featured;
+
+
+        $category->save();
+
+        Notify::createdNotification();
+
+        return to_route('admin.job-categories.index');
+    }
+
+
 }
