@@ -48,5 +48,12 @@ class JobCategoryController extends Controller
         return to_route('admin.job-categories.index');
     }
 
+    public function edit(string $id)
+    {
+        $category = JobCategory::findOrFail($id);
+        return view('admin.job.job-category.edit', compact('category'));
+    }
+
+
 
 }
