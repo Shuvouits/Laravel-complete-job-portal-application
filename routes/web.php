@@ -10,6 +10,7 @@ use App\Http\Controllers\company\CompanyPageController;
 use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\CompanyOrderController;
 use App\Http\Controllers\frontend\PlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -100,6 +101,13 @@ Route::group(
         //razorpay
         Route::get('razorpay-redirect', [PaymentSettingController::class, 'razorpayRedirect'])->name('razorpay-redirect');
         Route::post('razorpay/payment', [PaymentSettingController::class, 'payWithRazorpay'])->name('razorpay.payment');
+
+        /** Order Routes */
+        Route::get('orders', [CompanyOrderController::class, 'index'])->name('orders.index');
+        Route::get('orders/{id}', [CompanyOrderController::class, 'show'])->name('orders.show');
+        Route::get('orders/invoice/{id}', [CompanyOrderController::class, 'invoice'])->name('orders.invoice');
+
+
 
     }
 );
