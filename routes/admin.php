@@ -22,6 +22,7 @@ use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
+use App\Http\Controllers\admin\SalaryTypeController;
 use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
 use App\Http\Controllers\admin\StateController;
@@ -114,6 +115,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Job Type Routes */
     Route::resource('job-types', JobTypesController::class);
+
+     /** Salary Type Routes */
+     Route::resource('salary-types', SalaryTypeController::class);
 
 
 });
