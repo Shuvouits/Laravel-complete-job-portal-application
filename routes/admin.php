@@ -26,6 +26,7 @@ use App\Http\Controllers\admin\SalaryTypeController;
 use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
 use App\Http\Controllers\admin\StateController;
+use App\Http\Controllers\admin\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -118,6 +119,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
      /** Salary Type Routes */
      Route::resource('salary-types', SalaryTypeController::class);
+
+     /** Tags Routes */
+     Route::resource('tags', TagController::class);
 
 
 });

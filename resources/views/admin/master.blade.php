@@ -33,6 +33,8 @@
 
 
 
+
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -53,6 +55,11 @@
     .notify {
         z-index: 9999 !important;
     }
+
+
+.btn-primary{
+    background: #6777ef !important;
+}
 </style>
 
 <body>

@@ -1,6 +1,7 @@
 @extends('admin.master')
 
 @section('main')
+
     <div class="main-content">
         <section class="section">
             <div class="section-header">
