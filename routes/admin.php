@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
 use App\Http\Controllers\admin\JobCategoryController;
+use App\Http\Controllers\admin\JobExperienceController;
 use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\admin\JobTypesController;
 use App\Http\Controllers\admin\LanguageController;
@@ -118,14 +119,17 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Job Type Routes */
     Route::resource('job-types', JobTypesController::class);
 
-     /** Salary Type Routes */
-     Route::resource('salary-types', SalaryTypeController::class);
+    /** Salary Type Routes */
+    Route::resource('salary-types', SalaryTypeController::class);
 
-     /** Tags Routes */
-     Route::resource('tags', TagController::class);
+    /** Tags Routes */
+    Route::resource('tags', TagController::class);
 
-     /** Job Roles Routes */
-     Route::resource('job-roles', JobRolesController::class);
+    /** Job Roles Routes */
+    Route::resource('job-roles', JobRolesController::class);
+
+    /** Job Experience Routes */
+    Route::resource('job-experiences', JobExperienceController::class);
 
 
 });

@@ -28,7 +28,7 @@
             </li>
 
 
-            <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*', 'admin.language*', 'admin.profession*', 'admin.skill*', 'admin.educations*', 'admin.job-types*', 'admin.salary-types*', 'admin.tags*', 'admin.job-roles*'])}} ">
+            <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*', 'admin.language*', 'admin.profession*', 'admin.skill*', 'admin.educations*', 'admin.job-types*', 'admin.salary-types*', 'admin.tags*', 'admin.job-roles*', 'admin.job-experiences*'])}} ">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attribute</span></a>
               <ul class="dropdown-menu">
                 <li class=" {{setSidebarActive(['admin.industry-types*'])}} "><a class="nav-link" href="{{route('admin.industry-types.index')}}">Industry Type</a></li>
@@ -56,6 +56,10 @@
 
                 <li class="{{ setSidebarActive(['admin.job-roles.*']) }}">
                     <a class="nav-link" href="{{ route('admin.job-roles.index') }}">Job Roles</a>
+                </li>
+
+                <li class="{{ setSidebarActive(['admin.job-experiences.*']) }}">
+                    <a class="nav-link" href="{{ route('admin.job-experiences.index') }}">Job Experience</a>
                 </li>
 
 
