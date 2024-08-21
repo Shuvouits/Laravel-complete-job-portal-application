@@ -1,13 +1,19 @@
 @extends('admin.master')
 
 @section('main')
-<style>
-    .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: blueviolet;
-    border: none;
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: blueviolet;
+            border: none;
 
-}
-</style>
+        }
+
+        .bootstrap-tagsinput {
+
+            display: block;
+
+        }
+    </style>
     <div class="main-content">
 
         <section class="section">
@@ -316,7 +322,8 @@
                                                 <label for="">Benefits <span class="text-danger ">*</span></label>
                                                 <input type="text"
                                                     class="form-control inputtags {{ hasError($errors, 'benefits') }}"
-                                                    name="benefits" value="{{ old('benefits') }}">
+                                                    name="benefits" value="{{ old('benefits') }}"
+                                                >
                                                 <x-input-error :messages="$errors->get('benefits')" class="mt-2" />
                                             </div>
                                         </div>
@@ -427,8 +434,7 @@
 @endsection
 
 @push('scripts')
-
-  <script>
+    <script>
         $(".inputtags").tagsinput('items');
 
         function salaryModeChnage(mode) {
@@ -487,8 +493,4 @@
             })
         })
     </script>
-
-
-
 @endpush
-
