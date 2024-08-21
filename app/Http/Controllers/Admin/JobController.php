@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\JobCreateRequest;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Education;
@@ -57,9 +58,9 @@ class JobController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(JobCreateRequest $request)
     {
-        //
+        return $request->all();
     }
 
     /**
