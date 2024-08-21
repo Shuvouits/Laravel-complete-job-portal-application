@@ -33,6 +33,8 @@
 
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+
 
 
 
@@ -108,6 +110,8 @@
     <script src="{{ asset('admin/assets/js/page/modules-sweetalert.js') }}"></script>
 
     <script src="{{ asset('admin/assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+    <script src="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 
 
 

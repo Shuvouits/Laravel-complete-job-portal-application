@@ -1,6 +1,13 @@
 @extends('admin.master')
 
 @section('main')
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: blueviolet;
+    border: none;
+
+}
+</style>
     <div class="main-content">
 
         <section class="section">
