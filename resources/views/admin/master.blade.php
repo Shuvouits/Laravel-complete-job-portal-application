@@ -26,9 +26,12 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/select2/dist/css/select2.min.css') }}">
 
     <!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-<!-- Bootstrap-Iconpicker -->
-<link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap-iconpicker.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+
+    <!-- Bootstrap-Iconpicker -->
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap-iconpicker.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
 
 
 
@@ -57,9 +60,9 @@
     }
 
 
-.btn-primary{
-    background: #6777ef !important;
-}
+    .btn-primary {
+        background: #6777ef !important;
+    }
 </style>
 
 <body>
@@ -103,6 +106,8 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('admin/assets/js/page/modules-sweetalert.js') }}"></script>
+
+    <script src="{{ asset('admin/assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
 
 
@@ -159,9 +164,10 @@
     <script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
 
     <!-- Bootstrap CDN -->
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-<!--icon picker --->
-<script src="{{ asset('admin/assets/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">
+    </script>
+    <!--icon picker --->
+    <script src="{{ asset('admin/assets/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 
 
 

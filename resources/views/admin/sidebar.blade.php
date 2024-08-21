@@ -27,6 +27,11 @@
                     <i class="fas fa-list"></i> <span>Job Category</span></a>
             </li>
 
+            <li class="{{ setSidebarActive(['admin.jobs.*']) }}">
+                <a class="nav-link" href="{{ route('admin.jobs.index') }}">
+                    <i class="fas fa-list"></i> <span>Job Post</span></a>
+            </li>
+
 
             <li class="dropdown {{setSidebarActive(['admin.industry-types*', 'admin.organization-types*', 'admin.language*', 'admin.profession*', 'admin.skill*', 'admin.educations*', 'admin.job-types*', 'admin.salary-types*', 'admin.tags*', 'admin.job-roles*', 'admin.job-experiences*'])}} ">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attribute</span></a>

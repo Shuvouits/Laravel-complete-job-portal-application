@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
 use App\Http\Controllers\admin\JobCategoryController;
+use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\JobExperienceController;
 use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\admin\JobTypesController;
@@ -130,6 +131,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Job Experience Routes */
     Route::resource('job-experiences', JobExperienceController::class);
+
+     /** Job Post Routes */
+     Route::resource('jobs', JobController::class);
 
 
 });
