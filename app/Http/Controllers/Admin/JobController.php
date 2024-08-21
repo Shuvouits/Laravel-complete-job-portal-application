@@ -4,16 +4,22 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\JobCreateRequest;
+use App\Models\Benifit;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Job;
+use App\Models\JobBenifit;
 use App\Models\JobCategory;
 use App\Models\JobRole;
+use App\Models\JobSkill;
+use App\Models\JobTag;
 use App\Models\JobType;
 use App\Models\SalaryType;
 use App\Models\Skill;
 use App\Models\Tag;
+use App\Services\Notify;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -60,7 +66,69 @@ class JobController extends Controller
      */
     public function store(JobCreateRequest $request)
     {
-        return $request->all();
+        $job = new Job();
+        $job->title = $request->title;
+        $job->company_id = $request->company;
+        $job->job_category_id = $request->category;
+        $job->vacancies = $request->vacancies;
+        $job->deadline = $request->deadline;
+
+        $job->country_id = $request->country;
+        $job->state_id = $request->state;
+        $job->city_id = $request->city;
+        $job->address = $request->address;
+
+        $job->salary_mode = $request->salary_mode;
+        $job->min_salary = $request->min_salary;
+        $job->max_salary = $request->max_salary;
+        $job->custom_salary = $request->custom_salary;
+        $job->salary_type_id = $request->salary_type;
+        $job->job_experience_id = $request->experience;
+        $job->job_role_id = $request->job_role;
+        $job->education_id = $request->education;
+        $job->job_type_id = $request->job_type;
+        $job->job_type_id = $request->job_type;
+        $job->featured = $request->featured;
+        $job->highlight = $request->highlight;
+        $job->description = $request->description;
+        $job->status = 'active';
+        $job->save();
+
+        // insert tags
+        foreach ($request->tags as $tag) {
+            $createTag = new JobTag();
+            $createTag->job_id = $job->id;
+            $createTag->tag_id = $tag;
+            $createTag->save();
+        }
+
+        $benefits = explode(',', $request->benefits);
+
+        foreach ($benefits as $benefit) {
+            $createBenefit = new Benifit();
+            $createBenefit->company_id = $job->company_id;
+            $createBenefit->name = $benefit;
+            $createBenefit->save();
+            // store job benefit
+            $jobBenefit = new JobBenifit();
+            $jobBenefit->job_id = $job->id;
+            $jobBenefit->benefit_id = $createBenefit->id;
+            $jobBenefit->save();
+        }
+
+        // insert skills
+        foreach ($request->skills as $skill) {
+            $createSkill = new JobSkill();
+            $createSkill->job_id = $job->id;
+            $createSkill->skill_id = $skill;
+            $createSkill->save();
+        }
+
+        Notify::createdNotification();
+
+        return to_route('admin.jobs.index');
+
+
     }
 
     /**

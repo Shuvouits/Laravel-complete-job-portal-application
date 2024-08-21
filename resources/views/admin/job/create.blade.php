@@ -3,7 +3,7 @@
 @section('main')
     <style>
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
-            background-color: blueviolet;
+            background-color: #6777ef;
             border: none;
 
         }
@@ -11,6 +11,11 @@
         .bootstrap-tagsinput {
 
             display: block;
+
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: white;
 
         }
     </style>
@@ -25,11 +30,7 @@
 
                 <div class="col-12">
                     <div class="card-body">
-                        <div style="display: flex; align-item:center; gap: 10px, object-fit:content">
-                            @foreach ($errors->all() as $error)
-                            <div class="text-danger">{{ $error }}</div>
-                        @endforeach
-                        </div>
+
                         <form action="{{ route('admin.jobs.store') }}" method="POST">
                             @csrf
 
@@ -325,8 +326,7 @@
                                                 <label for="">Benefits <span class="text-danger ">*</span></label>
                                                 <input type="text"
                                                     class="form-control inputtags {{ hasError($errors, 'benefits') }}"
-                                                    name="benefits" value="{{ old('benefits') }}"
-                                                >
+                                                    name="benefits" value="{{ old('benefits') }}">
                                                 <x-input-error :messages="$errors->get('benefits')" class="mt-2" />
                                             </div>
                                         </div>
