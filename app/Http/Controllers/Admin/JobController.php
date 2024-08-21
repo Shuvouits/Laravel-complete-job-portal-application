@@ -21,15 +21,23 @@ use App\Models\Skill;
 use App\Models\Tag;
 use App\Services\Notify;
 use Illuminate\Http\Request;
+use App\Traits\Searchable;
+use Illuminate\Http\Response;
+
 
 class JobController extends Controller
 {
+    use Searchable;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $query = Job::query();
+        $this->search($query, ['title', 'slug']);
+        $jobs = $query->orderBy('id', 'DESC')->paginate(20);
+
+        return view('admin.job.index', compact('jobs'));
     }
 
     /**
@@ -161,5 +169,13 @@ class JobController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    function changeStatus(string $id) : Response {
+        $job = Job::findOrFail($id);
+        $job->status = $job->status == 'active' ? 'pending' : 'active';
+        $job->save();
+        Notify::updateNotification();
+        return response(['message' => 'success'], 200);
     }
 }
