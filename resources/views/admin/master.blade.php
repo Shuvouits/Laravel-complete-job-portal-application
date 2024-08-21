@@ -119,6 +119,8 @@
 
     @stack('scripts');
 
+
+
     <script>
         $(".delete").click(function(e) {
             e.preventDefault();
@@ -172,6 +174,22 @@
     </script>
     <!--icon picker --->
     <script src="{{ asset('admin/assets/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                height: '300px'
+            })
+            .then(editor => {
+                // Adjust the editor's height
+                editor.ui.view.editable.element.style.height = '350px';
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 
 
