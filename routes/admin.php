@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('cities', CityController::class);
 
     Route::get('/get-states/{id}', [CityController::class, 'GetState']);
+    Route::get('/get-cities/{id}', [CityController::class, 'GetCities']);
     Route::resource('language', LanguageController::class);
     Route::resource('profession', ProfessionController::class);
     Route::resource('skill', SkillController::class);

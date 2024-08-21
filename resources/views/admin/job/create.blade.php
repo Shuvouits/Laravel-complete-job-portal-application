@@ -427,7 +427,7 @@
 @endsection
 
 @push('scripts')
-  {{--
+
   <script>
         $(".inputtags").tagsinput('items');
 
@@ -448,7 +448,9 @@
 
             $.ajax({
                 mehtod: 'GET',
-                url: '{{ route('get-states', ':id') }}'.replace(":id", country_id),
+
+                url: `/admin/get-states/${country_id}`,
+
                 data: {},
                 success: function(response) {
                     let html = '';
@@ -469,7 +471,8 @@
 
             $.ajax({
                 mehtod: 'GET',
-                url: '{{ route('get-cities', ':id') }}'.replace(":id", state_id),
+
+                url: `/admin/get-cities/${state_id}`,
                 data: {},
                 success: function(response) {
                     let html = '';
@@ -485,6 +488,7 @@
         })
     </script>
 
-  --}}
+
 
 @endpush
+
