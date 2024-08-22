@@ -101,13 +101,13 @@
                                                     <a href="{{ route('admin.jobs.edit', $job->id) }}"
                                                         class="btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
                                                     <a href="{{ route('admin.jobs.destroy', $job->id) }}"
-                                                        class="btn-sm btn btn-danger delete-item"><i
+                                                        class="btn-sm btn btn-danger delete"><i
                                                             class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="3" class="text-center">No result found!</td>
+                                                <td colspan="7" class="text-center">No result found!</td>
                                             </tr>
                                         @endforelse
 

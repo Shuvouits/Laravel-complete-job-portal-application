@@ -65,6 +65,14 @@
     .btn-primary {
         background: #6777ef !important;
     }
+
+    .ck-editor__editable_inline {
+        min-height: 350px !important;
+        height: 350px !important;
+        max-height: 350px !important;
+        overflow-y: auto;
+        /* Ensure content overflow is scrollable */
+    }
 </style>
 
 <body>
@@ -136,11 +144,14 @@
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'), {
-                height: '300px'
+                // No need to specify height in the configuration
             })
             .then(editor => {
-                // Adjust the editor's height
-                editor.ui.view.editable.element.style.height = '350px';
+                // Use CSS to enforce a consistent height
+                const editorElement = editor.ui.view.editable.element;
+                editorElement.style.minHeight = '350px'; // Set minimum height
+                editorElement.style.height = '350px'; // Enforce consistent height
+                editorElement.style.maxHeight = '350px'; // Optional: set maximum height if you want to limit growth
             })
             .catch(error => {
                 console.error(error);
@@ -151,49 +162,49 @@
 
 
 
-<script>
-    $(".delete").click(function(e) {
-        e.preventDefault();
-        swal({
-                title: 'Are you sure?',
-                text: 'Once deleted, you will not be able to recover this data!',
-                icon: 'warning',
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
+    <script>
+        $(".delete").click(function(e) {
+            e.preventDefault();
+            swal({
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this data!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
 
-                if (willDelete) {
-                    let url = $(this).attr('href')
+                    if (willDelete) {
+                        let url = $(this).attr('href')
 
-                    $.ajax({
-                        method: 'DELETE',
-                        url: url,
-                        data: {
-                            _token: "{{ csrf_token() }}"
-                        },
-                        success: function(response) {
-                            window.location.reload();
-                        },
-                        error: function(xhr, status, error) {
-                            console.log(xhr);
-                            swal(xhr.responseJSON.message, {
-                                icon: 'error'
-                            });
-                        }
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr);
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error'
+                                });
+                            }
 
-                    })
+                        })
 
 
-                    swal('Poof! Your imaginary file has been deleted!', {
-                        icon: 'success',
-                    });
-                }
-            });
-    });
-</script>
+                        swal('Poof! Your imaginary file has been deleted!', {
+                            icon: 'success',
+                        });
+                    }
+                });
+        });
+    </script>
 
-@stack('scripts');
+    @stack('scripts');
 
 
 
