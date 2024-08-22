@@ -29,7 +29,7 @@
 
             <li class="{{ setSidebarActive(['admin.jobs.*']) }}">
                 <a class="nav-link" href="{{ route('admin.jobs.index') }}">
-                    <i class="fas fa-list"></i> <span>Job Post</span></a>
+                    <i class="fas fa-briefcase"></i> <span>Job Post</span></a>
             </li>
 
 
