@@ -11,6 +11,7 @@ use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\CompanyOrderController;
+use App\Http\Controllers\frontend\JobController;
 use App\Http\Controllers\frontend\PlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -68,13 +69,18 @@ Route::group(
 );
 
 Route::group(
-    ['middleware' => ['auth', 'verified', 'user.role:company'], 'prefix' => 'company'],
+    [
+        'middleware' => ['auth', 'verified', 'user.role:company'],
+        'prefix' => 'company',
+        'as' => 'company.'
+    ],
+
     function () {
 
         Route::get('/dashboard', function () {
             return view('frontend.company-dashboard.dashboard');
-        })->name('company.dashboard');
-        Route::get('/profile', [CompanyProfileController::class, 'CompanyProfile']);
+        })->name('dashboard');
+        Route::get('/profile', [CompanyProfileController::class, 'CompanyProfile'])->name('profile');
         Route::post('/company-info', [CompanyProfileController::class, 'CompanyInfo'])->name('company-info');
         Route::post('/founding-info', [CompanyProfileController::class, 'FoundingInfo'])->name('founding-info');
         Route::post('/account-info', [CompanyProfileController::class, 'AccountInfo'])->name('account-info');
@@ -82,6 +88,10 @@ Route::group(
         Route::get('/get-states/{id}', [LocationController::class, 'GetState']);
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
+
+        /** Job Routes */
+        Route::get('applications/{id}', [JobController::class, 'applications'])->name('job.applications');
+        Route::resource('jobs', JobController::class);
 
         //Payment
         Route::get('payment/success', [PaymentSettingController::class, 'paymentSuccess'])->name('payment.success');

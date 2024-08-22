@@ -23,7 +23,7 @@
 
 
 
-                @include('frontend.body.sidebar')
+                @include('frontend.company-dashboard.sidebar')
 
 
                 <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
@@ -65,7 +65,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="{{ route('orders.show', $order->id) }}"
+                                                <a href="{{ route('company.orders.show', $order->id) }}"
                                                     class="btn-sm btn btn-primary"><i class="fas fa-eye"></i></a>
 
                                             </td>

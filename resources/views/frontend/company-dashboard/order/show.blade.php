@@ -15,7 +15,7 @@
 
 
 
-                @include('frontend.body.sidebar')
+                @include('frontend.company-dashboard.sidebar')
 
 
                 <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
@@ -41,7 +41,7 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">Action</th>
-                                            <td><b><a class="btn btn-primary" href="{{ route('orders.invoice', $order->id) }}">Download
+                                            <td><b><a class="btn btn-primary" href="{{ route('company.orders.invoice', $order->id) }}">Download
                                                         Invoice</a></b></td>
                                         </tr>
 
