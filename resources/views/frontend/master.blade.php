@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+
+
 
     <title>Ultimate Job Portal Website</title>
 </head>
@@ -30,6 +33,11 @@
 <style>
     .notify {
         z-index: 9999 !important;
+    }
+
+    .cke_notifications_area {
+
+        display: none !important;
     }
 </style>
 
@@ -67,13 +75,17 @@
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 
-     <!-- CKEditor CDN -->
-     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <!-- CKEditor CDN -->
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
-     <script>
+    <script>
         // Initialize CKEditor
         CKEDITOR.replace('content');
     </script>
+
+    <script src="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+
+
 
     <x-notify::notify />
     @notifyJs
@@ -84,7 +96,6 @@
         $(document).ready(function() {
             $('.select-2').select2();
         });
-
     </script>
 
 

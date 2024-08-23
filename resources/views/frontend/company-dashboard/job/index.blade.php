@@ -7,10 +7,11 @@
             padding: 15px;
         }
 
-        .table tr{
+        .table tr {
             border-bottom: 1px solid #1ca77459 !important;
         }
-        .search{
+
+        .search {
             border: 1px solid #1ca77459 !important;
         }
     </style>
@@ -47,16 +48,19 @@
                                     <div class="card-header-form">
                                         <form action="{{ route('company.jobs.index') }}" method="GET">
                                             <div class="input-group">
-                                                <input type="text" class="form-control search" placeholder="Search" name="search" value="{{ request('search') }}">
+                                                <input type="text" class="form-control search" placeholder="Search"
+                                                    name="search" value="{{ request('search') }}">
                                                 <div class="input-group-btn">
-                                                    <button type="submit" style="height: 50px;" class="btn btn-success"><i class="fas fa-search"></i></button>
+                                                    <button type="submit" style="height: 50px;" class="btn btn-success"><i
+                                                            class="fas fa-search"></i></button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    <a href="{{ route('company.jobs.create') }}" class="btn btn-success"> <i class="fas fa-plus-circle"></i> Create new</a>
+                                    <a href="{{ route('company.jobs.create') }}" class="btn btn-success"> <i
+                                            class="fas fa-plus-circle"></i> Create new</a>
                                 </div>
                             </div>
                             <br>
@@ -108,25 +112,33 @@
 
                                                 <td>
                                                     <div class="dropdown">
+
                                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                                             id="dropdownMenuButton1" data-bs-toggle="dropdown"
                                                             aria-expanded="false">
                                                             <i class="fas fa-cog"></i>
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                            <li><a class="dropdown-item"
-                                                                    href="{{ route('company.job.applications', $job->id) }}">Applications</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item"
-                                                                    href="{{ route('company.jobs.edit', $job->id) }}">Edit</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item delete-item"
-                                                                    href="{{ route('company.jobs.destroy', $job->id) }}">Delete</a>
-                                                            </li>
+
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('company.job.applications', $job->id) }}">Applications</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('company.jobs.edit', $job->id) }}">Edit</a>
+                                                            <a class="dropdown-item delete-item"
+                                                                href="{{ route('company.jobs.destroy', $job->id) }}">Delete</a>
+
+
                                                         </ul>
+
+
+
+
                                                     </div>
 
                                                 </td>
+
+
+                                              
                                             </tr>
                                         @empty
                                             <tr>
