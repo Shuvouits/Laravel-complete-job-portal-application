@@ -124,7 +124,7 @@
                                                                 href="{{ route('company.job.applications', $job->id) }}">Applications</a>
                                                             <a class="dropdown-item"
                                                                 href="{{ route('company.jobs.edit', $job->id) }}">Edit</a>
-                                                            <a class="dropdown-item delete-item"
+                                                            <a class="dropdown-item delete"
                                                                 href="{{ route('company.jobs.destroy', $job->id) }}">Delete</a>
 
 
@@ -138,11 +138,11 @@
                                                 </td>
 
 
-                                              
+
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="3" class="text-center">No result found!</td>
+                                                <td colspan="6" class="text-center">No result found!</td>
                                             </tr>
                                         @endforelse
 
@@ -171,3 +171,5 @@
 
     </main>
 @endsection
+
+

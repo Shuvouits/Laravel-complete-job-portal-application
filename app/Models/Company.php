@@ -9,11 +9,11 @@ use App\Models\Country;
 use App\Models\IndustryType;
 use App\Models\OrganizationType;
 use App\Models\TeamSize;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
 {
-    use HasFactory;
-    use Sluggable;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'user_id',
@@ -59,6 +59,10 @@ class Company extends Model
 
     public function team(){
         return $this->belongsTo(TeamSize::class, 'team_size_id', 'id');
+    }
+
+    function userPlan() : HasOne {
+        return $this->hasOne(UserPlan::class, 'company_id', 'id');
     }
 
 

@@ -25,6 +25,9 @@
 
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 
+    <!-- JS Libraies -->
+    <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
+
 
 
     <title>Ultimate Job Portal Website</title>
@@ -97,6 +100,49 @@
             $('.select-2').select2();
         });
     </script>
+
+    <script>
+        $(".delete").click(function(e) {
+            e.preventDefault();
+            swal({
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this data!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+
+                    if (willDelete) {
+                        let url = $(this).attr('href')
+
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr);
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error'
+                                });
+                            }
+
+                        })
+
+
+                        swal('Poof! Your imaginary file has been deleted!', {
+                            icon: 'success',
+                        });
+                    }
+                });
+        });
+    </script>
+
 
 
 

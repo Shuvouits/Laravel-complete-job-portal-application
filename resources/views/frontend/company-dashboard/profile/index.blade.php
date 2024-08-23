@@ -12,7 +12,7 @@
 
 
 
-                    @include('frontend.body.sidebar')
+                    @include('frontend.company-dashboard.sidebar')
 
 
                     <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
@@ -41,7 +41,7 @@
                                 <div id="company" class="container tab-pane active"><br>
 
 
-                                    <form method="post" action="{{ route('company-info') }}" enctype="multipart/form-data">
+                                    <form method="post" action="{{ route('company.company-info') }}" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="row form-contact">
@@ -124,7 +124,7 @@
 
                                 <div id="founding" class="container tab-pane"><br>
 
-                                    <form method="post" action="{{ route('founding-info') }}">
+                                    <form method="post" action="{{ route('company.founding-info') }}">
                                         @csrf
 
                                         <div class="row form-contact">
@@ -344,7 +344,7 @@
 
 
                                     <div class="row form-contact">
-                                        <form method="post" action="{{ route('account-info') }}">
+                                        <form method="post" action="{{ route('company.account-info') }}">
                                             @csrf
                                             <div class="row">
 
@@ -374,7 +374,7 @@
                                         </form>
 
 
-                                        <form method="post" action="{{ route('password-info') }}">
+                                        <form method="post" action="{{ route('company.password-info') }}">
                                             @csrf
                                             <div class="row">
 

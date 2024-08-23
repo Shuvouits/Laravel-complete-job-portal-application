@@ -80,7 +80,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Deadline <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control datepicker {{ hasError($errors, 'deadline') }}"
+                                                <input type="date" class="form-control datepicker {{ hasError($errors, 'deadline') }}"
                                                 name="deadline" value="{{ old('deadline', $job->deadline) }}">
                                                 <x-input-error :messages="$errors->get('deadline')" class="mt-2" />
                                             </div>
