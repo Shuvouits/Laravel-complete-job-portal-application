@@ -14,4 +14,8 @@ class Notify{
         return notify()->success('Data Deleted Successfully', 'Success!');
     }
 
+    static function errorNotification(string $error) {
+        return notify()->error($error, 'Error!');
+    }
+
 }
