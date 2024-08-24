@@ -15,11 +15,11 @@ class CompanyPageController extends Controller
         return view('frontend.company.all_company', compact('all_company'));
     }
 
-    public function CompanyDetails($slug){
+    public function shows($slug){
         $company_data = Company::where(['profile_completion' => '1', 'visiblity' => '1', 'slug' => $slug])->firstOrFail();
         return view('frontend.company.company_details', compact('company_data'));
     }
 
-    
+
 
 }

@@ -8,8 +8,8 @@
             <div class="header-nav">
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
-                        <li class="has-children"><a class="active" href="index.html">Home</a></li>
-                        <li class="has-children"><a href="jobs-list.html">Find a Job</a></li>
+                        <li class="has-children"><a class="active" href="/">Home</a></li>
+                        <li class="has-children"><a href="{{route('jobs.index')}}">Find a Job</a></li>
                         <li class="has-children"><a href="/companies">Recruiters</a></li>
                         <li class="has-children"><a href="/candidate">Candidates</a></li>
                         <li class="has-children"><a href="/pricing-plan">Pricing Plan</a></li>

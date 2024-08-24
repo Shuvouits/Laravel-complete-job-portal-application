@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\IndustryType;
 use App\Models\OrganizationType;
 use App\Models\TeamSize;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
@@ -47,6 +48,12 @@ class Company extends Model
 
     public function countryData(){
         return $this->belongsTo(Country::class, 'country', 'id');
+    }
+    function companyState() : BelongsTo {
+        return $this->belongsTo(State::class, 'state', 'id');
+    }
+    function companyCity() : BelongsTo {
+        return $this->belongsTo(City::class, 'city', 'id');
     }
 
     public function industry(){

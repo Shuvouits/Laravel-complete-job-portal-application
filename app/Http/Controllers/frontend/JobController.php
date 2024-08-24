@@ -186,6 +186,7 @@ class JobController extends Controller
     public function edit(string $id)
     {
         $job = Job::findOrFail($id);
+        abort_if($job->company_id !== auth()->user()->company->id, 404);
 
         $companies = Company::where(['profile_completion' => 1, 'visiblity' => 1])->get();
         $categories = JobCategory::all();
@@ -225,6 +226,8 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
 
+        abort_if($job->company_id !== auth()->user()->company->id, 404);
+        
         $job->title = $request->title;
         $job->job_category_id = $request->category;
         $job->vacancies = $request->vacancies;

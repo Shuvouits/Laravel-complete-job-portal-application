@@ -42,6 +42,10 @@
 
         display: none !important;
     }
+
+    .select2-selection__rendered {
+    color: black !important;
+}
 </style>
 
 <body>
