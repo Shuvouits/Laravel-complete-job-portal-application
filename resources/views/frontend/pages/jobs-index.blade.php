@@ -87,13 +87,20 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
-                                                <div class="pl-15 mb-15 mt-30"><a class="btn btn-grey-small mr-5"
-                                                        href="#">Adobe XD</a><a class="btn btn-grey-small mr-5"
-                                                        href="#">Figma</a></div>
+                                                <div class="pl-15 mb-15 mt-30">
+                                                    @if ($job->featured)
+                                                    <a class="btn btn-grey-small mr-5 featured" href="javascript:;">Featured</a>
+                                                    @endif
+                                                    @if ($job->highlight)
+                                                    <a class="btn btn-grey-small mr-5 highlight" href="javascript:;">Highlight</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="card-block-info">
-                                            <h4><a href="job-details.html">{{$job->title}}</a></h4>
+                                            <h4>
+                                                <a href="{{ route('jobs.show', $job->slug) }}">{{$job->title}}</a>
+                                            </h4>
                                             <div class="mt-5"><span class="card-briefcase">Fulltime</span><span
                                                     class="card-time"><span>{{ $job->created_at->diffForHumans() }}</span>
                                             </div>
@@ -120,14 +127,23 @@
 
                                             <div class="card-2-bottom mt-20">
                                                 <div class="row">
+
+                                                    @if ($job->salary_mode === 'range')
                                                     <div class="col-lg-7 col-7"><span
-                                                            class="card-text-price">$500</span><span
-                                                            class="text-muted">/Hour</span></div>
-                                                    <div class="col-lg-5 col-5 text-end">
-                                                        <div class="btn btn-apply-now" data-bs-toggle="modal"
-                                                            data-bs-target="#ModalApplyJobForm">
-                                                            Apply now</div>
+                                                        class="card-text-price">
+                                                        {{ $job->min_salary }} - {{ $job->max_salary }} {{ config('settings.site_default_currency') }}
+                                                    </span><span
+                                                        class="text-muted"></span>
                                                     </div>
+                                                    @else
+                                                    <div class="col-lg-7 col-7"><span
+                                                        class="card-text-price">
+                                                        {{ $job->custom_salary }}
+                                                    </span><span
+                                                        class="text-muted"></span>
+                                                    </div>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>

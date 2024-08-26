@@ -63,5 +63,11 @@ class Job extends Model
         return $this->belongsTo(City::class);
     }
 
+    function category() : BelongsTo {
+        return $this->belongsTo(JobCategory::class, 'job_category_id', 'id');
+    }
+
+   
+
 
 }

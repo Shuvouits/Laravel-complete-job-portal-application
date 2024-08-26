@@ -135,5 +135,6 @@ Route::get('/checkout/{id}', [CheckoutController::class, 'Checkout']);
 //Find a job
 Route::get('jobs', [FrontendJobPageController::class, 'index'])->name('jobs.index');
 Route::get('jobs/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
+Route::post('apply-job/{id}', [FrontendJobPageController::class, 'applyJob'])->name('apply-job.store');
 
 
