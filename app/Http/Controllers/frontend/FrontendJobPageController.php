@@ -18,6 +18,7 @@ class FrontendJobPageController extends Controller
      */
     public function index(Request $request)
     {
+        
         $countries = Country::all();
         $jobCategories = JobCategory::withCount(['jobs' => function($query) {
             $query->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
@@ -71,7 +72,7 @@ class FrontendJobPageController extends Controller
 
 
         $jobs = $query->paginate(8);
-        
+
 
         return view('frontend.pages.jobs-index', compact('jobs', 'countries', 'jobCategories', 'jobTypes', 'selectedStates', 'selectedCites'));
     }

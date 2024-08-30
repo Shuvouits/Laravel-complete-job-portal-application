@@ -20,7 +20,7 @@ $(document).ready(function () {
             step: 1,
             range: {
                 min: 0,
-                max: 500
+                max: 10000
             },
             format: moneyFormat
         });
