@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Job;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
@@ -12,10 +13,29 @@ class FrontendJobPageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::where('status', 'active')->where('deadline', '>=', date('Y-m-d'))->get();
-        return view('frontend.pages.jobs-index', compact('jobs'));
+        $countries = Country::all();
+        $jobCategories = JobCategory::withCount(['jobs' => function($query) {
+            $query->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
+        }])->get();
+
+
+        $query = Job::query();
+
+        $query->where(['status' => 'active'])
+        ->where('deadline', '>=', date('Y-m-d'));
+
+        if($request->has('search') && $request->filled('search')) {
+            $query->where('title', 'like', '%'. $request->search . '%');
+        }
+
+
+        $jobs = $query->get();
+
+
+
+        return view('frontend.pages.jobs-index', compact('jobs','countries', 'jobCategories'));
     }
 
     /**

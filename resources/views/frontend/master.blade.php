@@ -82,6 +82,11 @@
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 
+    <!---slider price range-->
+    <script src="{{ asset('frontend/assets/js/noUISlider.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/slider.js') }}"></script>
+
+
     <!-- CKEditor CDN -->
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
