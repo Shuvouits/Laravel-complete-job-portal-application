@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Country;
 use App\Models\Job;
 use App\Models\JobCategory;
+use App\Models\JobType;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class FrontendJobPageController extends Controller
@@ -20,6 +23,10 @@ class FrontendJobPageController extends Controller
             $query->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
         }])->get();
 
+        $jobTypes = JobType::all();
+        $selectedStates = null;
+        $selectedCites = null;
+
 
         $query = Job::query();
 
@@ -30,12 +37,43 @@ class FrontendJobPageController extends Controller
             $query->where('title', 'like', '%'. $request->search . '%');
         }
 
+        if($request->has('country') && $request->filled('country')) {
+            $query->where('country_id', $request->country);
+        }
 
-        $jobs = $query->get();
+        if($request->has('state') && $request->filled('state')) {
+            $query->where('state_id', $request->state);
+            $selectedStates = State::where('country_id', $request->country)->get();
+            $selectedCites = City::where('state_id', $request->state)->get();
+
+        }
+
+        if($request->has('city') && $request->filled('city')) {
+            $query->where('city_id', $request->city);
+        }
+
+        if($request->has('category') && $request->filled('category')) {
+            if(is_array($request->category)){
+                $categoryIds = JobCategory::whereIn('slug', $request->category)->pluck('id')->toArray();
+                $query->whereIn('job_category_id', $categoryIds);
+            }else {
+                $category = JobCategory::where('slug', $request->category)->first();
+                $query->where('job_category_id', $category->id);
+            }
+        }
+        if($request->has('min_salary') && $request->filled('min_salary') && $request->min_salary > 0) {
+            $query->where('min_salary', '>=', $request->min_salary)->orWhere('max_salary', '>=', $request->min_salary);
+        }
+        if($request->has('jobtype') && $request->filled('jobtype')) {
+            $typeIds = JobType::whereIn('slug', $request->jobtype)->pluck('id')->toArray();
+            $query->whereIn('job_type_id', $typeIds);
+        }
 
 
+        $jobs = $query->paginate(8);
+        
 
-        return view('frontend.pages.jobs-index', compact('jobs','countries', 'jobCategories'));
+        return view('frontend.pages.jobs-index', compact('jobs', 'countries', 'jobCategories', 'jobTypes', 'selectedStates', 'selectedCites'));
     }
 
     /**

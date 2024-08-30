@@ -82,6 +82,7 @@
 
                                                             {{ formatLocation($job->company->countryData->name, $job->company?->companyState?->name, $job->company?->companyCity?->name) }}
 
+
                                                          </span>
                                                     </div>
                                                 </div>
@@ -193,20 +194,41 @@
                                         </div>
                                     </div>
 
-                                    <div class="filter-block mb-30">
+                                    <div class="filter-block mb-20">
                                         <div class="form-group select-style">
-                                            <select class="form-control form-icons select-active">
-                                                <option>Industry</option>
-                                                <option>London</option>
-                                                <option>Paris</option>
-                                                <option>Berlin</option>
+                                            <select name="state" class="form-control state form-icons select-active">
+                                                @if ($selectedStates)
+                                                    <option value="">All</option>
+                                                    @foreach ($selectedStates as $state)
+                                                        <option @selected($state->id == request()->state) value="{{ $state->id }}" >{{ $state->name }}</option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="" >State</option>
+                                                @endif
                                             </select>
+                                        </div>
+                                    </div>
 
+                                    <div class="filter-block mb-20">
+                                        <div class="form-group select-style">
+                                            <select name="city" class="form-control city form-icons select-active">
+                                                @if ($selectedCites)
+                                                    <option value="">All</option>
+
+                                                    @foreach ($selectedCites as $city)
+                                                        <option @selected($city->id == request()->city) value="{{ $city->id }}" >{{ $city->name }}</option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="">City</option>
+                                                @endif
+                                            </select>
+                                            <button class="submit btn btn-default mt-10 rounded-1 w-100"
+                                                type="submit">Search</button>
                                         </div>
                                     </div>
 
 
-                                    <button class="submit btn btn-default mt-10 rounded-1 w-100" type="submit">Search</button>
+
 
                                 </form>
 
@@ -540,3 +562,85 @@
 
     </main>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('.country').on('change', function() {
+            let country_id = $(this).val();
+            // remove all previous cities
+            $('.city').html("");
+
+            $.ajax({
+                mehtod: 'GET',
+
+                url: `/company/get-states/${country_id}`,
+                data: {},
+                success: function(response) {
+                    let html = '';
+
+                    $.each(response, function(index, value) {
+                        html += `<option value="${value.id}" >${value.name}</option>`
+                    });
+
+                    html = `<option value="" >Choose</option>` + html;
+
+                    $('.state').html(html);
+                },
+                error: function(xhr, status, error) {}
+            })
+        })
+
+        // get cities
+        $('.state').on('change', function() {
+            let state_id = $(this).val();
+
+            $.ajax({
+                mehtod: 'GET',
+                url: `/company/get-cities/${state_id}`,
+
+                data: {},
+                success: function(response) {
+                    let html = '';
+
+                    $.each(response, function(index, value) {
+                        html += `<option value="${value.id}" >${value.name}</option>`
+                    });
+
+                    html = `<option value="" >Choose</option>` + html;
+
+                    $('.city').html(html);
+                },
+                error: function(xhr, status, error) {}
+            })
+        })
+
+        $('.job-bookmark').on('click', function(e) {
+        e.preventDefault();
+        let id = $(this).data('id');
+        $.ajax({
+            method: 'GET',
+
+            data: {},
+            success: function(response) {
+                //fas fa-bookmark
+                $('.job-bookmark').each(function() {
+                    let elementId = $(this).data('id');
+
+                    if(elementId == response.id) {
+                        $(this).find('i').addClass('fas fa-bookmark');
+                    }
+                })
+                notyf.success(response.message)
+            },
+            error: function(xhr, status, error) {
+                let erorrs = xhr.responseJSON.errors;
+                $.each(erorrs, function(index, value) {
+                    notyf.error(value[index]);
+                });
+            }
+        })
+    })
+    })
+</script>
+@endpush

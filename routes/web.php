@@ -86,8 +86,10 @@ Route::group(
         Route::post('/founding-info', [CompanyProfileController::class, 'FoundingInfo'])->name('founding-info');
         Route::post('/account-info', [CompanyProfileController::class, 'AccountInfo'])->name('account-info');
         Route::post('/password-info', [CompanyProfileController::class, 'PasswordInfo'])->name('password-info');
+
         Route::get('/get-states/{id}', [LocationController::class, 'GetState']);
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
+        
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
 
         /** Job Routes */
