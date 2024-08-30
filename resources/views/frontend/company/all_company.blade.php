@@ -72,7 +72,7 @@
                             </div>
                             <div class="row">
 
-                                @foreach($all_company as $item)
+                                @foreach($companies as $item)
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                     <div class="card-grid-1 hover-up wow animate__animated animate__fadeIn">
                                         <div class="image-box"><a href="/company-details/{{$item->slug}}"><img
@@ -103,12 +103,9 @@
                         </div>
                         <div class="paginations">
                             <ul class="pager">
-                                <li><a class="pager-prev" href="#"><i class="fas fa-arrow-left"></i></a></li>
-                                <li><a class="pager-number" href="#">1</a></li>
-                                <li><a class="pager-number" href="#">2</a></li>
-                                <li><a class="pager-number active" href="#">3</a></li>
-                                <li><a class="pager-number" href="#">4</a></li>
-                                <li><a class="pager-next" href="#"><i class="fas fa-arrow-right"></i></a></li>
+                                @if ($companies->hasPages())
+                                    {{ $companies->withQueryString()->links() }}
+                                @endif
                             </ul>
                         </div>
                     </div>

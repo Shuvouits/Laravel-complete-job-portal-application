@@ -38,7 +38,7 @@ return new class extends Migration
             $table->boolean('is_profile_verified')->default(0);
             $table->timestamp('document_verified_at')->nullable();
             $table->boolean('profile_completion')->default(0);
-            $table->boolean('visiblity')->default(0);
+            $table->boolean('visibility')->default(0);
             $table->timestamps();
         });
     }

@@ -11,6 +11,7 @@ use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\CompanyOrderController;
+use App\Http\Controllers\frontend\FrontendCompanyPageController;
 use App\Http\Controllers\frontend\FrontendJobPageController;
 use App\Http\Controllers\frontend\JobController;
 use App\Http\Controllers\frontend\PlanController;
@@ -89,7 +90,7 @@ Route::group(
 
         Route::get('/get-states/{id}', [LocationController::class, 'GetState']);
         Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
-        
+
         Route::get('/all-cities', [LocationController::class, 'AllCity']);
 
         /** Job Routes */
@@ -125,7 +126,7 @@ Route::group(
     }
 );
 
-Route::get('/companies', [CompanyPageController::class, 'AllCompany']);
+Route::get('/companies', [FrontendCompanyPageController::class, 'index']);
 Route::get('/companies/{slug}', [CompanyPageController::class, 'shows'])->name('companies.shows');
 
 

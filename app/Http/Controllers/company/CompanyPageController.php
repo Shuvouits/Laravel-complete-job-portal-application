@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class CompanyPageController extends Controller
 {
     public function AllCompany(){
-        $all_company = Company::where(['profile_completion' => '1', 'visiblity' => '1'])->get();
-        return view('frontend.company.all_company', compact('all_company'));
+        $query = Company::query();
+        $companies = $query->paginate(21);
+        return view('frontend.company.all_company', compact('companies'));
     }
 
     public function shows($slug){
