@@ -12,6 +12,8 @@ use App\Models\State;
 use App\Models\Country;
 use App\Models\CandidateSkill;
 use App\Models\CandidateExperience;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Candidate extends Model
 {
@@ -58,17 +60,7 @@ class Candidate extends Model
         return $this->hasMany(CandidateSkill::class, 'candidate_id', 'id');
     }
 
-    public function states(){
-        return $this->belongsTo(State::class, 'state', 'id');
-    }
-
-    public function cities(){
-        return $this->belongsTo(City::class, 'city', 'id');
-    }
-
-    public function countries(){
-        return $this->belongsTo(Country::class, 'country', 'id');
-    }
+  
 
     public function candidateExperiences(){
         return $this->hasMany(CandidateExperience::class, 'candidates_id');
@@ -85,6 +77,16 @@ class Candidate extends Model
 
     public function experience(){
         return $this->belongsTo(Experience::class,  'experience_id', 'id');
+    }
+
+    function candidateCountry() : BelongsTo {
+        return $this->belongsTo(Country::class, 'country', 'id');
+    }
+    function candidateState() : BelongsTo {
+        return $this->belongsTo(State::class, 'state', 'id');
+    }
+    function candidateCity() : BelongsTo {
+        return $this->belongsTo(City::class, 'city', 'id');
     }
 
 

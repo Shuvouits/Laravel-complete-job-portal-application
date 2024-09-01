@@ -35,7 +35,7 @@ return new class extends Migration
             $table->foreignId('city')->nullable();
             $table->enum('status', ['available', 'not_available'])->nullable();
             $table->boolean('profile_complete')->default(0);
-            $table->boolean('visiblity')->default(0);
+            $table->boolean('visibility')->default(0);
             $table->timestamps();
         });
     }

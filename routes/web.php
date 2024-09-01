@@ -11,6 +11,7 @@ use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\CompanyOrderController;
+use App\Http\Controllers\frontend\FrontendCandidatePageController;
 use App\Http\Controllers\frontend\FrontendCompanyPageController;
 use App\Http\Controllers\frontend\FrontendJobPageController;
 use App\Http\Controllers\frontend\JobController;
@@ -130,8 +131,11 @@ Route::get('/companies', [FrontendCompanyPageController::class, 'index'])->name(
 Route::get('/companies/{slug}', [CompanyPageController::class, 'shows'])->name('companies.show');
 
 
-Route::get('/candidate', [CandidatePageController::class, 'Candidate']);
+Route::get('/candidate', [FrontendCandidatePageController::class, 'index'])->name('candidates.index');
+Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
+
 Route::get('/candidate/details/{slug}', [CandidatePageController::class, 'CandidateDetails']);
+
 Route::get('/pricing-plan', [PlanController::class, 'AllPlan']);
 Route::get('/checkout/{id}', [CheckoutController::class, 'Checkout']);
 
