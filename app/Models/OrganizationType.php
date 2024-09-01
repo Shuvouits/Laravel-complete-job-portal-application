@@ -17,9 +17,7 @@ class OrganizationType extends Model
         'slug'
     ];
 
-    function companies() : HasMany {
-        return $this->hasMany(Company::class, 'industry_type_id', 'id');
-    }
+
 
 
     public function sluggable(): array
@@ -29,5 +27,9 @@ class OrganizationType extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    function companies() : HasMany {
+        return $this->hasMany(Company::class, 'organization_type_id', 'id');
     }
 }

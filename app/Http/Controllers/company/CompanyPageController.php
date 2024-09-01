@@ -17,7 +17,7 @@ class CompanyPageController extends Controller
     }
 
     public function shows($slug){
-        $company_data = Company::where(['profile_completion' => '1', 'visiblity' => '1', 'slug' => $slug])->firstOrFail();
+        $company_data = Company::where(['profile_completion' => '1', 'visibility' => '1', 'slug' => $slug])->firstOrFail();
         return view('frontend.company.company_details', compact('company_data'));
     }
 

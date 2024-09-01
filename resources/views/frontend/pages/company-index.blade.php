@@ -25,86 +25,35 @@
 
                     <div class="col-lg-9 col-md-12 col-sm-12 col-12 float-right">
                         <div class="content-page company_page">
-                            <div class="box-filters-job">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-5"><span class="text-small text-showing">Showing
-                                            <strong>41-60 </strong>of
-                                            <strong>944 </strong>jobs</span></div>
-                                    <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">
-                                        <div class="display-flex2">
-                                            <div class="box-border mr-10"><span class="text-sortby">Show:</span>
-                                                <div class="dropdown dropdown-sort">
-                                                    <button class="btn dropdown-toggle" id="dropdownSort" type="button"
-                                                        data-bs-toggle="dropdown" aria-expanded="false"
-                                                        data-bs-display="static"><span>12</span><i
-                                                            class="fi-rr-angle-small-down"></i></button>
-                                                    <ul class="dropdown-menu dropdown-menu-light"
-                                                        aria-labelledby="dropdownSort">
-                                                        <li><a class="dropdown-item active" href="#">10</a></li>
-                                                        <li><a class="dropdown-item" href="#">12</a></li>
-                                                        <li><a class="dropdown-item" href="#">20</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="box-border"><span class="text-sortby">Sort by:</span>
-                                                <div class="dropdown dropdown-sort">
-                                                    <button class="btn dropdown-toggle" id="dropdownSort2" type="button"
-                                                        data-bs-toggle="dropdown" aria-expanded="false"
-                                                        data-bs-display="static"><span>Newest
-                                                            Post</span><i class="fi-rr-angle-small-down"></i></button>
-                                                    <ul class="dropdown-menu dropdown-menu-light"
-                                                        aria-labelledby="dropdownSort2">
-                                                        <li><a class="dropdown-item active" href="#">Newest
-                                                                Post</a></li>
-                                                        <li><a class="dropdown-item" href="#">Oldest Post</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="#">Rating Post</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
 
-                                @foreach ($companies as $item)
+                            <div class="row text-center">
+                                @forelse ($companies as $company)
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div class="card-grid-1 hover-up wow animate__animated animate__fadeIn">
-                                            <div class="image-box"><a href="/company-details/{{ $item->slug }}"><img
-                                                        src="{{ $item->logo }}" alt="joblist"></a></div>
+                                            <div class="image-box"><a
+                                                    href="{{ route('companies.show', $company->slug) }}"><img
+                                                        src="{{ asset($company->logo) }}" alt="joblist"></a></div>
                                             <div class="info-text mt-10">
                                                 <h5 class="font-bold"><a
-                                                        href="/company-details/{{ $item->slug }}">{{ $item->name }}</a>
+                                                        href="{{ route('companies.show', $company->slug) }}">{{ $company->name }}</a>
                                                 </h5>
-                                                <div class="mt-5 d-flex align-items-center justify-content-center "><img
-                                                        alt="joblist"
-                                                        src="{{ asset('frontend/assets/imgs/template/icons/star.svg') }}"><img
-                                                        alt="joblist"
-                                                        src="{{ asset('frontend/assets/imgs/template/icons/star.svg') }}"><img
-                                                        alt="joblist"
-                                                        src="{{ asset('frontend/assets/imgs/template/icons/star.svg') }}"><img
-                                                        alt="joblist"
-                                                        src="{{ asset('frontend/assets/imgs/template/icons/star.svg') }}"><img
-                                                        alt="joblist"
-                                                        src="{{ asset('frontend/assets/imgs/template/icons/star.svg') }}"><span
-                                                        class="font-xs color-text-mutted ml-10"><span>(</span><span>66</span><span>)</span></span>
-                                                </div><span class="card-location">{{ $item->countryData->name }}</span>
+
+                                                <span
+                                                    class="card-location">{{ formatLocation($company->companyCountry->name, $company->companyState->name) }}</span>
                                                 <div class="mt-30"><a class="btn btn-grey-big"
-                                                        href="jobs-grid.html"><span>12</span><span> Jobs
-                                                            Open</span></a></div>
+                                                        href="{{ route('companies.show', $company->slug) }}"><span>{{ $company->jobs_count }}</span><span>
+                                                            Jobs Open</span></a></div>
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
-
-
-
+                                @empty
+                                    <h5>Sorry No Data Found! 😥</h5>
+                                @endforelse
 
 
                             </div>
                         </div>
+
                         <div class="paginations">
                             <ul class="pager">
                                 @if ($companies->hasPages())
@@ -112,6 +61,7 @@
                                 @endif
                             </ul>
                         </div>
+
                     </div>
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-12">
@@ -121,20 +71,18 @@
                                     <h5>Advance Filter <a class="link-reset" href="#">Reset</a></h5>
                                 </div>
 
-                                <form action="{{ route('jobs.index') }}" method="GET">
-
+                                <form action="{{ route('companies.index') }}" method="GET">
                                     <div class="filter-block mb-20">
                                         <div class="form-group ">
                                             <input type="text" value="{{ request()?->search }}" class="form-control"
                                                 name="search" placeholder="Search">
                                         </div>
                                     </div>
-
                                     <div class="filter-block mb-20">
                                         <div class="form-group select-style">
                                             <select name="country" class="form-control country form-icons select-active">
-
-                                                <option value="" selected disabled>Choose Country</option>
+                                                <option value="">Country</option>
+                                                <option value="">All</option>
                                                 @foreach ($countries as $country)
                                                     <option @selected(request()?->country == $country->id) value="{{ $country->id }}">
                                                         {{ $country->name }}</option>
@@ -143,7 +91,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="filter-block mb-20">
                                         <div class="form-group select-style">
                                             <select name="state" class="form-control state form-icons select-active">
@@ -159,7 +106,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="filter-block mb-20">
                                         <div class="form-group select-style">
                                             <select name="city" class="form-control city form-icons select-active">
@@ -174,46 +120,68 @@
                                                     <option value="">City</option>
                                                 @endif
                                             </select>
-
+                                            <button class="submit btn btn-default mt-10 rounded-1 w-100"
+                                                type="submit">Search</button>
                                         </div>
                                     </div>
+                                </form>
 
+                                <form action="">
+                                    <div class="filter-block mb-20">
+                                        <h5 class="medium-heading mb-15">Industry</h5>
+                                        <div class="form-group">
+                                            <ul class="list-checkbox">
+                                                <li class="active">
+                                                    <label class="d-flex">
+                                                        <input type="radio" name="industry" class="x-radio"
+                                                            value=""><span class="text-small">All</span>
+                                                    </label>
+                                                </li>
+                                                @foreach ($industryTypes as $type)
+                                                    <li class="active">
+                                                        <label class="d-flex">
+                                                            <input type="radio" @checked($type->slug == request()->industry)
+                                                                name="industry" class="x-radio"
+                                                                value="{{ $type->slug }}"><span
+                                                                class="text-small">{{ $type->name }}</span><span
+                                                                class="number-item">{{ $type->companies_count }}</span>
+                                                        </label>
+                                                    </li>
+                                                @endforeach
 
+                                            </ul>
+                                        </div>
+                                    </div>
 
                                     <div class="filter-block mb-20">
-                                        <h5 class="medium-heading mb-25">Salary Range</h5>
-                                        <div class="list-checkbox pb-20">
-                                            <div class="row position-relative mt-10 mb-20">
-                                                <div class="col-sm-12 box-slider-range">
-                                                    <div id="slider-range"></div>
-                                                </div>
-                                                <div class="box-input-money">
-                                                    <input class="input-disabled form-control min-value-money" type="text"
-                                                        name="min-value-money" disabled="disabled" value="">
-                                                    <input class="form-control min-value" type="hidden" name="min_salary"
-                                                        value="">
-                                                </div>
-                                            </div>
-                                            <div class="box-number-money">
-                                                <div class="row mt-30">
-                                                    <div class="col-sm-6 col-6"><span class="font-sm color-brand-1">{{ config('settings.site_currency_icon') }}0</span>
-                                                    </div>
-                                                    <div class="col-sm-6 col-6 text-end"><span
-                                                            class="font-sm color-brand-1">{{ config('settings.site_currency_icon') }}100000</span></div>
-                                                </div>
-                                            </div>
+                                        <h5 class="medium-heading mb-15">Organization</h5>
+                                        <div class="form-group">
+                                            <ul class="list-checkbox">
+                                                <li>
+                                                    <label class="d-flex">
+                                                        <input type="radio" name="organization" class="x-radio"
+                                                            value=""><span class="text-small">All</span>
+                                                    </label>
+                                                </li>
+                                                @foreach ($organizations as $organization)
+                                                    <li>
+                                                        <label class="d-flex">
+                                                            <input type="radio" @checked($organization->slug == request()->organization)
+                                                                name="organization" class="x-radio"
+                                                                value="{{ $organization->slug }}"><span
+                                                                class="text-small">{{ $organization->name }}</span><span
+                                                                class="number-item">{{ $organization->companies_count }}</span>
+                                                        </label>
+                                                    </li>
+                                                @endforeach
+
+                                            </ul>
                                         </div>
                                     </div>
-
-                                  
-
                                     <button class="submit btn btn-default mt-10 rounded-1 w-100"
-                                    type="submit">Search</button>
-
-
-
-
+                                        type="submit">Search</button>
                                 </form>
+
 
 
 
@@ -317,3 +285,7 @@
         })
     </script>
 @endpush
+
+
+
+

@@ -126,8 +126,8 @@ Route::group(
     }
 );
 
-Route::get('/companies', [FrontendCompanyPageController::class, 'index']);
-Route::get('/companies/{slug}', [CompanyPageController::class, 'shows'])->name('companies.shows');
+Route::get('/companies', [FrontendCompanyPageController::class, 'index'])->name('companies.index');
+Route::get('/companies/{slug}', [CompanyPageController::class, 'shows'])->name('companies.show');
 
 
 Route::get('/candidate', [CandidatePageController::class, 'Candidate']);

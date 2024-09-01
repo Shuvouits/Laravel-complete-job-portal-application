@@ -155,7 +155,7 @@ class JobController extends Controller
     public function edit(string $id)
     {
         $job = Job::findOrFail($id);
-        $companies = Company::where(['profile_completion' => 1, 'visiblity' => 1])->get();
+        $companies = Company::where(['profile_completion' => 1, 'visibility' => 1])->get();
         $categories = JobCategory::all();
         $countries = Country::all();
         $states = State::where('country_id', $job->country_id)->get();

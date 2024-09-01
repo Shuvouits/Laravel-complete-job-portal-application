@@ -27,7 +27,7 @@
                     <div class="row mt-10">
                         <div class="col-lg-8 col-md-12">
                             <img src="{{asset($company_data->logo)}}" style="height: 80px; object-fit: cover" />
-                            <h5 class="f-18">{{$company_data->name}} <span class="card-location font-regular ml-20">{{$company_data->countryData->name}}</span>
+                            <h5 class="f-18">{{$company_data->name}} <span class="card-location font-regular ml-20">{{$company_data->companyCountry->name}}</span>
                             </h5>
                             <p class="mt-5 font-md color-text-paragraph-2 mb-15">Our Mission to make working life simple</p>
                         </div>
@@ -205,7 +205,7 @@
                             <div class="sidebar-heading">
                                 <div class="avatar-sidebar">
                                     <div class="sidebar-info pl-0"><span class="sidebar-company">{{$company_data->name}}</span><span
-                                            class="card-location">{{$company_data->countryData->name}}</span></div>
+                                            class="card-location">{{$company_data->companyCountry->name}}</span></div>
                                 </div>
 
                             </div>
@@ -219,14 +219,14 @@
                                     <li>
                                         <div class="sidebar-icon-item"><i class="fi-rr-briefcase"></i></div>
                                         <div class="sidebar-text-info"><span class="text-description">Industry Type
-                                            </span><strong class="small-heading">{{$company_data->industry->name}}</strong>
+                                            </span><strong class="small-heading">{{$company_data->industryType->name}}</strong>
                                         </div>
                                     </li>
 
                                     <li>
                                         <div class="sidebar-icon-item"><i class="fi-rr-briefcase"></i></div>
                                         <div class="sidebar-text-info"><span class="text-description">Organization Type
-                                            </span><strong class="small-heading">{{$company_data->organization->name}}</strong>
+                                            </span><strong class="small-heading">{{$company_data->organizationType->name}}</strong>
                                         </div>
                                     </li>
                                     <li>

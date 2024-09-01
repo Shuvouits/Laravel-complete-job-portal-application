@@ -76,11 +76,11 @@
                                                                 alt="joblist"></div>
                                                         <div class="right-info">
                                                             <a class="name-job"
-                                                                href="{{ route('companies.shows', $job->company->slug) }}">{{ $job->company->name }}
+                                                                href="{{ route('companies.show', $job->company->slug) }}">{{ $job->company->name }}
                                                             </a>
                                                             <span class="location-small">
 
-                                                                {{ formatLocation($job->company->countryData->name, $job->company?->companyState?->name, $job->company?->companyCity?->name) }}
+                                                                {{ formatLocation($job->company->companyCountry->name, $job->company?->companyState?->name, $job->company?->companyCity?->name) }}
 
 
                                                             </span>
@@ -309,7 +309,7 @@
                     </div>
 
 
-                    
+
                 </div>
             </div>
         </section>
