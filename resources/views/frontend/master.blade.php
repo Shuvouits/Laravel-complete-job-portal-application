@@ -28,6 +28,9 @@
     <!-- JS Libraies -->
     <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 
+     <!-- Include Notyf CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
 
 
     <title>Ultimate Job Portal Website</title>
@@ -98,6 +101,9 @@
     <script src="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <!---social share-->
     <script src="https://cdn.jsdelivr.net/npm/goodshare.js@6/goodshare.min.js"></script>
+
+     <!-- Include Notyf JS -->
+     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 
 
 

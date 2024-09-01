@@ -67,14 +67,17 @@
                                             src="{{ asset('frontend/assets/imgs/page/job-single/job-level.svg') }}"
                                             alt="joblist">
                                     </div>
-                                    <div class="sidebar-text-info ml-10"><span class="text-description joblevel-icon mb-10">Job
-                                            Role</span><strong class="small-heading">{{ $job->jobRole->name }}</strong></div>
+                                    <div class="sidebar-text-info ml-10"><span
+                                            class="text-description joblevel-icon mb-10">Job
+                                            Role</span><strong class="small-heading">{{ $job->jobRole->name }}</strong>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-25">
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/salary.svg') }}" alt="joblist">
+                                            src="{{ asset('frontend/assets/imgs/page/job-single/salary.svg') }}"
+                                            alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
                                             class="text-description salary-icon mb-10">Salary</span><strong
@@ -103,8 +106,10 @@
                                             src="{{ asset('frontend/assets/imgs/page/job-single/job-type.svg') }}"
                                             alt="joblist">
                                     </div>
-                                    <div class="sidebar-text-info ml-10"><span class="text-description jobtype-icon mb-10">Job
-                                            type</span><strong class="small-heading">{{ $job->jobType->name }}</strong></div>
+                                    <div class="sidebar-text-info ml-10"><span
+                                            class="text-description jobtype-icon mb-10">Job
+                                            type</span><strong class="small-heading">{{ $job->jobType->name }}</strong>
+                                    </div>
                                 </div>
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
@@ -169,10 +174,10 @@
                                     <figure><img alt="joblist" src="{{ asset($job->company->logo) }}"></figure>
                                     <div class="sidebar-info"><span
                                             class="sidebar-company">{{ $job->company->name }}</span><span
-                                            class="card-location">{{ formatLocation($job->company->countryData->name, $job->company->companyState->name) }}</span>
+                                            class="card-location">{{ formatLocation($job->company->companyCountry->name, $job->company->companyState->name) }}</span>
                                         @if ($openJobs > 0)
                                             <a class="link-underline mt-15"
-                                                href="{{ route('companies.shows', $job->company->slug) }}">{{ $openJobs }}
+                                                href="{{ route('companies.show', $job->company->slug) }}">{{ $openJobs }}
                                                 Open Jobs</a>
                                         @endif
                                     </div>
@@ -234,12 +239,12 @@
         </section>
 
     </main>
-
 @endsection
 
 @push('scripts')
     <script>
         $(document).ready(function() {
+            const notyf = new Notyf();
             $('.apply-now').on('click', function() {
                 $.ajax({
                     method: 'POST',
@@ -252,13 +257,17 @@
                     },
                     success: function(response) {
                         notyf.success(response.message);
+                    
                     },
+
                     error: function(xhr, status, error) {
                         let erorrs = xhr.responseJSON.errors;
                         $.each(erorrs, function(index, value) {
                             notyf.error(value[index]);
                         });
                     }
+
+
                 })
             })
         })

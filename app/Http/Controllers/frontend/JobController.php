@@ -56,7 +56,7 @@ class JobController extends Controller
         }
 
 
-        $companies = Company::where(['profile_completion' => 1, 'visiblity' => 1])->get();
+        $companies = Company::where(['profile_completion' => 1, 'visibility' => 1])->get();
         $categories = JobCategory::all();
         $countries = Country::all();
         $salaryTypes = SalaryType::all();
@@ -227,7 +227,7 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
 
         abort_if($job->company_id !== auth()->user()->company->id, 404);
-        
+
         $job->title = $request->title;
         $job->job_category_id = $request->category;
         $job->vacancies = $request->vacancies;

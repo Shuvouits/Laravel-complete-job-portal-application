@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppliedJob;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Job;
@@ -10,6 +11,7 @@ use App\Models\JobCategory;
 use App\Models\JobType;
 use App\Models\State;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class FrontendJobPageController extends Controller
 {
@@ -18,7 +20,7 @@ class FrontendJobPageController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $countries = Country::all();
         $jobCategories = JobCategory::withCount(['jobs' => function($query) {
             $query->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
@@ -100,8 +102,7 @@ class FrontendJobPageController extends Controller
     {
         $job = Job::where('slug', $slug)->firstOrFail();
         $openJobs = Job::where('company_id', $job->company->id)->where('status', 'active')->where('deadline', '>=', date('Y-m-d'))->count();
-       // $alreadyApplied = ::where(['job_id' => $job->id, 'candidate_id' => auth()->user()?->id])->exists();
-       $alreadyApplied = Null;
+        $alreadyApplied = AppliedJob::where(['job_id' => $job->id, 'candidate_id' => auth()->user()?->id])->exists();
         return view('frontend.pages.job-show', compact('job', 'openJobs', 'alreadyApplied'));
     }
 
@@ -128,4 +129,23 @@ class FrontendJobPageController extends Controller
     {
         //
     }
+
+    function applyJob(string $id) {
+        if(!auth()->check()) {
+            throw ValidationException::withMessages(['Please login for apply to the job.']);
+        }
+        $alreadyApplied = AppliedJob::where(['job_id' => $id, 'candidate_id' => auth()->user()?->id])->exists();
+        if($alreadyApplied) {
+            throw ValidationException::withMessages(['You already applied to this job.']);
+        }
+
+        $applyJob = new AppliedJob();
+        $applyJob->job_id = $id;
+        $applyJob->candidate_id = auth()->user()->id;
+        $applyJob->save();
+
+        return response(['message' => 'Applied Successfully!'], 200);
+    }
+
+
 }

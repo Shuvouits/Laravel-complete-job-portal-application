@@ -47,7 +47,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        $companies = Company::where(['profile_completion' => 1, 'visiblity' => 1])->get();
+        $companies = Company::where(['profile_completion' => 1, 'visibility' => 1])->get();
         $categories = JobCategory::all();
         $countries = Country::all();
         $salaryTypes = SalaryType::all();

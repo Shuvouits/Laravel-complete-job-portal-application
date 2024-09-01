@@ -9,7 +9,7 @@
       <div class="container">
         <div class="row">
 
-         @include('frontend.body.sidebar')
+         @include('frontend.candidate-dashboard.sidebar')
 
 
           <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
