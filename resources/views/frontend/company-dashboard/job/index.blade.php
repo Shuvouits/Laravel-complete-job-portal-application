@@ -23,10 +23,10 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-12">
-                            <h2 class="mb-20">Orders</h2>
+                            <h2 class="mb-20">Jobs</h2>
                             <ul class="breadcrumbs">
-                                <li><a class="home-icon" href="index.html">Home</a></li>
-                                <li>Orders</li>
+                                <li><a href="{{route('company.dashboard')}}" class="home-icon">Home</a></li>
+                                <li>Jobs</li>
                             </ul>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                                 <td>
                                                     <div class="dropdown">
 
-                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                        <button class="btn btn-success dropdown-toggle" type="button"
                                                             id="dropdownMenuButton1" data-bs-toggle="dropdown"
                                                             aria-expanded="false">
                                                             <i class="fas fa-cog"></i>

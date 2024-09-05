@@ -9838,3 +9838,9 @@ ul.timeline>li:before {
     padding: 8px 15px 7px 15px;
     margin-left: 5px;
 }
+
+/*personal change */
+
+.breadcrumbs li a:hover {
+   color: #1ca774;
+}
