@@ -41,6 +41,8 @@ class BlogController extends Controller
     public function store(BlogCreateRequest $request)
     {
 
+
+
         $imagePath = $this->uploadFile($request, 'image');
 
 

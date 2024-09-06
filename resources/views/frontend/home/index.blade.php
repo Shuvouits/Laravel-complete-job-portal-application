@@ -6,16 +6,16 @@
 
     <div class="bg-homepage1"></div>
 
-    @include('frontend.home.body.banner')
+    @include('frontend.home.section.hero-section')
 
     <div class="mt-100"></div>
 
-    @include('frontend.home.body.category')
+    @include('frontend.home.section.category')
 
-    @include('frontend.home.body.featured_job')
+    @include('frontend.home.section.featured_job')
 
-    @include('frontend.home.body.why_choose')
-    
+    @include('frontend.home.section.why_choose')
+
 
     <section class="section-box overflow-visible mt-100 mb-100">
         <div class="container">
@@ -82,15 +82,15 @@
         </div>
     </section>
 
-    @include('frontend.home.body.top_recruiter')
+    @include('frontend.home.section.top_recruiter')
 
-    @include('frontend.home.body.pricing_plan')
+    @include('frontend.home.section.pricing_plan')
 
-    @include('frontend.home.body.job_location')
+    @include('frontend.home.section.job_location')
 
-    @include('frontend.home.body.client')
+    @include('frontend.home.section.client')
 
-    @include('frontend.home.body.news_blog')
+    @include('frontend.home.section.news_blog')
 
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
 </main>

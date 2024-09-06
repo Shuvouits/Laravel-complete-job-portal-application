@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\admin\EducationController;
+use App\Http\Controllers\admin\HeroController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
 use App\Http\Controllers\admin\JobCategoryController;
@@ -142,6 +143,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Blogs */
     Route::resource('blogs', BlogController::class);
+
+    /** Hero Section */
+    Route::resource('hero', HeroController::class);
 
 
 });
