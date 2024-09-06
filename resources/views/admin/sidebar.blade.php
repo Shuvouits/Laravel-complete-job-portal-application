@@ -93,6 +93,11 @@
 
             </li>
 
+            <li class="dropdown {{setSidebarActive(['admin.blogs*'])}} ">
+                <a href="{{route('admin.blogs.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Blogs</span></a>
+
+            </li>
+
             <li class="dropdown {{setSidebarActive(['admin.payment*'])}} ">
                 <a href="{{route('admin.payment')}}" class="nav-link "><i class="fas fa-fire"></i><span>Payment Setting</span></a>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\admin\EducationController;
@@ -138,6 +139,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
       /** Jobs  */
     Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.update');
+
+    /** Blogs */
+    Route::resource('blogs', BlogController::class);
 
 
 });
