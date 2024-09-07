@@ -32,6 +32,8 @@ use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
 use App\Http\Controllers\admin\StateController;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\admin\WhyChooseUs;
+use App\Http\Controllers\admin\WhyChooseUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -146,6 +148,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Hero Section */
     Route::resource('hero', HeroController::class);
+
+     /** Why Choose Us Section */
+    Route::resource('why-choose-us', WhyChooseUsController::class);
 
 
 });

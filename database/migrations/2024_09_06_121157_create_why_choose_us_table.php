@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('why_choose_us', function (Blueprint $table) {
             $table->id();
+            $table->string('icon_one')->nullable();
+            $table->string('title_one')->nullable();
+            $table->string('sub_title_one')->nullable();
+
+            $table->string('icon_two')->nullable();
+            $table->string('title_two')->nullable();
+            $table->string('sub_title_two')->nullable();
+
+            $table->string('icon_three')->nullable();
+            $table->string('title_three')->nullable();
+            $table->string('sub_title_three')->nullable();
+
+
             $table->timestamps();
         });
     }

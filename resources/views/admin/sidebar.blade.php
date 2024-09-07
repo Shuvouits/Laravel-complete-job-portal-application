@@ -113,6 +113,12 @@
 
             </li>
 
+            <li class="dropdown {{setSidebarActive(['admin.why-choose-us.*'])}} ">
+                <a href="{{route('admin.why-choose-us.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Why Choose Us</span></a>
+
+            </li>
+
+
 
 
         </ul>
