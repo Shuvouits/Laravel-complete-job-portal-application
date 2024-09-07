@@ -118,6 +118,11 @@
 
             </li>
 
+            <li class="dropdown {{setSidebarActive(['admin.learn-more.*'])}} ">
+                <a href="{{route('admin.learn-more.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Learn More</span></a>
+
+            </li>
+
 
 
 

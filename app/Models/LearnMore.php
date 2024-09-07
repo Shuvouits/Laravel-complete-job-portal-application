@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LearnMore extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'id', 'title', 'main_title', 'sub_title', 'url', 'image'
+    ];
 }

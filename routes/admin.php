@@ -22,6 +22,7 @@ use App\Http\Controllers\admin\JobExperienceController;
 use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\admin\JobTypesController;
 use App\Http\Controllers\admin\LanguageController;
+use App\Http\Controllers\admin\LearnMoreController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
@@ -151,6 +152,8 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
      /** Why Choose Us Section */
     Route::resource('why-choose-us', WhyChooseUsController::class);
+
+    Route::resource('learn-more', LearnMoreController::class);
 
 
 });

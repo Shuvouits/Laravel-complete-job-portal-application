@@ -16,6 +16,8 @@
 
     @include('frontend.home.section.why_choose')
 
+    @include('frontend.home.section.learn-more-section')
+
 
     <section class="section-box overflow-visible mt-100 mb-100">
         <div class="container">
