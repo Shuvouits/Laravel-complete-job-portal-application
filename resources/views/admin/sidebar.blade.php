@@ -71,6 +71,26 @@
               </ul>
             </li>
 
+            <li class="dropdown {{ setSidebarActive([
+                'admin.hero.index',
+                'admin.why-choose-us.index',
+                'admin.learn-more.*',
+                'admin.counter.*',
+                'admin.job-location.*',
+                'admin.reviews.*',
+                ]) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-puzzle-piece"></i>
+                    <span>Sections</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.hero.index']) }}"><a class="nav-link" href="{{ route('admin.hero.index') }}">Hero</a></li>
+                    <li class="{{ setSidebarActive(['admin.why-choose-us.*']) }}"><a class="nav-link" href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a></li>
+                    <li class="{{ setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link" href="{{ route('admin.learn-more.index') }}">Learn More</a></li>
+                    <li class="{{ setSidebarActive(['admin.counter.*']) }}"><a class="nav-link" href="{{ route('admin.counter.index') }}">Counter</a></li>
+                    <li class="{{ setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link" href="{{ route('admin.job-location.index') }}">Job Locations</a></li>
+                    <li class="{{ setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link" href="{{ route('admin.reviews.index') }}">Reviews</a></li>
+                </ul>
+            </li>
+
             <li class="dropdown {{setSidebarActive(['admin.countries*', 'admin.states*', 'admin.cities*'])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Locations</span></a>
 
@@ -98,10 +118,6 @@
 
             </li>
 
-            <li class="dropdown {{setSidebarActive(['admin.hero*'])}} ">
-                <a href="{{route('admin.hero.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Hero</span></a>
-
-            </li>
 
             <li class="dropdown {{setSidebarActive(['admin.payment*'])}} ">
                 <a href="{{route('admin.payment')}}" class="nav-link "><i class="fas fa-fire"></i><span>Payment Setting</span></a>
@@ -113,15 +129,11 @@
 
             </li>
 
-            <li class="dropdown {{setSidebarActive(['admin.why-choose-us.*'])}} ">
-                <a href="{{route('admin.why-choose-us.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Why Choose Us</span></a>
 
-            </li>
 
-            <li class="dropdown {{setSidebarActive(['admin.learn-more.*'])}} ">
-                <a href="{{route('admin.learn-more.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Learn More</span></a>
 
-            </li>
+
+
 
 
 

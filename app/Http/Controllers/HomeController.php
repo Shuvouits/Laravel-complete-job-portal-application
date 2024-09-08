@@ -35,6 +35,8 @@ class HomeController extends Controller
         $featuredCategories = JobCategory::where('show_at_featured', 1)->take(10)->get();
         $whyChooseUs = WhyChooseUs::first();
 
-        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs'));
+        $counter = Counter::first();
+
+        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter'));
     }
 }

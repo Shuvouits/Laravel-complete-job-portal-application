@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CityController;
+use App\Http\Controllers\admin\CounterController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\admin\EducationController;
 use App\Http\Controllers\admin\HeroController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\admin\JobCategoryController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\JobExperienceController;
+use App\Http\Controllers\admin\JobLocationController;
 use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\admin\JobTypesController;
 use App\Http\Controllers\admin\LanguageController;
@@ -28,6 +30,7 @@ use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
+use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SalaryTypeController;
 use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
@@ -154,6 +157,14 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('why-choose-us', WhyChooseUsController::class);
 
     Route::resource('learn-more', LearnMoreController::class);
+
+     /** Counter Section */
+     Route::resource('counter', CounterController::class);
+     /** Job Location Section */
+     Route::resource('job-location', JobLocationController::class);
+     /** review Section */
+     Route::resource('reviews', ReviewController::class);
+
 
 
 });
