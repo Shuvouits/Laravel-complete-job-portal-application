@@ -42,6 +42,8 @@ class HomeController extends Controller
                 ->where('deadline', '>=', date('Y-m-d'));
         }])->where(['profile_completion' => 1, 'visibility' => 1])->latest()->take(45)->get();
 
-        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies'));
+        $locations = JobLocation::latest()->take(8)->get();
+
+        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations'));
     }
 }
