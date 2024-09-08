@@ -37,6 +37,11 @@ class HomeController extends Controller
 
         $counter = Counter::first();
 
-        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter'));
+        $companies = Company::with('companyCountry', 'jobs')->select('id', 'logo', 'name', 'slug', 'country', 'profile_completion', 'visibility')->withCount(['jobs' => function ($query) {
+            $query->where(['status' => 'active'])
+                ->where('deadline', '>=', date('Y-m-d'));
+        }])->where(['profile_completion' => 1, 'visibility' => 1])->latest()->take(45)->get();
+
+        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies'));
     }
 }
