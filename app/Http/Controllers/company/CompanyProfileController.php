@@ -24,13 +24,13 @@ class CompanyProfileController extends Controller
     public function CompanyProfile()
     {
         $companyInfo = Company::where('user_id', auth()->user()->id)->first();
-        $industryType = IndustryType::all();
-        $organizationType = OrganizationType::all();
-        $teamSize = TeamSize::all();
-        $country = Country::all();
-        $states = State::all();
-        $cities = City::where('state_id', $companyInfo->state)->get();
-        return view('frontend.company-dashboard.profile.index', compact('companyInfo','industryType', 'organizationType', 'teamSize', 'country', 'states','cities'));
+        $industryTypes = IndustryType::all();
+        $organizationTypes = OrganizationType::all();
+        $teamSizes = TeamSize::all();
+        $countries = Country::all();
+        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo?->country)->get();
+        $cities = City::select(['id', 'name', 'state_id', 'country_id'])->where('state_id', $companyInfo?->state)->get();
+        return view('frontend.company-dashboard.profile.index', compact('companyInfo','industryTypes', 'organizationTypes', 'teamSizes', 'countries', 'states','cities'));
     }
 
     public function CompanyInfo(CompanyInfoUpdateRequest $request)

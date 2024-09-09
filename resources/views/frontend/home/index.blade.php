@@ -90,7 +90,7 @@
 
     @include('frontend.home.section.job_location')
 
-    @include('frontend.home.section.client')
+    @include('frontend.home.section.review-section')
 
     @include('frontend.home.section.news_blog')
 

@@ -13,7 +13,7 @@ use LaravelDaily\Invoices\Classes\Party;
 class CompanyOrderController extends Controller
 {
     function index(){
-        $orders = Order::where('company_id', auth()->user()->company->id)->paginate(20);
+        $orders = Order::where('company_id', auth()->user()->company?->id)->paginate(20);
         return view('frontend.company-dashboard.order.index', compact('orders'));
     }
 

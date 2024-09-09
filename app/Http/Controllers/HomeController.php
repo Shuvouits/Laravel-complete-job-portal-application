@@ -43,7 +43,8 @@ class HomeController extends Controller
         }])->where(['profile_completion' => 1, 'visibility' => 1])->latest()->take(45)->get();
 
         $locations = JobLocation::latest()->take(8)->get();
+        $reviews = Review::latest()->take(10)->get();
 
-        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations'));
+        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations', 'reviews'));
     }
 }

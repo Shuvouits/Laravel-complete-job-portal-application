@@ -1,5 +1,17 @@
 @extends('frontend.master')
 
+<style>
+    .nav-tabs .nav-link.active {
+        background: #05264e !important;
+        padding: 10px;
+        color: white !important;
+    }
+    .nav-tabs .nav-link{
+        border: none !important;
+        color: black !important;
+    }
+</style>
+
 @section('main')
     <main class="main">
 
@@ -132,6 +144,7 @@
                                             <div class="row">
 
 
+                                               {{--
 
                                                 <div class="col-md-4">
 
@@ -152,21 +165,35 @@
 
                                                 </div>
 
+                                               --}}
+
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10">Industry Type *</label>
+                                                        <select name="industry_type" id=""
+                                                            class="form-control form-icons select-active {{ $errors->has('industry_type') ? 'is-invalid' : '' }}">
+                                                            <option value="">Select</option>
+                                                            @foreach ($industryTypes as $industryType)
+                                                            <option @selected($industryType->id === $companyInfo?->industry_type_id) value="{{ $industryType->id }}">{{ $industryType->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
+                                                    </div>
+                                                </div>
+
 
 
 
                                                 <div class="col-md-4">
-                                                    <div class="form-group  select-style">
-                                                        <label class="font-sm color-text-mutted mb-10">Organization
-                                                            Type*</label>
-                                                        <select class="form-control  select-active"
-                                                            name="organization_type">
-                                                            @foreach ($organizationType as $organization)
-                                                                <option value="{{ $organization->id }}"
-                                                                    {{ $organization->id == $companyInfo->organization_type_id ? 'selected' : '' }}>
-                                                                    {{ $organization->name }}</option>
+                                                    <div class="form-group select-style">
+                                                        <label class="font-sm color-text-mutted mb-10">Organization Type *</label>
+                                                        <select name="organization_type" id=""
+                                                            class="form-control form-icons select-active {{ $errors->has('organization_type') ? 'is-invalid' : '' }}">
+                                                            <option value="">Select</option>
+                                                            @foreach ($organizationTypes as $organizationType)
+                                                            <option @selected($organizationType->id === $companyInfo?->organization_type_id) value="{{ $organizationType->id }}">{{ $organizationType->name }}</option>
                                                             @endforeach
-
                                                         </select>
                                                         <x-input-error :messages="$errors->get('organization_type')" class="mt-2" />
 
@@ -175,16 +202,13 @@
 
                                                 <div class="col-md-4">
                                                     <div class="form-group select-style">
-                                                        <label class="font-sm color-text-mutted mb-10" for="team_size">Team
-                                                            Size*</label>
-                                                        <select class="form-control form-icons select-active"
-                                                            name="team_size">
-                                                            @foreach ($teamSize as $team)
-                                                                <option value="{{ $team->id }}"
-                                                                    {{ $team->id == $companyInfo->team_size_id ? 'selected' : '' }}>
-                                                                    {{ $team->name }}</option>
+                                                        <label class="font-sm color-text-mutted mb-10">Team Size *</label>
+                                                        <select name="team_size" id=""
+                                                            class="form-control form-icons select-active {{ $errors->has('team_size') ? 'is-invalid' : '' }}">
+                                                            <option value="">Select</option>
+                                                            @foreach ($teamSizes as $teamSize)
+                                                            <option @selected($teamSize->id === $companyInfo?->team_size_id) value="{{ $teamSize->id }}">{{ $teamSize->name }}</option>
                                                             @endforeach
-
                                                         </select>
                                                         <x-input-error :messages="$errors->get('team_size')" class="mt-2" />
 
@@ -244,16 +268,14 @@
 
                                                 <div class="col-md-4">
                                                     <div class="form-group select-style">
-                                                        <label class="font-sm color-text-mutted mb-10"
-                                                            for="country">Country*</label>
-                                                        <select class="form-control form-select select-active country"
-                                                            name="country">
-                                                            @foreach ($country as $country)
-                                                                <option value="{{ $country->id }}"
-                                                                    {{ $country->id == $companyInfo->country ? 'selected' : '' }}>
-                                                                    {{ $country->name }}</option>
+                                                        <label class="font-sm color-text-mutted mb-10">Country *</label>
+                                                        <select name="country" id=""
+                                                            class="form-control form-icons country select-active {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                                                            value="{{ $companyInfo?->country }}">
+                                                            <option value="">Select</option>
+                                                            @foreach ($countries as $country)
+                                                                <option @selected($country->id === $companyInfo?->country) value="{{ $country->id }}">{{ $country->name }}</option>
                                                             @endforeach
-
                                                         </select>
                                                         <x-input-error :messages="$errors->get('country')" class="mt-2" />
 
