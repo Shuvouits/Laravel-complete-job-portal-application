@@ -71,26 +71,6 @@
               </ul>
             </li>
 
-            <li class="dropdown {{ setSidebarActive([
-                'admin.hero.index',
-                'admin.why-choose-us.index',
-                'admin.learn-more.*',
-                'admin.counter.*',
-                'admin.job-location.*',
-                'admin.reviews.*',
-                ]) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-puzzle-piece"></i>
-                    <span>Sections</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ setSidebarActive(['admin.hero.index']) }}"><a class="nav-link" href="{{ route('admin.hero.index') }}">Hero</a></li>
-                    <li class="{{ setSidebarActive(['admin.why-choose-us.*']) }}"><a class="nav-link" href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a></li>
-                    <li class="{{ setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link" href="{{ route('admin.learn-more.index') }}">Learn More</a></li>
-                    <li class="{{ setSidebarActive(['admin.counter.*']) }}"><a class="nav-link" href="{{ route('admin.counter.index') }}">Counter</a></li>
-                    <li class="{{ setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link" href="{{ route('admin.job-location.index') }}">Job Locations</a></li>
-                    <li class="{{ setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link" href="{{ route('admin.reviews.index') }}">Reviews</a></li>
-                </ul>
-            </li>
-
             <li class="dropdown {{setSidebarActive(['admin.countries*', 'admin.states*', 'admin.cities*'])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Locations</span></a>
 
@@ -113,6 +93,38 @@
 
             </li>
 
+            <li class="dropdown {{ setSidebarActive([
+                'admin.hero.index',
+                'admin.why-choose-us.index',
+                'admin.learn-more.*',
+                'admin.counter.*',
+                'admin.job-location.*',
+                'admin.reviews.*',
+                ]) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-puzzle-piece"></i>
+                    <span>Sections</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.hero.index']) }}"><a class="nav-link" href="{{ route('admin.hero.index') }}">Hero</a></li>
+                    <li class="{{ setSidebarActive(['admin.why-choose-us.*']) }}"><a class="nav-link" href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a></li>
+                    <li class="{{ setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link" href="{{ route('admin.learn-more.index') }}">Learn More</a></li>
+                    <li class="{{ setSidebarActive(['admin.counter.*']) }}"><a class="nav-link" href="{{ route('admin.counter.index') }}">Counter</a></li>
+                    <li class="{{ setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link" href="{{ route('admin.job-location.index') }}">Job Locations</a></li>
+                    <li class="{{ setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link" href="{{ route('admin.reviews.index') }}">Reviews</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown {{ setSidebarActive(['admin.about-us.*', 'admin.page-builder.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file"></i>
+                    <span>Pages</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.about-us.*']) }}"><a class="nav-link" href="{{ route('admin.about-us.index') }}">About us</a></li>
+                    <li class="{{ setSidebarActive(['admin.page-builder.*']) }}"><a class="nav-link" href="{{ route('admin.page-builder.index') }}">Page Builder</a></li>
+
+                </ul>
+            </li>
+
+
+
             <li class="dropdown {{setSidebarActive(['admin.blogs*'])}} ">
                 <a href="{{route('admin.blogs.index')}}" class="nav-link "><i class="fas fa-fire"></i><span>Blogs</span></a>
 
@@ -128,6 +140,8 @@
                 <a href="{{route('admin.site-settings')}}" class="nav-link "><i class="fas fa-fire"></i><span>Site Setting</span></a>
 
             </li>
+
+
 
 
 

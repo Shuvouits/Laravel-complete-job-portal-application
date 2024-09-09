@@ -8,6 +8,7 @@ use App\Http\Controllers\candidate\CandidateProfileController;
 use App\Http\Controllers\CandidateEducationController;
 use App\Http\Controllers\company\CompanyPageController;
 use App\Http\Controllers\company\CompanyProfileController;
+use App\Http\Controllers\frontend\AboutUsPageController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\frontend\CandidateMyJobController;
@@ -155,5 +156,8 @@ Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])
 /** Blog Routes */
 Route::get('blogs', [FrontendBlogPageController::class, 'index'])->name('blogs.index');
 Route::get('blogs/{slug}', [FrontendBlogPageController::class, 'show'])->name('blogs.show');
+
+/** About Routes */
+Route::get('about-us', [AboutUsPageController::class, 'index'])->name('about.index');
 
 

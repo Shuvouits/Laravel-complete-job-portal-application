@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CounterController;
 use App\Http\Controllers\admin\CountryController;
+use App\Http\Controllers\admin\CustomPageBuilderController;
 use App\Http\Controllers\admin\EducationController;
 use App\Http\Controllers\admin\HeroController;
 use App\Http\Controllers\Admin\IndustryTypeController;
@@ -165,6 +167,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
      /** review Section */
      Route::resource('reviews', ReviewController::class);
 
+     /** About us page route */
+    Route::resource('about-us', AboutController::class);
+
+     /** Custom Page Builder route */
+    Route::resource('page-builder', CustomPageBuilderController::class);
 
 
 });
