@@ -92,7 +92,7 @@
 
     @include('frontend.home.section.review-section')
 
-    @include('frontend.home.section.news_blog')
+    @include('frontend.home.section.blog-section')
 
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
 </main>

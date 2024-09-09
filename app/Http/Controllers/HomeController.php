@@ -45,6 +45,10 @@ class HomeController extends Controller
         $locations = JobLocation::latest()->take(8)->get();
         $reviews = Review::latest()->take(10)->get();
 
-        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations', 'reviews'));
+        $blogs = Blog::latest()->take(6)->get();
+
+
+
+        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations', 'reviews', 'blogs'));
     }
 }
