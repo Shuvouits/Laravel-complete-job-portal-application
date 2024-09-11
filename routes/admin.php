@@ -27,6 +27,7 @@ use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\admin\JobTypesController;
 use App\Http\Controllers\admin\LanguageController;
 use App\Http\Controllers\admin\LearnMoreController;
+use App\Http\Controllers\admin\NewsletterController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
@@ -172,6 +173,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
      /** Custom Page Builder route */
     Route::resource('page-builder', CustomPageBuilderController::class);
+
+     /** Newsletter route */
+     Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+     Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
+     Route::post('newsletter', [NewsletterController::class, 'sendMail'])->name('newsletter-send-mail');
 
 
 });

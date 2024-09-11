@@ -18,4 +18,8 @@ class Notify{
         return notify()->error($error, 'Error!');
     }
 
+    static function successNotification(string $message) {
+        return notify()->success($message, 'Success!');
+    }
+
 }

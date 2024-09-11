@@ -93,6 +93,13 @@
 
             </li>
 
+            <li class="{{ setSidebarActive(['admin.newsletter.*']) }}">
+                <a class="nav-link" href="{{ route('admin.newsletter.index') }}">
+                    <i class="fas fa-mail-bulk"></i>
+                    <span>Newsletter</span>
+                </a>
+            </li>
+
             <li class="dropdown {{ setSidebarActive([
                 'admin.hero.index',
                 'admin.why-choose-us.index',
@@ -140,6 +147,8 @@
                 <a href="{{route('admin.site-settings')}}" class="nav-link "><i class="fas fa-fire"></i><span>Site Setting</span></a>
 
             </li>
+
+            
 
 
 

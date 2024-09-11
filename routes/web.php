@@ -20,6 +20,7 @@ use App\Http\Controllers\frontend\FrontendCandidatePageController;
 use App\Http\Controllers\frontend\FrontendCompanyPageController;
 use App\Http\Controllers\frontend\FrontendJobPageController;
 use App\Http\Controllers\frontend\JobController;
+use App\Http\Controllers\frontend\NewsletterController;
 use App\Http\Controllers\frontend\PlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -168,3 +169,6 @@ Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail'
 
 /** Custom Page Routes */
 Route::get('page/{slug}', [HomeController::class, 'customPage'])->name('custom-page');
+
+/** Newsletter Routes */
+Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
