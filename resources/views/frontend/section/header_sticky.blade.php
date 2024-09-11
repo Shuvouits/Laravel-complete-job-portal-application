@@ -18,17 +18,7 @@
 
                         <li class="has-children"><a href="{{route('contact.index')}}">Contact Us</a></li>
 
-                        <li class="has-children"><a href="blog-grid.html">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="page-about.html">About Us</a></li>
-                                <li><a href="page-pricing.html">Pricing Plan</a></li>
-                                <li><a href="page-contact.html">Contact Us</a></li>
-                                <li><a href="/register">Register</a></li>
-                                <li><a href="/login">Signin</a></li>
-                                <li><a href="page-reset-password.html">Reset Password</a></li>
-                                <li><a href="blog-details.html">Blog Single</a></li>
-                            </ul>
-                        </li>
+                       
                         <li class="has-children"><a href="{{route('blogs.index')}}">Blog</a></li>
                     </ul>
                 </nav>
