@@ -10,10 +10,14 @@
                     <ul class="main-menu">
                         <li class="has-children"><a class="active" href="/">Home</a></li>
                         <li class="has-children"><a href="{{route('jobs.index')}}">Find a Job</a></li>
-                        <li class="has-children"><a href="{{route('about.index')}}">About Us</a></li>
+
                         <li class="has-children"><a href="/companies">Recruiters</a></li>
                         <li class="has-children"><a href="/candidate">Candidates</a></li>
                         <li class="has-children"><a href="/pricing-plan">Pricing Plan</a></li>
+                        <li class="has-children"><a href="{{route('about.index')}}">About Us</a></li>
+
+                        <li class="has-children"><a href="{{route('contact.index')}}">Contact Us</a></li>
+
                         <li class="has-children"><a href="blog-grid.html">Pages</a>
                             <ul class="sub-menu">
                                 <li><a href="page-about.html">About Us</a></li>

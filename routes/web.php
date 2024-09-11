@@ -14,6 +14,7 @@ use App\Http\Controllers\frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\frontend\CandidateMyJobController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\CompanyOrderController;
+use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\FrontendBlogPageController;
 use App\Http\Controllers\frontend\FrontendCandidatePageController;
 use App\Http\Controllers\frontend\FrontendCompanyPageController;
@@ -161,3 +162,6 @@ Route::get('blogs/{slug}', [FrontendBlogPageController::class, 'show'])->name('b
 Route::get('about-us', [AboutUsPageController::class, 'index'])->name('about.index');
 
 
+/** Count Routes */
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail');
