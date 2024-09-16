@@ -89,7 +89,7 @@ class JobTypesController extends Controller
      */
     public function destroy(string $id)
     {
-        
+
         try {
             JobType::findOrFail($id)->delete();
             Notify::deletedNotification();

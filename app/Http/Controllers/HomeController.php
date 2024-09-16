@@ -48,8 +48,7 @@ class HomeController extends Controller
 
         $blogs = Blog::latest()->take(6)->get();
 
-
-
+       
         return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations', 'reviews', 'blogs'));
     }
 

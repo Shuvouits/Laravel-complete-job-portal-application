@@ -7,20 +7,33 @@
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
+
+                    @php
+                        $navigationMenu = \Menu::getByName('navigation_menu');
+
+                    @endphp
+
                     <ul class="main-menu">
-                        <li class="has-children"><a class="active" href="/">Home</a></li>
-                        <li class="has-children"><a href="{{route('jobs.index')}}">Find a Job</a></li>
+                        @foreach ($navigationMenu as $menu)
+                            @if ($menu['child'])
+                                <li class="has-children"><a href="{{ $menu['link'] }}">{{ $menu['label'] }}</a>
+                                    <ul class="sub-menu">
+                                        @foreach ($menu['child'] as $childMenu)
+                                            <li><a href="{{ $childMenu['link'] }}">{{ $childMenu['label'] }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                            <li class="has-children"><a class=""
+                                href="{{ $menu['link'] }}">{{ $menu['label'] }}</a></li>
+                            @endif
+                        @endforeach
 
-                        <li class="has-children"><a href="/companies">Recruiters</a></li>
-                        <li class="has-children"><a href="/candidate">Candidates</a></li>
-                        <li class="has-children"><a href="/pricing-plan">Pricing Plan</a></li>
-                        <li class="has-children"><a href="{{route('about.index')}}">About Us</a></li>
-
-                        <li class="has-children"><a href="{{route('contact.index')}}">Contact Us</a></li>
-
-                       
-                        <li class="has-children"><a href="{{route('blogs.index')}}">Blog</a></li>
                     </ul>
+
+
+
+
                 </nav>
                 <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span
                         class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>

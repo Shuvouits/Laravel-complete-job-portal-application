@@ -130,6 +130,13 @@
                 </ul>
             </li>
 
+            <li class="{{ setSidebarActive(['admin.menu-builder.*']) }}">
+                <a class="nav-link" href="{{ route('admin.menu-builder.index') }}">
+                    <i class="fas fa-shapes"></i>
+                    <span>Menu Builder</span>
+                </a>
+            </li>
+
 
 
             <li class="dropdown {{setSidebarActive(['admin.blogs*'])}} ">
@@ -148,7 +155,7 @@
 
             </li>
 
-            
+
 
 
 

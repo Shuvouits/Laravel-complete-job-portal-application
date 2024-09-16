@@ -27,6 +27,7 @@ use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\admin\JobTypesController;
 use App\Http\Controllers\admin\LanguageController;
 use App\Http\Controllers\admin\LearnMoreController;
+use App\Http\Controllers\admin\MenuBuilderController;
 use App\Http\Controllers\admin\NewsletterController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrganizationTypesController;
@@ -144,10 +145,10 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Job Experience Routes */
     Route::resource('job-experiences', JobExperienceController::class);
 
-     /** Job Post Routes */
-     Route::resource('jobs', JobController::class);
+    /** Job Post Routes */
+    Route::resource('jobs', JobController::class);
 
-      /** Jobs  */
+    /** Jobs  */
     Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.update');
 
     /** Blogs */
@@ -156,28 +157,29 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Hero Section */
     Route::resource('hero', HeroController::class);
 
-     /** Why Choose Us Section */
+    /** Why Choose Us Section */
     Route::resource('why-choose-us', WhyChooseUsController::class);
 
     Route::resource('learn-more', LearnMoreController::class);
 
-     /** Counter Section */
-     Route::resource('counter', CounterController::class);
-     /** Job Location Section */
-     Route::resource('job-location', JobLocationController::class);
-     /** review Section */
-     Route::resource('reviews', ReviewController::class);
+    /** Counter Section */
+    Route::resource('counter', CounterController::class);
+    /** Job Location Section */
+    Route::resource('job-location', JobLocationController::class);
+    /** review Section */
+    Route::resource('reviews', ReviewController::class);
 
-     /** About us page route */
+    /** About us page route */
     Route::resource('about-us', AboutController::class);
 
-     /** Custom Page Builder route */
+    /** Custom Page Builder route */
     Route::resource('page-builder', CustomPageBuilderController::class);
 
-     /** Newsletter route */
-     Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
-     Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
-     Route::post('newsletter', [NewsletterController::class, 'sendMail'])->name('newsletter-send-mail');
+    /** Newsletter route */
+    Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+    Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
+    Route::post('newsletter', [NewsletterController::class, 'sendMail'])->name('newsletter-send-mail');
 
-
+     /** Menu Builder route */
+     Route::resource('menu-builder', MenuBuilderController::class);
 });
