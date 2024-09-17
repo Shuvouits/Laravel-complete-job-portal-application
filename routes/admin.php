@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\CounterController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\admin\CustomPageBuilderController;
 use App\Http\Controllers\admin\EducationController;
+use App\Http\Controllers\admin\FooterController;
 use App\Http\Controllers\admin\HeroController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 
@@ -38,6 +39,7 @@ use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SalaryTypeController;
 use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
+use App\Http\Controllers\admin\SocialController;
 use App\Http\Controllers\admin\StateController;
 use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\admin\WhyChooseUs;
@@ -182,4 +184,12 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
      /** Menu Builder route */
      Route::resource('menu-builder', MenuBuilderController::class);
+
+      /** Footer route */
+    Route::resource('footer', FooterController::class);
+
+     /** Social Icon route */
+     Route::resource('social-icon', SocialController::class);
+
+
 });

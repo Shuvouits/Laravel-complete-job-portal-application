@@ -137,6 +137,16 @@
                 </a>
             </li>
 
+            <li class="dropdown {{ setSidebarActive(['admin.footer.*', 'admin.social-icon.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shoe-prints"></i>
+                    <span>Footer</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.footer.*']) }}"><a class="nav-link" href="{{ route('admin.footer.index') }}">Footer Details</a></li>
+
+                    <li class="{{ setSidebarActive(['admin.social-icon.*']) }}"><a class="nav-link" href="{{ route('admin.social-icon.index') }}">Social Icons</a></li>
+                </ul>
+            </li>
+
 
 
             <li class="dropdown {{setSidebarActive(['admin.blogs*'])}} ">
