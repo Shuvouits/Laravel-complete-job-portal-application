@@ -1,7 +1,7 @@
 <div id="basic" class="container tab-pane active"><br>
 
 
-    <form method="post" action="{{ route('basic-info') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('candidate.basic-info') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="row form-contact">

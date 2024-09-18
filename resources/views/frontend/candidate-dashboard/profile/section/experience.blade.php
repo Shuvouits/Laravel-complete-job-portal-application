@@ -164,7 +164,7 @@
                 const formData = $(this).serialize();
                 const experienceId = $('#experience-id').val();
                 const url = experienceId ? `{{ url('/candidate/experience') }}/${experienceId}` :
-                    "{{ route('experience.store') }}";
+                    "{{ route('candidate.experience.store') }}";
                 const method = experienceId ? 'PUT' : 'POST';
 
 
@@ -306,7 +306,7 @@
         function loadExperienceData() {
             $.ajax({
                 method: 'GET',
-                url: "{{ route('experience.index') }}",
+                url: "{{ route('candidate.experience.index') }}",
                 success: function(response) {
                     const tbody = $('#experienceTable tbody');
                     tbody.empty(); // Clear any existing rows

@@ -17,24 +17,28 @@
               <h3 class="mt-0 mb-0 color-brand-1">Company Dashboard</h3>
               <div class="dashboard_overview">
                 <div class="row">
-                  <div class="col-lg-4 col-md-6">
-                    <div class="dash_overview_item bg-info-subtle">
-                      <h2>12 <span>job applied</span></h2>
-                      <span class="icon"><i class="fas fa-briefcase"></i></span>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="dash_overview_item bg-info-subtle">
+                            <h2>{{ $jobPosts }} <span>Pending Jobs</span></h2>
+                            <span class="icon"><i class="fas fa-briefcase"></i></span>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                    <div class="dash_overview_item bg-danger-subtle">
-                      <h2>12 <span>job applied</span></h2>
-                      <span class="icon"><i class="fas fa-briefcase"></i></span>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="dash_overview_item bg-danger-subtle">
+                            <h2>{{ $totalJobs }} <span>Total Jobs</span></h2>
+                            <span class="icon"><i class="fas fa-briefcase"></i></span>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                    <div class="dash_overview_item bg-warning-subtle">
-                      <h2>12 <span>job applied</span></h2>
-                      <span class="icon"><i class="fas fa-briefcase"></i></span>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="dash_overview_item bg-warning-subtle">
+                            <h2>{{ $totalOrders }} <span>Total Orders</span></h2>
+                            <span class="icon"><i class="fas fa-cart-plus"></i></span>
+                        </div>
                     </div>
-                  </div>
+
+
+
                 </div>
 
                 @if(!isCompanyProfileComplete())
@@ -55,6 +59,41 @@
                 </div>
 
                 @endif
+
+                <br>
+
+                <div class="card"  style="border: 1px solid #1ca77459">
+                    <div class="card-body">
+                        <table class="table">
+
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td><b>Current Package</b></td>
+                                <td>{{ $userPlan?->plan?->label }} Package</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Job Post Available</td>
+                                <td>{{ $userPlan?->job_limit }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Featured Post Available</td>
+                                <td>{{ $userPlan?->featured_job_limit }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">4</th>
+                                <td>Highlight Post Available</td>
+                                <td>{{ $userPlan?->highlight_job_limit }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                    </div>
+                </div>
+
+
 
 
               </div>

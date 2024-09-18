@@ -1,6 +1,6 @@
 <div id="profile" class="container tab-pane"><br>
 
-    <form method="post" action="{{ route('profile-info') }}">
+    <form method="post" action="{{ route('candidate.profile-info') }}">
         @csrf
 
         <div class="row form-contact">

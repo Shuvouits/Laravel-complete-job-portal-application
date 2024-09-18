@@ -45,7 +45,7 @@ class User extends Authenticatable
     ];
 
     public function candidateProfile(){
-        return $this->hasOne(Candidate::class);
+        return $this->hasOne(Candidate::class, 'user_id', 'id');
     }
 
     function company(){

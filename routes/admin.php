@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\CounterController;
 use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\admin\CustomPageBuilderController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\EducationController;
 use App\Http\Controllers\admin\FooterController;
 use App\Http\Controllers\admin\HeroController;
@@ -72,9 +73,11 @@ Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'adm
 
 Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    Route::get('/dashboard', function () {
+    /*Route::get('/dashboard', function () {
         return view('admin.dashboard.index');
-    })->name('dashboard');
+    })->name('dashboard'); */
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');

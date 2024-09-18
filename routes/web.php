@@ -9,10 +9,12 @@ use App\Http\Controllers\CandidateEducationController;
 use App\Http\Controllers\company\CompanyPageController;
 use App\Http\Controllers\company\CompanyProfileController;
 use App\Http\Controllers\frontend\AboutUsPageController;
+use App\Http\Controllers\frontend\CandidateDashboardController;
 use App\Http\Controllers\frontend\CandidateExperienceController;
 use App\Http\Controllers\frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\frontend\CandidateMyJobController;
 use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\CompanyDashboardController;
 use App\Http\Controllers\frontend\CompanyOrderController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\FrontendBlogPageController;
@@ -59,9 +61,11 @@ Route::group(
     ['middleware' => ['auth', 'verified', 'user.role:candidate'], 'prefix' => 'candidate', 'as' => 'candidate.'],
     function () {
 
-        Route::get('/dashboard', function () {
+       /* Route::get('/dashboard', function () {
             return view('frontend.candidate-dashboard.dashboard');
-        })->name('dashboard');
+        })->name('dashboard'); */
+
+        Route::get('/dashboard', [CandidateDashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/profile', [CandidateProfileController::class, 'CandidateProfile'])->name('profile.index');
         Route::post('/basic-info', [CandidateProfileController::class, 'BasicInfo'])->name('basic-info');
@@ -90,9 +94,12 @@ Route::group(
 
     function () {
 
-        Route::get('/dashboard', function () {
+       /* Route::get('/dashboard', function () {
             return view('frontend.company-dashboard.dashboard');
-        })->name('dashboard');
+        })->name('dashboard'); */
+
+        Route::get('/dashboard', [CompanyDashboardController::class, 'index'])->name('dashboard');
+
         Route::get('/profile', [CompanyProfileController::class, 'CompanyProfile'])->name('profile');
         Route::post('/company-info', [CompanyProfileController::class, 'CompanyInfo'])->name('company-info');
         Route::post('/founding-info', [CompanyProfileController::class, 'FoundingInfo'])->name('founding-info');

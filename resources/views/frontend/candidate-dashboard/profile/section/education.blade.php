@@ -143,7 +143,7 @@
                 const formData = $(this).serialize();
                 const educationId = $('#education-id').val();
                 const url = educationId ? `{{ url('/candidate/education') }}/${educationId}` :
-                    "{{ route('education.store') }}";
+                    "{{ route('candidate.education.store') }}";
                 const method = educationId ? 'PUT' : 'POST';
 
 
@@ -282,7 +282,7 @@
         function loadEducationData() {
     $.ajax({
         method: 'GET',
-        url: "{{ route('education.index') }}",
+        url: "{{ route('candidate.education.index') }}",
         success: function(response) {
             const tbody = $('#educationTable tbody');
             tbody.empty(); // Clear any existing rows
