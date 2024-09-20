@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CandidateSkill;
+use App\Models\Job;
+use App\Models\JobSkill;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use App\Traits\Searchable;
@@ -87,6 +90,16 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
+
+         // validation
+         $skillExist = JobSkill::where('skill_id', $id)->exists();
+         $candidateSkill = CandidateSkill::where('skill_id', $id)->exists();
+
+
+         if($skillExist || $candidateSkill) {
+             return response(['message' => 'This item is already been used can\'t delete!'], 500);
+         }
+
         try{
             Skill::findOrFail($id)->delete();
             Notify::deletedNotification();

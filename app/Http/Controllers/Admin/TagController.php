@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Services\Notify;
@@ -87,6 +88,14 @@ class TagController extends Controller
      */
     public function destroy(string $id)
     {
+
+         // validation
+         $jobExist = Job::where('salary_type_id', $id)->exists();
+
+         if($jobExist) {
+             return response(['message' => 'This item is already been used can\'t delete!'], 500);
+         }
+
         try {
             Tag::findOrFail($id)->delete();
             Notify::deletedNotification();

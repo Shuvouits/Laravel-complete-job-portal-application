@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\IndustryType;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -89,6 +90,14 @@ class IndustryTypeController extends Controller
      */
     public function destroy(string $id)
     {
+
+         // validation
+         $company = Company::where('skill_id', $id)->exists();
+
+         if($company) {
+             return response(['message' => 'This item is already been used can\'t delete!'], 500);
+         }
+
         try{
             IndustryType::findOrFail($id)->delete();
             Notify::deletedNotification();

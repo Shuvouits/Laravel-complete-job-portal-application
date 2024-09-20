@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 use App\Models\JobExperience;
@@ -63,6 +65,14 @@ class JobExperienceController extends Controller
 
     public function destroy(string $id)
     {
+
+         // validation
+         $jobExist = Job::where('job_experience_id', $id)->exists();
+         $candidateExist = Candidate::where('experience_id', $id)->exists();
+
+         if($jobExist || $candidateExist) {
+             return response(['message' => 'This item is already been used can\'t delete!'], 500);
+         }
 
 
         try {
