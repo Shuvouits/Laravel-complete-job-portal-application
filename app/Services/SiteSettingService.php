@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\SiteSetting;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class SiteSettingService {
 

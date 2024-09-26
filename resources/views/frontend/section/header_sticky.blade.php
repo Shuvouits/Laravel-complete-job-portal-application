@@ -3,7 +3,7 @@
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo"><a class="d-flex" href="/"><img alt="joblist"
-                            src="{{ asset('frontend/assets/imgs/template/logo.png') }}"></a></div>
+                            src="{{ config('settings.site_logo') }}"></a></div>
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
@@ -15,6 +15,7 @@
 
                     <ul class="main-menu">
                         @foreach ($navigationMenu as $menu)
+                        
                             @if ($menu['child'])
                                 <li class="has-children"><a href="{{ $menu['link'] }}">{{ $menu['label'] }}</a>
                                     <ul class="sub-menu">
