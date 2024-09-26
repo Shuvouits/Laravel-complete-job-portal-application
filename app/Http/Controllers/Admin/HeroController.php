@@ -13,6 +13,12 @@ use Illuminate\View\View;
 class HeroController extends Controller
 {
     use FileUploadTrait;
+
+    function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
+    
     public function index() : View
     {
         $hero = Hero::first();

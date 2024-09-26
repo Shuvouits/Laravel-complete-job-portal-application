@@ -7,11 +7,18 @@ use App\Http\Requests\admin\GeneralSettingUpdateRequest;
 use App\Models\SiteSetting;
 use App\Services\Notify;
 use Illuminate\Http\Request;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class SiteSettingController extends Controller
 {
-    public function Index(){
+
+    function __construct()
+    {
+        $this->middleware(['permission:site settings']);
+    }
+
+    
+    public function index(){
         return view('admin.site-setting.index');
     }
 

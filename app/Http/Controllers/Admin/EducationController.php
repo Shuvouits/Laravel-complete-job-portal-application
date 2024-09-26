@@ -15,10 +15,15 @@ class EducationController extends Controller
      */
     use Searchable;
 
+    function __construct()
+    {
+        $this->middleware(['permission:job attribute']);
+    }
+
 
     public function index()
     {
-    
+
         $query = Education::query();
         $this->search($query, ['name', 'slug']);
         $educations = $query->orderBy('id', 'DESC')->paginate(20);

@@ -14,6 +14,13 @@ class CustomPageBuilderController extends Controller
 {
     use Searchable;
 
+    function __construct()
+    {
+        $this->middleware(['permission:site pages']);
+    }
+
+    
+
     public function index()
     {
         $query = CustomPageBuilder::query();

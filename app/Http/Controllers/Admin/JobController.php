@@ -30,9 +30,16 @@ use Illuminate\Http\Response;
 class JobController extends Controller
 {
     use Searchable;
-    /**
-     * Display a listing of the resource.
-     */
+
+    function __construct()
+    {
+        $this->middleware(['permission:job create|job update|job delete'])->only(['index']);
+        $this->middleware(['permission:job create'])->only(['create', 'store']);
+        $this->middleware(['permission:job update'])->only(['edit', 'update', 'changeStatus']);
+        $this->middleware(['permission:job delete'])->only(['destroy']);
+    }
+
+    
     public function index()
     {
         $query = Job::query();

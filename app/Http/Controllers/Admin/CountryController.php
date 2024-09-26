@@ -14,6 +14,13 @@ class CountryController extends Controller
      * Display a listing of the resource.
      */
     Use Searchable;
+
+    function __construct()
+    {
+        $this->middleware(['permission:job locations']);
+    }
+
+    
     public function index()
     {
         $query = Country::query();

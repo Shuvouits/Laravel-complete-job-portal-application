@@ -15,9 +15,12 @@ class JobLocationController extends Controller
 {
 
     use FileUploadTrait;
-    /**
-     * Display a listing of the resource.
-     */
+
+    function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
+    
     public function index()
     {
         $locations = JobLocation::paginate(20);

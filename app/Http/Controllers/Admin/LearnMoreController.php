@@ -12,6 +12,13 @@ class LearnMoreController extends Controller
 {
 
     use FileUploadTrait;
+
+    function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
+
+    
     public function index()
     {
         $learn = LearnMore::first();

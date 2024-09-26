@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\File;
 class ClearDatabaseController extends Controller
 {
     //
+
+    function __construct()
+    {
+        $this->middleware(['permission:database clear']);
+    }
+
+    
     function index(){
         return view('admin.clear-database.index');
     }

@@ -13,6 +13,13 @@ class PlanController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     function __construct()
+     {
+         $this->middleware(['permission:price plan']);
+     }
+
+     
     public function index()
     {
         $plans = Plan::all();

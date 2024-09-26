@@ -38,6 +38,8 @@ use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
 use App\Http\Controllers\admin\ReviewController;
+use App\Http\Controllers\admin\RolePermissionController;
+use App\Http\Controllers\admin\RoleUserController;
 use App\Http\Controllers\admin\SalaryTypeController;
 use App\Http\Controllers\admin\SiteSettingController;
 use App\Http\Controllers\admin\SkillController;
@@ -115,13 +117,13 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('skill', SkillController::class);
 
     Route::resource('plans', PlanController::class);
-    Route::get('/payment', [PaymentSettingController::class, 'Payment'])->name('payment');
+    Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
     Route::post('paypal-settings', [PaymentSettingController::class, 'updatePaypalSetting'])->name('paypal-settings.update');
     Route::post('stripe-settings', [PaymentSettingController::class, 'updateStripeSetting'])->name('stripe-settings.update');
     Route::post('razorpay-settings', [PaymentSettingController::class, 'updateRazorpaySetting'])->name('razorpay-settings.update');
 
     /*Site Setting Controller */
-    Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings');
+    Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
     Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
     Route::post('logo-settings', [SiteSettingController::class, 'updateLogoSetting'])->name('logo-settings.update');
 
@@ -199,6 +201,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
      Route::get('clear-database', [ClearDatabaseController::class, 'index'])->name('clear-database.index');
      Route::post('clear-database', [ClearDatabaseController::class, 'clearDatabase'])->name('clear-database');
+
+      /** role permission route */
+    Route::resource('role', RolePermissionController::class);
+    /** role user route */
+    Route::resource('role-user', RoleUserController::class);
 
 
 });

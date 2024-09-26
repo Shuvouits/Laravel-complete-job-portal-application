@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\JobTag;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Services\Notify;
@@ -13,6 +14,12 @@ class TagController extends Controller
 {
 
     use Searchable;
+
+    function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -90,11 +97,12 @@ class TagController extends Controller
     {
 
          // validation
-         $jobExist = Job::where('salary_type_id', $id)->exists();
+         $jobTagExist = JobTag::where('tag_id', $id)->exists();
 
-         if($jobExist) {
-             return response(['message' => 'This item is already been used can\'t delete!'], 500);
-         }
+        if($jobTagExist) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
+
 
         try {
             Tag::findOrFail($id)->delete();

@@ -12,6 +12,12 @@ use App\Traits\FileUploadTrait;
 class AboutController extends Controller
 {
     use FileUploadTrait;
+
+    function __construct()
+    {
+        $this->middleware(['permission:site pages']);
+    }
+    
     //
     public function index()
     {

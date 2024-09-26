@@ -14,6 +14,12 @@ class OrganizationTypesController extends Controller
      * Display a listing of the resource.
      */
     Use Searchable;
+
+    function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
+    
     public function index()
     {
         $query = OrganizationType::query();

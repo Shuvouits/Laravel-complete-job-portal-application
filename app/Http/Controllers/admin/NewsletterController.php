@@ -8,11 +8,17 @@ use App\Models\Subscriber;
 use App\Services\Notify;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class NewsletterController extends Controller
 {
     use Searchable;
+
+    function __construct()
+    {
+        $this->middleware(['permission:news letter']);
+    }
+
 
     function index(){
 

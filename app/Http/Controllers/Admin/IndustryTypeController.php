@@ -16,6 +16,12 @@ class IndustryTypeController extends Controller
      * Display a listing of the resource.
      */
     Use Searchable;
+
+    function __construct()
+    {
+        $this->middleware(['permission:job attribute']);
+    }
+
     public function index()
     {
         $query = IndustryType::query();

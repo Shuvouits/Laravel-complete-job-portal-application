@@ -12,6 +12,13 @@ class CounterController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     function __construct()
+     {
+         $this->middleware(['permission:sections']);
+     }
+
+     
     public function index()
     {
         $counter = Counter::first();

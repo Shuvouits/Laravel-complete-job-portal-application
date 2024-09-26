@@ -16,6 +16,13 @@ class CityController extends Controller
      * Display a listing of the resource.
      */
     Use Searchable;
+
+    function __construct()
+    {
+        $this->middleware(['permission:job locations']);
+    }
+
+    
     public function index()
     {
         $query = City::query();
@@ -124,5 +131,5 @@ class CityController extends Controller
         $city = City::where('state_id', $state_id)->get();
         return response()->json($city);
     }
-    
+
 }

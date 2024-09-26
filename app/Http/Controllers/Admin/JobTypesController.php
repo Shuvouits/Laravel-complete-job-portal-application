@@ -15,9 +15,12 @@ class JobTypesController extends Controller
 {
 
     use Searchable;
-    /**
-     * Display a listing of the resource.
-     */
+
+    function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
+    
     public function index()
     {
         $query = JobType::query();

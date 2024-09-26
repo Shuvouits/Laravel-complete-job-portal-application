@@ -14,6 +14,11 @@ class SalaryTypeController extends Controller
 {
     use Searchable;
 
+    function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
+
     public function index()
     {
         $query = SalaryType::query();

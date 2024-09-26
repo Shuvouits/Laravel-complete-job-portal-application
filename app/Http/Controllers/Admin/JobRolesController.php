@@ -12,9 +12,12 @@ use App\Traits\Searchable;
 class JobRolesController extends Controller
 {
     use Searchable;
-    /**
-     * Display a listing of the resource.
-     */
+
+    function __construct()
+    {
+        $this->middleware(['permission:job role']);
+    }
+    
     public function index()
     {
         $query = JobRole::query();

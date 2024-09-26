@@ -20,7 +20,14 @@ use Stripe\Checkout\Session as StripeSession;
 
 class PaymentSettingController extends Controller
 {
-    public function Payment(){
+
+    function __construct()
+    {
+        $this->middleware(['permission:payment settings']);
+    }
+
+    
+    public function index(){
         return view('admin.payment.index');
     }
 
