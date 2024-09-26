@@ -15,7 +15,7 @@
 
                     <ul class="main-menu">
                         @foreach ($navigationMenu as $menu)
-                        
+
                             @if ($menu['child'])
                                 <li class="has-children"><a href="{{ $menu['link'] }}">{{ $menu['label'] }}</a>
                                     <ul class="sub-menu">

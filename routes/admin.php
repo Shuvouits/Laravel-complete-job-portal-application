@@ -37,6 +37,7 @@ use App\Http\Controllers\admin\OrganizationTypesController;
 use App\Http\Controllers\admin\payment\PaymentSettingController;
 use App\Http\Controllers\Admin\plan\PlanController;
 use App\Http\Controllers\admin\ProfessionController;
+use App\Http\Controllers\admin\ProfileUpdateController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\RolePermissionController;
 use App\Http\Controllers\admin\RoleUserController;
@@ -80,6 +81,12 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
         return view('admin.dashboard.index');
     })->name('dashboard'); */
 
+    /** Profile update routes */
+    Route::get('profile', [ProfileUpdateController::class, 'index'])->name('profile.index');
+    Route::post('profile', [ProfileUpdateController::class, 'update'])->name('profile.update');
+    Route::post('profile-password', [ProfileUpdateController::class, 'passwordUpdate'])->name('profile-password.update');
+
+     /** Dashboard Route */
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('verify-email', EmailVerificationPromptController::class)
