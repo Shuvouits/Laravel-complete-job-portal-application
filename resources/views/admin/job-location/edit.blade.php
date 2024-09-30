@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.master')
 
 @section('main')
 <div class="main-content">
@@ -21,7 +21,7 @@
                             @method('PUT')
                             <div class="row">
                                 <div class="col-md-5">
-                                    <x-image-preview :height="200" :width="300" :source="$location->image" class="mt-2" />
+                                    <x-image-preview :height="200" :width="300" :source="getImagePath($location->image)" class="mt-2" />
 
                                     <div class="form-group">
                                         <label for="">Image</label>
@@ -61,7 +61,7 @@
             </div>
         </div>
     </section>
-    
+
 </div>
 
 

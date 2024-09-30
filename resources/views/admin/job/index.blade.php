@@ -48,7 +48,7 @@
                                                     <div class="d-flex">
                                                         <div class="mr-2">
                                                             <img style="width:50px;height:50px;object-fit:cover"
-                                                                src="{{ asset($job->company->logo) }}" alt="">
+                                                                src="{{ getImagePath($job->company->logo) }}" alt="">
                                                         </div>
                                                         <div>
                                                             <b>{{ $job->title }}</b>

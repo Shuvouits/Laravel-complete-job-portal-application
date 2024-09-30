@@ -61,12 +61,12 @@
                                                 {{ $order->payment_provider }}
                                             </td>
                                             <td>
-                                                <p class="badge bg-primary text-light">{{ $order->payment_status }}</p>
+                                                <p class="badge bg-success text-light">{{ $order->payment_status }}</p>
                                             </td>
 
                                             <td>
                                                 <a href="{{ route('company.orders.show', $order->id) }}"
-                                                    class="btn-sm btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                    class="btn-sm btn btn-success"><i class="fas fa-eye"></i></a>
 
                                             </td>
                                         </tr>

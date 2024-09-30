@@ -13,7 +13,7 @@
                 <div class="swiper-slide hover-up">
                   <div class="card-review-1">
                     <div class="image-review">
-                      <img src="{{ asset($review->image) }}" alt="joblist">
+                      <img src="{{ getImagePath($review->image) }}" alt="joblist">
                       <div class="review-name">
                         <h5>{{ $review->name }}</h5><span class="font-xs">{{ $review->title }}</span>
                       </div>

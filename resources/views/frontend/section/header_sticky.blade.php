@@ -3,7 +3,7 @@
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo"><a class="d-flex" href="/"><img alt="joblist"
-                            src="{{ config('settings.site_logo') }}"></a></div>
+                            src="{{ getImagePath(config('settings.site_logo')) }}"></a></div>
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
@@ -65,9 +65,6 @@
                     @elseif(!$user)
                         <a class="btn btn-default btn-shadow ml-40 hover-up" href="/login">Sign in</a>
                     @endif
-
-
-
 
 
 

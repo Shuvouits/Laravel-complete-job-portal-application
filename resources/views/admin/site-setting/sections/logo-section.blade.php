@@ -8,7 +8,8 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <x-image-preview :height="40" :width="200" :source="config('settings.site_logo')" />
+                        <x-image-preview :height="40" :width="200" :source="getImagePath(config('settings.site_logo'))" />
+
 
                         <label for="">Logo</label>
                         <input type="file" class="form-control {{ hasError($errors, 'logo') }}" name="logo" style="padding: 13px 15px;
@@ -18,7 +19,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <x-image-preview :height="40" :width="200" :source="config('settings.site_favicon')" />
+                        <x-image-preview :height="40" :width="200" :source="getImagePath(config('settings.site_favicon'))" />
                         <label for="">Favicon</label>
                         <input type="file" class="form-control {{ hasError($errors, 'favicon') }}" name="favicon" style="padding: 13px 15px;
                 height: 52px;">

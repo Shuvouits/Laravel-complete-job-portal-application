@@ -24,8 +24,10 @@
                 {!! $page->content !!}
             </div>
         </section>
-        
+
     </main>
+
+    <br>
 
 
 

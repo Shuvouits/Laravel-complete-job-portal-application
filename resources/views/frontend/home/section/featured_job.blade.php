@@ -36,7 +36,7 @@
                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
                                     <div class="card-grid-2 hover-up">
                                         <div class="card-grid-2-image-left"><span class="flash"></span>
-                                            <div class="image-box"><img src="{{ asset($job->company?->logo) }}"
+                                            <div class="image-box"><img src="{{ getImagePath($job->company?->logo) }}"
                                                     alt="joblist"></div>
 
                                         </div>

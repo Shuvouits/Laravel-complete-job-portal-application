@@ -59,9 +59,9 @@
             <li class="dropdown {{ setSidebarActive(
                 ['admin.industry-types.*',
                 'admin.organization-types.*',
-                'admin.languages.*',
-                'admin.professions.*',
-                'admin.skills.*',
+                'admin.language.*',
+                'admin.profession.*',
+                'admin.skill.*',
                 'admin.educations.*',
                 'admin.job-types.*',
                 'admin.salary-types.*',

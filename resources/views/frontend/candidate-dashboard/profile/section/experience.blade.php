@@ -1,7 +1,7 @@
 <div id="experienceTab" class="container tab-pane "><br>
 
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary addExperience" data-bs-toggle="modal" data-bs-target="#experience">Add
+        <button class="btn btn-success addExperience" data-bs-toggle="modal" data-bs-target="#experience">Add
             Experience</button>
     </div>
 
@@ -320,7 +320,7 @@
                             <td>${experience.start} to ${experience.end}</td>
                             <td>
                                 <a
-                                  class="btn btn-primary edit"
+                                  class="btn btn-success edit"
                                   data-experience='${JSON.stringify(experience)}'
 
                                 >

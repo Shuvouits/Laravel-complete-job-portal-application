@@ -1,6 +1,6 @@
  <!-- Button Education -->
  <div class="d-flex justify-content-end" style="margin-top: 50px">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#educationModal">
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#educationModal">
         Add Education
     </button>
 
@@ -304,7 +304,7 @@
                             <td>${education.note}</td>
                             <td>
                                 <a
-                                  class="btn btn-primary editeducation"
+                                  class="btn btn-success editeducation"
                                   data-education='${JSON.stringify(education)}'
                                 >
                                   <i class="fas fa-edit"></i>

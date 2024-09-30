@@ -62,7 +62,7 @@
 
                                                 <div class="col-md-6">
                                                     @if ($companyInfo && $companyInfo->logo != null)
-                                                        <x-image-preview style="height: 200px;" :source="$companyInfo->logo" />
+                                                        <x-image-preview style="height: 200px;" :source="getImagePath($companyInfo->logo)" />
                                                     @endif
                                                     <div class="form-group">
                                                         <label class="font-sm color-text-mutted mb-10">Logo*</label>
@@ -73,7 +73,7 @@
 
                                                 <div class="col-md-6">
                                                     @if ($companyInfo && $companyInfo->banner != null)
-                                                        <x-image-preview style="height: 200px;" :source="$companyInfo->banner" />
+                                                        <x-image-preview style="height: 200px;" :source="getImagePath($companyInfo->banner)" />
                                                     @endif
 
 

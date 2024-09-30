@@ -30,7 +30,7 @@
                     </div>
                   </div>
 
-                 
+
 
 
                 </div>
@@ -73,7 +73,7 @@
                                 <td>
                                     <div class="d-flex ">
                                         <img style="width: 50px; height: 50px; object-fit:cover;"
-                                            src="{{ asset($appliedJob->job->company->logo) }}" alt="">
+                                            src="{{ getImagePath($appliedJob->job->company->logo) }}" alt="">
                                         <div style="padding-left: 15px">
                                             <h6>{{ $appliedJob->job->company->name }}</h6>
                                             <b>{{ $appliedJob->job?->company?->companyCountry->name }}</b>

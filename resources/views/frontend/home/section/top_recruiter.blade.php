@@ -15,7 +15,7 @@
                         <div class="item-5 hover-up wow animate__animated animate__fadeIn">
                             <a href="{{ route('companies.show', $company->slug) }}">
                                 <div class="item-logo">
-                                    <div class="image-left"><img alt="joblist" src="{{ asset($company->logo) }}">
+                                    <div class="image-left"><img alt="joblist" src="{{ getImagePath($company->logo) }}">
                                     </div>
                                     <div class="text-info-right">
                                         <h4>{{ $company->name }}</h4>

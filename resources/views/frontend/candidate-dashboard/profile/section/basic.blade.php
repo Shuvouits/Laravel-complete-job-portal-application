@@ -11,7 +11,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-image-preview :source='$candidate?->image' style="height: 100px;" />
+                            <x-image-preview :source='getImagePath($candidate?->image)' style="height: 100px;" />
                             <label for="avatar"
                                 class="font-sm color-text-mutted mb-10">Profile
                                 Picture*</label>

@@ -32,7 +32,7 @@
                                     <tbody>
                                         @forelse ($locations as $location)
                                             <tr>
-                                                <td><img src="{{ asset($location->image) }}"
+                                                <td><img src="{{ getImagePath($location->image) }}"
                                                         style="height: 60px; width=100px; object-fit:cover" alt="">
                                                 </td>
                                                 <td>{{ $location->country->name }}</td>

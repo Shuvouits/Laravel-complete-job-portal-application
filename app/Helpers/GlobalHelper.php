@@ -140,4 +140,17 @@ if(!function_exists('canAccess')) {
     }
 }
 
+/* Image Path */
+
+if (!function_exists('getImagePath')) {
+    function getImagePath($path)
+    {
+        // Check if you are in a production environment
+        if (app()->environment('production')) {
+            return asset('public/' . $path);
+        }
+        return asset($path);
+    }
+}
+
 

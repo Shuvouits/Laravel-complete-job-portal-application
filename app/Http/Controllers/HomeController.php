@@ -47,9 +47,10 @@ class HomeController extends Controller
         $reviews = Review::latest()->take(10)->get();
 
         $blogs = Blog::latest()->take(6)->get();
+        $learnMore = LearnMore::first();
 
-       
-        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations', 'reviews', 'blogs'));
+
+        return view('frontend.home.index', compact('plans', 'hero','jobCategories', 'countries', 'popularJobCategories', 'jobCount', 'featuredCategories', 'whyChooseUs', 'counter', 'companies', 'locations', 'reviews', 'blogs', 'learnMore'));
     }
 
     function customPage(string $slug){

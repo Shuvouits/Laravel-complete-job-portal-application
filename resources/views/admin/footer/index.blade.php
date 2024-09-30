@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <x-image-preview :height="50" :width="200" :source="$footer?->logo" />
+                                            <x-image-preview :height="50" :width="200" :source="getImagePath($footer?->logo)" />
 
                                             <label for="">Image</label>
                                             <input type="file" class="form-control {{ hasError($errors, 'logo') }}"

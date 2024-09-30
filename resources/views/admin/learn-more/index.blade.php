@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <x-image-preview :height="200" :width="300" :source="$learn?->image" />
+                                            <x-image-preview :height="200" :width="300" :source="getImagePath($learn?->image)" />
 
                                             <label for="">Image</label>
                                             <input type="file" class="form-control {{ hasError($errors, 'image') }}"
