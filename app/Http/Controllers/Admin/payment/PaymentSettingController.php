@@ -21,12 +21,15 @@ use Stripe\Checkout\Session as StripeSession;
 class PaymentSettingController extends Controller
 {
 
+
+    /*
+
     function __construct()
     {
         $this->middleware(['permission:payment settings']);
-    }
+    }  */
 
-    
+
     public function index(){
         return view('admin.payment.index');
     }
@@ -90,8 +93,8 @@ class PaymentSettingController extends Controller
         $response = $provider->createOrder([
             'intent' => 'CAPTURE',
             'application_context' => [
-                'return_url' => route('paypal.success'),
-                'cancel_url' => route('paypal.cancel')
+                'return_url' => route('company.paypal.success'),
+                'cancel_url' => route('company.paypal.cancel')
             ],
             'purchase_units' => [
                 [
@@ -132,13 +135,13 @@ class PaymentSettingController extends Controller
                 OrderService::setUserPlan();
 
                 Session::forget('selected_plan');
-                return redirect()->route('payment.success');
+                return redirect()->route('company.payment.success');
             }catch(\Exception $e) {
                 logger( 'Payment ERROR >> '. $e);
             }
         }
 
-        return redirect()->route('payment.error')->withErrors(['error' => $response['error']['message']]);
+        return redirect()->route('company.payment.error')->withErrors(['error' => $response['error']['message']]);
 
 
 
@@ -193,8 +196,8 @@ class PaymentSettingController extends Controller
                 ]
             ],
             'mode' => 'payment',
-            'success_url' => route('stripe.success') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => route('stripe.cancel')
+            'success_url' => route('company.stripe.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('company.stripe.cancel')
         ]);
 
         return redirect()->away($response->url);
@@ -217,12 +220,12 @@ class PaymentSettingController extends Controller
                 OrderService::setUserPlan();
 
                 Session::forget('selected_plan');
-                return redirect()->route('payment.success');
+                return redirect()->route('company.payment.success');
             }catch(\Exception $e) {
                 logger( 'Payment ERROR >> '. $e);
             }
         }else {
-            redirect()->route('payment.error')->withErrors(['error' => 'Payment failed']);
+            redirect()->route('company.payment.error')->withErrors(['error' => 'Payment failed']);
         }
     }
 

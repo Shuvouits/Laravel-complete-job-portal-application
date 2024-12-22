@@ -140,7 +140,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="font-sm color-text-mutted mb-10">Biography*</label>
-                        <textarea class="form-control" name="bio" id="content">{!! $candidate->bio !!}</textarea>
+                        <textarea class="form-control" name="bio" id="content">{!! $candidate?->bio !!}</textarea>
                         <x-input-error :messages="$errors->get('bio')" class="mt-2" />
 
                     </div>

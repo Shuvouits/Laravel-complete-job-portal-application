@@ -79,5 +79,9 @@ class Company extends Model
         return $this->hasMany(Job::class, 'company_id', 'id');
     }
 
+    function teamSize() : BelongsTo {
+        return $this->belongsTo(TeamSize::class, 'team_size_id', 'id');
+    }
+
 
 }

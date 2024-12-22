@@ -86,6 +86,11 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'description' => 'required|string|max:16777215', // LONGTEXT limit in bytes
+        ]);
+
+        
         $imagePath = $this->uploadFile($request, 'image');
 
         $blog = Blog::findOrFail($id);

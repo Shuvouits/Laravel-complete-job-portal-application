@@ -12,6 +12,7 @@ use App\Models\JobType;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class FrontendJobPageController extends Controller
 {
@@ -22,7 +23,7 @@ class FrontendJobPageController extends Controller
     {
 
         $countries = Country::all();
-        $jobCategories = JobCategory::withCount(['jobs' => function($query) {
+        $jobCategories = JobCategory::withCount(['jobs' => function ($query) {
             $query->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
         }])->get();
 
@@ -33,41 +34,44 @@ class FrontendJobPageController extends Controller
 
         $query = Job::query();
 
-        $query->where(['status' => 'active'])
-        ->where('deadline', '>=', date('Y-m-d'));
 
-        if($request->has('search') && $request->filled('search')) {
-            $query->where('title', 'like', '%'. $request->search . '%');
+
+        $query->where(['status' => 'active'])
+            ->where('deadline', '>=', date('Y-m-d'));
+
+        if ($request->has('search') && $request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
         }
 
-        if($request->has('country') && $request->filled('country')) {
+
+        if ($request->has('country') && $request->filled('country')) {
             $query->where('country_id', $request->country);
         }
 
-        if($request->has('state') && $request->filled('state')) {
+
+        if ($request->has('state') && $request->filled('state')) {
             $query->where('state_id', $request->state);
             $selectedStates = State::where('country_id', $request->country)->get();
             $selectedCites = City::where('state_id', $request->state)->get();
-
         }
 
-        if($request->has('city') && $request->filled('city')) {
+        if ($request->has('city') && $request->filled('city')) {
             $query->where('city_id', $request->city);
         }
 
-        if($request->has('category') && $request->filled('category')) {
-            if(is_array($request->category)){
+        if ($request->has('category') && $request->filled('category')) {
+            if (is_array($request->category)) {
                 $categoryIds = JobCategory::whereIn('slug', $request->category)->pluck('id')->toArray();
                 $query->whereIn('job_category_id', $categoryIds);
-            }else {
+            } else {
                 $category = JobCategory::where('slug', $request->category)->first();
                 $query->where('job_category_id', $category->id);
             }
         }
-        if($request->has('min_salary') && $request->filled('min_salary') && $request->min_salary > 0) {
+        if ($request->has('min_salary') && $request->filled('min_salary') && $request->min_salary > 0) {
             $query->where('min_salary', '>=', $request->min_salary)->orWhere('max_salary', '>=', $request->min_salary);
         }
-        if($request->has('jobtype') && $request->filled('jobtype')) {
+        if ($request->has('jobtype') && $request->filled('jobtype')) {
             $typeIds = JobType::whereIn('slug', $request->jobtype)->pluck('id')->toArray();
             $query->whereIn('job_type_id', $typeIds);
         }
@@ -75,8 +79,13 @@ class FrontendJobPageController extends Controller
 
         $jobs = $query->paginate(8);
 
+        // Calculate range for current page
+        $from = ($jobs->currentPage() - 1) * $jobs->perPage() + 1;
+        $to = $from + $jobs->count() - 1;
+        $totalJobs = $jobs->total();
 
-        return view('frontend.pages.jobs-index', compact('jobs', 'countries', 'jobCategories', 'jobTypes', 'selectedStates', 'selectedCites'));
+
+        return view('frontend.pages.jobs-index', compact('jobs', 'countries', 'jobCategories', 'jobTypes', 'selectedStates', 'selectedCites', 'from', 'to', 'totalJobs'));
     }
 
     /**
@@ -130,12 +139,13 @@ class FrontendJobPageController extends Controller
         //
     }
 
-    function applyJob(string $id) {
-        if(!auth()->check()) {
+    function applyJob(string $id)
+    {
+        if (!auth()->check()) {
             throw ValidationException::withMessages(['Please login for apply to the job.']);
         }
         $alreadyApplied = AppliedJob::where(['job_id' => $id, 'candidate_id' => auth()->user()?->id])->exists();
-        if($alreadyApplied) {
+        if ($alreadyApplied) {
             throw ValidationException::withMessages(['You already applied to this job.']);
         }
 
@@ -146,6 +156,4 @@ class FrontendJobPageController extends Controller
 
         return response(['message' => 'Applied Successfully!'], 200);
     }
-
-
 }

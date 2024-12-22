@@ -1,7 +1,11 @@
 @extends('admin.master')
 
+
 @section('main')
-    <div class="main-content">
+
+
+
+ <div class="main-content">
 
         <section class="section">
             <div class="section-header">
@@ -30,10 +34,12 @@
                                         name="title" value="{{ old('title') }}">
                                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                 </div>
+
                                 <div class="form-group">
                                     <label for="">Description <span class="text-danger">*</span> </label>
-                                    <textarea id="editor" name="description"></textarea>
+                                    <textarea class="summernote" name="description"></textarea>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -70,4 +76,29 @@
         </section>
 
     </div>
+
+
+
+
+
+
 @endsection
+
+@push('scripts')
+
+<script>
+    $('#summernote').summernote({
+    height: 300, // Set editor height
+    callbacks: {
+        onImageUpload: function(files) {
+            uploadImage(files[0]);
+        }
+    }
+});
+</script>
+
+@endpush
+
+
+
+

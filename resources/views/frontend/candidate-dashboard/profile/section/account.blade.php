@@ -17,7 +17,7 @@
                             <option selected disabled value="">--Select--</option>
                             @foreach ($country as $country)
                                 <option value="{{ $country->id }}"
-                                    {{ $candidate->country == $country->id ? 'selected' : '' }}>
+                                    {{ $candidate?->country == $country->id ? 'selected' : '' }}>
                                     {{ $country->name }}</option>
                             @endforeach
 

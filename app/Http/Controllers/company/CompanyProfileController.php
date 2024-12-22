@@ -24,6 +24,7 @@ class CompanyProfileController extends Controller
     public function CompanyProfile()
     {
         $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+
         $industryTypes = IndustryType::all();
         $organizationTypes = OrganizationType::all();
         $teamSizes = TeamSize::all();
@@ -63,7 +64,9 @@ class CompanyProfileController extends Controller
     public function FoundingInfo(CompanyFoundingInfoUpdateRequest $request)
     {
 
-        // dd($request->all());
+        // dd($request->validated());
+
+
 
         Company::updateOrCreate(
             ['user_id' => auth()->user()->id],
@@ -88,7 +91,7 @@ class CompanyProfileController extends Controller
         if(isCompanyProfileComplete()){
             $companyProfile = Company::where('user_id', auth()->user()->id)->first();
             $companyProfile->profile_completion = 1;
-            $companyProfile->visiblity = 1;
+            $companyProfile->visibility  = 1;
             $companyProfile->save();
 
         }

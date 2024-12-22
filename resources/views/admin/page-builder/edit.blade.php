@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Content</label>
-                                <textarea name="content" id="editor" class="{{ hasError($errors, 'content') }}">{!! $page->content !!}</textarea>
+                                <textarea name="content" class="summernote" class="{{ hasError($errors, 'content') }}">{!! $page->content !!}</textarea>
                                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
                             </div>
 
@@ -40,7 +40,7 @@
             </div>
         </div>
     </section>
-    
+
 </div>
 
 

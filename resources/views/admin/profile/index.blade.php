@@ -20,7 +20,7 @@
                                 @csrf
                                 <div class="form-group">
 
-                                    <img src="{{asset(auth()->user()->image)}}" height='200px' width="200px" />
+                                    <img src="{{getImagePath(auth()->user()->image)}}" height='200px' width="200px" />
 
                                     <label for="">Image</label>
                                     <input type="file" class="form-control {{ hasError($errors, 'image') }}" name="image">

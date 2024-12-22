@@ -22,7 +22,7 @@ class ProfileUpdateController extends Controller
 
     public function update(Request $request)
     {
-        
+
 
         $request->validate([
             'name' => ['required', 'max:255'],

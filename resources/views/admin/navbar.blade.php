@@ -202,7 +202,7 @@
         <li class="dropdown">
             <a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user" style="display: flex; align-items:center; justify-content: center">
-                <img alt="image" src="{{asset(auth()->user()->image)}}"  class="rounded-circle mr-1">
+                <img alt="image" src="{{getImagePath(auth()->user()->image)}}"  class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{auth()->user()->name}} </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">

@@ -274,7 +274,7 @@
                                                             value="{{ $companyInfo?->country }}">
                                                             <option value="">Select</option>
                                                             @foreach ($countries as $country)
-                                                                <option @selected($country->id === $companyInfo?->country) value="{{ $country->id }}">{{ $country->name }}</option>
+                                                                <option  value="{{ $country->id }}"   {{$country->id == $companyInfo?->country ? 'selected' : ''}}     >{{ $country->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         <x-input-error :messages="$errors->get('country')" class="mt-2" />

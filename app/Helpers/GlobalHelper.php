@@ -49,8 +49,11 @@ if(!function_exists('isCompanyProfileComplete')){
 /** check candidate completion */
 
 if(!function_exists('isCandidateProfileComplete')){
+
     function isCandidateProfileComplete() : bool
+
     {
+
         $requiredFields = ['experience_id', 'profession_id', 'image', 'full_name', 'birth_date', 'gender', 'bio', 'maritial_status', 'country', 'status'];
         $candidateProfile = Candidate::where('user_id', auth()->user()->id)->first();
 
@@ -59,6 +62,7 @@ if(!function_exists('isCandidateProfileComplete')){
         }
 
         foreach ($requiredFields as $field) {
+        
             if (empty($candidateProfile->$field)) {
                 return false;
             }
@@ -69,10 +73,11 @@ if(!function_exists('isCandidateProfileComplete')){
 }
 
 if(!function_exists('formatDate')){
-    function formatDate(string $date) : ?string{
-        return date('d M Y', strtotime($date));
+    function formatDate(?string $date) : ?string{
+        return $date ? date('d M Y', strtotime($date)) : 'N/A';
     }
 }
+
 
 /*store comapny job posting plan */
 

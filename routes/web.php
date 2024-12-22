@@ -106,10 +106,7 @@ Route::group(
         Route::post('/account-info', [CompanyProfileController::class, 'AccountInfo'])->name('account-info');
         Route::post('/password-info', [CompanyProfileController::class, 'PasswordInfo'])->name('password-info');
 
-        Route::get('/get-states/{id}', [LocationController::class, 'GetState']);
-        Route::get('/get-cities/{id}', [LocationController::class, 'GetCity']);
 
-        Route::get('/all-cities', [LocationController::class, 'AllCity']);
 
         /** Job Routes */
         Route::get('applications/{id}', [JobController::class, 'applications'])->name('job.applications');
@@ -144,12 +141,17 @@ Route::group(
     }
 );
 
+Route::get('/company/get-states/{id}', [LocationController::class, 'GetState']);
+Route::get('/company/get-cities/{id}', [LocationController::class, 'GetCity']);
+
+Route::get('/company/all-cities', [LocationController::class, 'AllCity']);
+
 Route::get('/companies', [FrontendCompanyPageController::class, 'index'])->name('companies.index');
 Route::get('/companies/{slug}', [CompanyPageController::class, 'shows'])->name('companies.show');
 
 
 Route::get('/candidate', [FrontendCandidatePageController::class, 'index'])->name('candidates.index');
-Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
+Route::get('/candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
 
 Route::get('/candidate/details/{slug}', [CandidatePageController::class, 'CandidateDetails']);
 

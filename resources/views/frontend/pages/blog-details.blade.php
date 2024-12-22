@@ -42,8 +42,7 @@
                     <div class="col-lg-12 mx-auto">
                         <div class="single-body">
 
-                            <figure><img style="height: 500px; width:100%; object-fit:cover" src="{{ asset($blog->image) }}">
-                            </figure>
+                          
                             <div class="">
                                 <div class="content-single">
                                     {!! $blog->description !!}
@@ -74,7 +73,7 @@
                 </div>
             </div>
         </div>
-        
+
 
     </div>
 

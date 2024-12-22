@@ -26,9 +26,11 @@
                         <div class="content-page">
                             <div class="box-filters-job">
                                 <div class="row">
-                                    <div class="col-xl-6 col-lg-5"><span class="text-small text-showing">Showing
-                                            <strong>41-60 </strong>of
-                                            <strong>944 </strong>jobs</span></div>
+                                    <div class="col-xl-6 col-lg-5">
+                                        <span class="text-small text-showing">
+                                            Showing <strong>{{ $from }}-{{ $to }}</strong> of <strong>{{ $totalJobs }}</strong> jobs
+                                        </span>
+                                    </div>
                                     <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">
                                         <div class="display-flex2">
                                             <div class="box-border mr-10"><span class="text-sortby">Show:</span>
@@ -186,7 +188,7 @@
                         <div class="sidebar-shadow none-shadow mb-30">
                             <div class="sidebar-filters">
                                 <div class="filter-block head-border mb-30">
-                                    <h5>Advance Filter <a class="link-reset" href="#">Reset</a></h5>
+                                    <h5>Advance Filter <a class="link-reset" href="/jobs">Reset</a></h5>
                                 </div>
 
                                 <form action="{{ route('jobs.index') }}" method="GET">

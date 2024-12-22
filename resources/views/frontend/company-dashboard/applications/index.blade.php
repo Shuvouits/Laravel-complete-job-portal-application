@@ -65,6 +65,7 @@
                                                     <td>
                                                         <a href="{{ route('candidates.show', $application->candidate->slug) }}"
                                                             class="btn btn-success">View Profile</a>
+
                                                     </td>
 
                                                 </tr>

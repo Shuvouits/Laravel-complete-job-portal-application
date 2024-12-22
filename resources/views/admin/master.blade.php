@@ -6,20 +6,33 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Advanced Job Portal</title>
 
-
-
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
+
+
+
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/summernote/summernote-bs4.css') }}"> 
+
+    <link rel="stylesheet" href="{{asset('admin/assets/modules/codemirror/lib/codemirror.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/modules/codemirror/theme/duotone-dark.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/modules/jquery-selectric/selectric.css')}}">
+
+
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/weather-icon/css/weather-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/weather-icon/css/weather-icons-wind.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/modules/summernote/summernote-bs4.css') }}">
+
+
+
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
+
+
+
+     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/admin.css') }}">
 
@@ -34,6 +47,10 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
 
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+
+
+
+
 
 
 
@@ -108,8 +125,19 @@
     <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
 
-    <!-- JS Libraies -->
-    <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
+
+
+       <!-- JS Libraies -->
+
+       <script src="{{asset('admin/assets/modules/summernote/summernote-bs4.js')}}"></script>
+
+       <script src="{{asset('admin/assets/modules/codemirror/lib/codemirror.js')}}"></script>
+       <script src="{{asset('admin/assets/modules/codemirror/mode/javascript/javascript.js')}}"></script>
+       <script src="{{asset('admin/assets/modules/jquery-selectric/jquery.selectric.min.js')}}"></script>
+
+
+
+
 
     <!-- JS Libraies -->
     <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
@@ -139,10 +167,23 @@
     <!--icon picker --->
     <script src="{{ asset('admin/assets/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
 
-   
 
+
+
+
+
+
+
+    <!-------
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>  --->
+
+
+
+
+
+<!-------
 
     <script>
         ClassicEditor
@@ -160,6 +201,9 @@
                 console.error(error);
             });
     </script>
+
+
+    ----->
 
 
 

@@ -15,6 +15,19 @@
 
                         </div>
                         <div class="card-body">
+
+                            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+
                             <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -35,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Description <span class="text-danger">*</span> </label>
-                                    <textarea id="editor" name="description">{!! $blog->description !!}</textarea>
+                                    <textarea class="summernote" name="description">{!! $blog->description !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Status</label>

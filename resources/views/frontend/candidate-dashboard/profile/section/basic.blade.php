@@ -11,7 +11,11 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
+
+                            @if($candidate?->image != null)
                             <x-image-preview :source='getImagePath($candidate?->image)' style="height: 100px;" />
+                            @endif
+
                             <label for="avatar"
                                 class="font-sm color-text-mutted mb-10">Profile
                                 Picture*</label>
@@ -25,7 +29,7 @@
 
                         <div class="form-group">
                             <label for="cv"
-                                class="font-sm color-text-mutted mb-10">CV* {{$candidate->cv ? 'Attched one file' : ''}}</label>
+                                class="font-sm color-text-mutted mb-10">CV* {{$candidate?->cv ? 'Attched one file' : ''}}</label>
                             <input id="cv" class="form-control" type="file"
                                 name="cv" placeholder="Browse">
                             <x-input-error :messages="$errors->get('cv')" class="mt-2" />

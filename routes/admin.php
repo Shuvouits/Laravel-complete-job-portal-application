@@ -1,15 +1,15 @@
 <?php
 
 use App\Http\Controllers\admin\AboutController;
-use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Admin\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\Auth\PasswordController;
-use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\Auth\RegisteredUserController;
-use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\admin\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\admin\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\admin\Auth\NewPasswordController;
+use App\Http\Controllers\admin\Auth\PasswordController;
+use App\Http\Controllers\admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\admin\Auth\RegisteredUserController;
+use App\Http\Controllers\admin\Auth\VerifyEmailController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ClearDatabaseController;

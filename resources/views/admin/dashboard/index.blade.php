@@ -142,8 +142,22 @@
                                 <th>Category/Role</th>
                                 <th>Salary</th>
                                 <th>Deadline</th>
+
+
+
                                 <th>Status</th>
-                                <th>Approve</th>
+
+
+
+                                 <th>Approve</th>
+
+
+
+
+
+
+
+
 
                                 <th style="width: 10%">Action</th>
                             </tr>
@@ -191,14 +205,39 @@
                                             <span class="badge bg-danger text-dark">Expired</span>
                                         @endif
                                     </td>
+
+
+
                                     <td>
                                         <div class="form-group">
                                             <label class="custom-switch mt-2">
-                                              <input @checked($job->status === 'active') type="checkbox" data-id="{{ $job->id }}" name="custom-switch-checkbox" class="custom-switch-input post_status">
-                                              <span class="custom-switch-indicator"></span>
+                                                <input @checked($job->status === 'active') type="checkbox"
+                                                    data-id="{{ $job->id }}" name="custom-switch-checkbox"
+                                                    class="custom-switch-input post_status">
+                                                <span class="custom-switch-indicator"></span>
                                             </label>
-                                          </div>
+                                        </div>
                                     </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <td>
                                         <a href="{{ route('admin.jobs.edit', $job->id) }}" class="btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
                                         <a href="{{ route('admin.jobs.destroy', $job->id) }}" class="btn-sm btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
@@ -229,3 +268,30 @@
 </div>
 
 @endsection
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.post_status').on('change', function() {
+                let id = $(this).data('id');
+
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('admin.job-status.update', ':id') }}'.replace(":id", id),
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        if (response.message == 'success') {
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+                });
+            })
+        })
+    </script>
+@endpush

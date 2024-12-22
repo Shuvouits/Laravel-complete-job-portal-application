@@ -58,6 +58,14 @@ class JobController extends Controller
         storePlanInformation();
         $userPlan = session('user_plan');
 
+        //return $userPlan;
+
+        if(empty($userPlan)){
+            Notify::errorNotification('Please select at least one pricing plan');
+            return redirect()->back();
+        }
+
+
         if($userPlan->job_limit < 1) {
             Notify::errorNotification('You have reached your plan limit please upgrade your plan');
             return to_route('company.jobs.index');
@@ -196,7 +204,7 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
         abort_if($job->company_id !== auth()->user()->company->id, 404);
 
-        $companies = Company::where(['profile_completion' => 1, 'visiblity' => 1])->get();
+        $companies = Company::where(['profile_completion' => 1, 'visibility' => 1])->get();
         $categories = JobCategory::all();
         $countries = Country::all();
         $states = State::where('country_id', $job->country_id)->get();

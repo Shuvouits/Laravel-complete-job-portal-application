@@ -17,4 +17,9 @@ class UserPlan extends Model
         'highlight_job_limit',
         'profile_verified'
     ];
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class, 'plan_id', 'id');
+    }
 }

@@ -60,7 +60,7 @@ class Candidate extends Model
         return $this->hasMany(CandidateSkill::class, 'candidate_id', 'id');
     }
 
-  
+
 
     public function candidateExperiences(){
         return $this->hasMany(CandidateExperience::class, 'candidates_id');
@@ -79,6 +79,14 @@ class Candidate extends Model
         return $this->belongsTo(Experience::class,  'experience_id', 'id');
     }
 
+    function experiences() : HasMany {
+        return $this->hasMany(CandidateExperience::class, 'candidates_id', 'id')->orderBy('id', 'Desc');
+    }
+
+    function educations() : HasMany {
+        return $this->hasMany(CandidateEducation::class, 'candidates_id', 'id')->orderBy('id', 'Desc');
+    }
+
     function candidateCountry() : BelongsTo {
         return $this->belongsTo(Country::class, 'country', 'id');
     }
@@ -88,6 +96,8 @@ class Candidate extends Model
     function candidateCity() : BelongsTo {
         return $this->belongsTo(City::class, 'city', 'id');
     }
+
+
 
 
 }

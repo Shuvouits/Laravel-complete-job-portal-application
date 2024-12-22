@@ -20,8 +20,8 @@
 
         <section class="section-box-2">
             <div class="container">
-                <div class="banner-hero banner-image-single"><img style="height: 300px;object-fit: cover;"
-                        src="{{ asset($job->company->banner) }}" alt="joblist">
+                <div class="banner-hero banner-image-single"><img
+                        src="{{ getImagePath($job->company->banner) }}" alt="joblist">
                 </div>
                 <div class="row mt-10">
                     <div class="col-lg-8 col-md-12">
@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-md-6 d-flex">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/industry.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/industry.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/job-level.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/job-level.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -76,7 +76,7 @@
                             <div class="row mt-25">
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/salary.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/salary.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-md-6 d-flex">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/experience.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/experience.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -103,7 +103,7 @@
                             <div class="row mt-25">
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/job-type.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/job-type.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/deadline.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/deadline.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -124,7 +124,7 @@
                             <div class="row mt-25">
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/updated.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/updated.svg') }}"
                                             alt="joblist"></div>
                                     <div class="sidebar-text-info ml-10"><span
                                             class="text-description jobtype-icon mb-10">Education</span><strong
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-md-6 d-flex mt-sm-15">
                                     <div class="sidebar-icon-item"><img
-                                            src="{{ asset('frontend/assets/imgs/page/job-single/location.svg') }}"
+                                            src="{{ getImagePath('frontend/assets/imgs/page/job-single/location.svg') }}"
                                             alt="joblist">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
@@ -153,16 +153,16 @@
                                     <h6 class="color-text-paragraph-2 d-inline-block d-baseline mr-10">Share this</h6>
                                     <a data-social="facebook" class="mr-5 d-inline-block d-middle" href="#"><img
                                             alt="joblist"
-                                            src="{{ asset('frontend/assets/imgs/template/icons/share-fb.svg') }}"></a>
+                                            src="{{ getImagePath('frontend/assets/imgs/template/icons/share-fb.svg') }}"></a>
                                     <a data-social="twitter" class="mr-5 d-inline-block d-middle" href="#"><img
                                             alt="joblist"
-                                            src="{{ asset('frontend/assets/imgs/template/icons/share-tw.svg') }}"></a>
+                                            src="{{ getImagePath('frontend/assets/imgs/template/icons/share-tw.svg') }}"></a>
                                     <a data-social="reddit" class="mr-5 d-inline-block d-middle" href="#"><img
                                             alt="joblist"
-                                            src="{{ asset('frontend/assets/imgs/template/icons/share-red.svg') }}"></a>
+                                            src="{{ getImagePath('frontend/assets/imgs/template/icons/share-red.svg') }}"></a>
                                     <a data-social="linkedin" class="d-inline-block d-middle" href="#"><img
                                             alt="joblist"
-                                            src="{{ asset('frontend/assets/imgs/template/icons/linkedin.svg') }}"></a>
+                                            src="{{ getImagePath('frontend/assets/imgs/template/icons/linkedin.svg') }}"></a>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                         <div class="sidebar-border">
                             <div class="sidebar-heading">
                                 <div class="avatar-sidebar">
-                                    <figure><img alt="joblist" src="{{ asset($job->company->logo) }}"></figure>
+                                    <figure><img alt="joblist" src="{{ getImagePath($job->company->logo) }}"></figure>
                                     <div class="sidebar-info"><span
                                             class="sidebar-company">{{ $job->company->name }}</span><span
                                             class="card-location">{{ formatLocation($job->company->companyCountry->name, $job->company->companyState->name) }}</span>
@@ -257,7 +257,7 @@
                     },
                     success: function(response) {
                         notyf.success(response.message);
-                    
+
                     },
 
                     error: function(xhr, status, error) {

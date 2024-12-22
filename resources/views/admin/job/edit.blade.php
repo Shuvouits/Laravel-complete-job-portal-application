@@ -400,7 +400,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Description <span class="text-danger">*</span> </label>
-                                                <textarea id="editor" name="description" >{!! $job->description !!}</textarea>
+                                                <textarea class="summernote" name="description" >{!! $job->description !!}</textarea>
                                             </div>
                                         </div>
 
